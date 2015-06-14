@@ -1,0 +1,13 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target 'OAStackView_Example', :exclusive => true do
+  pod "OAStackView", :path => "../"
+end
+
+target 'OAStackView_Tests', :exclusive => true do
+  pod "OAStackView", :path => "../"
+
+  pod 'Specta'
+  pod 'Expecta'
+end
