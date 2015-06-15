@@ -1,0 +1,82 @@
+Spec: OAStackViewSpec
+
+--------------------------------------------------
+Describe: OAStackView
+--------------------------------------------------
+
+    When: Vertical
+        It: Can arrange views vertically
+        It: Can change the spacing between views
+
+        When: Removing views
+            It: Can remove the first view
+            It: Can remove a middle view
+            It: Can remove the last view
+
+        When: Adding views
+            It: Can append a view
+            It: Can insert a view as first element
+            It: Can insert a view in the middle
+            It: Can insert a view at last index
+
+        When: Alignemnt
+            It: Arrange the views to fill the whole axis if OAStackViewAlignmentFill is passed
+            It: Arrange the views on the begginning of the axis if OAStackViewAlignmentLeading is passed
+            It: Arrange the views on the End of the axis if OAStackViewAlignmentTrailing is passed
+            It: Arrange the views on the Center of the axis if OAStackViewAlignmentCenter is passed
+
+        When: Hiding views
+            It: Decreases the height when view is hidden
+            It: Adjustes frames when views are hidden
+            It: Adjustes frames when multiple views are hidden
+            It: Adjustes frames when the first view are hidden and unhidden
+            It: Adjustes frames when all the views are hidden and brought back
+            It: Adjustes frames when all the views are hidden and brought back in different orders
+            It: Can Unhide a non hidden view normally
+
+        When: Distribution
+
+            When: OAStackViewDistributionFill
+                It: Distributes the view based on their fill using OAStackViewDistributionFill
+
+            When: OAStackViewDistributionFillEqually
+                It: Distributes the views equally using OAStackViewDistributionFillEqually
+                It: Adds the correct spacing between views
+
+    When: Horizontal
+        It: Can arrange views vertically
+        It: Can change the spacing between views
+
+        When: Removing views
+            It: Can remove the first view
+            It: Can remove a middle view
+            It: Can remove the last view
+
+        When: Adding views
+            It: Can append a view
+            It: Can insert a view as first element
+            It: Can insert a view in the middle
+            It: Can insert a view at last index
+
+        When: Alignemnt
+            It: Arrange the views to fill the whole axis if OAStackViewAlignmentFill is passed
+            It: Arrange the views on the begginning of the axis if OAStackViewAlignmentLeading is passed
+            It: Arrange the views on the End of the axis if OAStackViewAlignmentTrailing is passed
+            It: Arrange the views on the Center of the axis if OAStackViewAlignmentCenter is passed
+
+        When: Hiding views
+            It: Decreases the height when view is hidden
+            It: Adjustes frames when views are hidden
+            It: Adjustes frames when multiple views are hidden
+            It: Adjustes frames when the first view are hidden and unhidden
+            It: Adjustes frames when all the views are hidden and brought back
+            It: Adjustes frames when all the views are hidden and brought back in different orders
+
+            When: Distribution
+
+                When: OAStackViewDistributionFill
+                    It: Distributes the view based on their fill using OAStackViewDistributionFill
+
+                When: OAStackViewDistributionFillEqually
+                    It: Distributes the views equally using OAStackViewDistributionFillEqually
+                    It: Adds the correct spacing between views

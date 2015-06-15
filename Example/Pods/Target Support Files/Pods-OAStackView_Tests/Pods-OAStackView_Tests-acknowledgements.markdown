@@ -34,7 +34,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ## OAStackView
 
-Copyright (c) 2015 Omar Abdelhafith <omar.abdelhafith@mttnow.com>
+Copyright (c) 2015 Omar Abdelhafith <o.arrabi@me.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

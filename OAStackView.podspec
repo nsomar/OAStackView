@@ -10,18 +10,17 @@
 Pod::Spec.new do |s|
   s.name             = "OAStackView"
   s.version          = "0.1.0"
-  s.summary          = "A short description of OAStackView."
+  s.summary          = "Porting UIStackView to iOS 7+."
   s.description      = <<-DESC
-                       An optional longer description of OAStackView
+  iOS 9 introduced the very cool [UIStackView](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIStackView_Class_Reference/), UIStackView can be used to easily create simple and complex layouts.
 
-                       * Markdown format.
-                       * Don't worry about the indent, we strip it!
+  As expected `UIStackView` can only be used for iOS9 and up. This project tries to port back the stackview to iOS 6+.
                        DESC
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/OAStackView"
+  s.homepage         = "https://github.com/oarrabi/OAStackView"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
-  s.author           = { "Omar Abdelhafith" => "omar.abdelhafith@mttnow.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/OAStackView.git", :tag => s.version.to_s }
+  s.author           = { "Omar Abdelhafith" => "o.arrabi@me.com" }
+  s.source           = { :git => "https://github.com/oarrabi/OAStackView.git", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.platform     = :ios, '7.0'

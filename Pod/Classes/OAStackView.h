@@ -1,6 +1,6 @@
 //
 //  OAStackView.h
-//  TestingUsingXC7
+//  OAStackView
 //
 //  Created by Omar Abdelhafith on 14/06/2015.
 //  Copyright © 2015 Omar Abdelhafith. All rights reserved.
@@ -91,7 +91,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic) OAStackViewDistribution distribution;
 @property(nonatomic) IBInspectable NSInteger distributionValue;
 
-- (instancetype)initWithArrangedSubviews:(NSArray*)views;
+- (instancetype)initWithArrangedSubviews:(NSArray*)views NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithCoder:(NSCoder *)coder NS_DESIGNATED_INITIALIZER;
 
 - (void)addArrangedSubview:(UIView *)view;
 - (void)removeArrangedSubview:(UIView *)view;

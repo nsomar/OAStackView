@@ -1,6 +1,6 @@
 //
 //  OAStackView.m
-//  TestingUsingXC7
+//  OAStackView
 //
 //  Created by Omar Abdelhafith on 14/06/2015.
 //  Copyright © 2015 Omar Abdelhafith. All rights reserved.
@@ -282,6 +282,7 @@
 
 - (void)addViewsAsSubviews:(NSArray*)views {
   for (UIView *view in views) {
+    view.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:view];
   }
 }
