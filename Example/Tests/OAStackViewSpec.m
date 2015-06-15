@@ -1,0 +1,510 @@
+//
+//  OAStackViewSpec.m
+//  OAStackView
+//
+//  Created by Omar Abdelhafith on 14/06/2015.
+//  Copyright 2015 Omar Abdelhafith. All rights reserved.
+//
+
+#import "Kiwi.h"
+#import "OAStackView.h"
+
+
+UIView *createView(float width, float height);
+UIView *createViewP(float width, float widthPriority, float height, float heightPriority);
+
+void layoutView(UIView* view);
+
+SPEC_BEGIN(OAStackViewSpec)
+
+describe(@"OAStackView", ^{
+  __block OAStackView *stackView;
+  
+  beforeEach(^{
+  });
+  
+  context(@"Vertical", ^{
+    
+    it(@"Can arrange views vertically", ^{
+      NSArray *views = @[createView(100, 20),createView(100, 40)];
+      
+      stackView = [[OAStackView alloc] initWithArrangedSubviews:views];
+      stackView.translatesAutoresizingMaskIntoConstraints = NO;
+      
+      CGSize size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+      [[theValue(size) should] equal:theValue(CGSizeMake(100, 60))];
+    });
+    
+    it(@"Can change the spacing between views", ^{
+      NSArray *views = @[createView(100, 20),createView(100, 40)];
+      
+      stackView = [[OAStackView alloc] initWithArrangedSubviews:views];
+      stackView.translatesAutoresizingMaskIntoConstraints = NO;
+      
+      CGSize size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+      [[theValue(size) should] equal:theValue(CGSizeMake(100, 60))];
+      
+      stackView.spacing = 20;
+      size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+      [[theValue(size) should] equal:theValue(CGSizeMake(100, 80))];
+      
+      stackView.spacing = 50;
+      size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+      [[theValue(size) should] equal:theValue(CGSizeMake(100, 110))];
+    });
+    
+    context(@"Removing views", ^{
+      __block UIView *view1, *view2, *view3;
+      
+      beforeEach(^{
+        view1 = createView(100, 20);
+        view2 = createView(100, 30);
+        view3 = createView(100, 40);
+        
+        NSArray *views = @[view1, view2, view3];
+        
+        stackView = [[OAStackView alloc] initWithArrangedSubviews:views];
+        stackView.translatesAutoresizingMaskIntoConstraints = NO;
+      });
+      
+      it(@"Can remove the first view", ^{
+        
+        CGSize size;
+        size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+        [[theValue(size) should] equal:theValue(CGSizeMake(100, 90))];
+        
+        [stackView removeArrangedSubview:view1];
+        size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+        [[theValue(size) should] equal:theValue(CGSizeMake(100, 70))];
+        
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetMinX([view2 frame])) should] equal:theValue(0)];
+      });
+      
+      it(@"Can remove a middle view", ^{
+        CGSize size;
+        size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+        [[theValue(size) should] equal:theValue(CGSizeMake(100, 90))];
+        
+        [stackView removeArrangedSubview:view2];
+        size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+        [[theValue(size) should] equal:theValue(CGSizeMake(100, 60))];
+        
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetMinY([view3 frame])) should] equal:theValue(20)];
+      });
+      
+      it(@"Can remove the last view", ^{
+        CGSize size;
+        size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+        [[theValue(size) should] equal:theValue(CGSizeMake(100, 90))];
+        
+        [stackView removeArrangedSubview:view3];
+        size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+        [[theValue(size) should] equal:theValue(CGSizeMake(100, 50))];
+      });
+      
+    });
+    
+    context(@"Adding views", ^{
+      __block UIView *view1, *view2, *view3;
+      
+      beforeEach(^{
+        view1 = createView(100, 20);
+        view2 = createView(100, 30);
+        view3 = createView(100, 40);
+        
+        NSArray *views = @[view1, view2, view3];
+        
+        stackView = [[OAStackView alloc] initWithArrangedSubviews:views];
+        stackView.translatesAutoresizingMaskIntoConstraints = NO;
+      });
+      
+      it(@"Can append a view", ^{
+        
+        CGSize size;
+        size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+        [[theValue(size) should] equal:theValue(CGSizeMake(100, 90))];
+        
+        
+        [stackView addArrangedSubview:createView(100, 40)];
+        size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+        [[theValue(size) should] equal:theValue(CGSizeMake(100, 130))];
+      });
+      
+      it(@"Can insert a view as first element", ^{
+        
+        CGSize size;
+        size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+        [[theValue(size) should] equal:theValue(CGSizeMake(100, 90))];
+        
+        
+        [stackView insertArrangedSubview:createView(100, 40) atIndex:0];
+        size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+        [[theValue(size) should] equal:theValue(CGSizeMake(100, 130))];
+        
+        layoutView(stackView);
+        [[theValue(CGRectGetMinY(view1.frame)) should] equal:theValue(40)];
+        
+      });
+      
+      it(@"Can insert a view in the middle", ^{
+        
+        CGSize size;
+        size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+        [[theValue(size) should] equal:theValue(CGSizeMake(100, 90))];
+        
+        
+        [stackView insertArrangedSubview:createView(100, 40) atIndex:1];
+        size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+        [[theValue(size) should] equal:theValue(CGSizeMake(100, 130))];
+        
+        layoutView(stackView);
+        [[theValue(CGRectGetMinY(view2.frame)) should] equal:theValue(60)];
+        
+      });
+      
+      it(@"Can insert a view at last index", ^{
+        
+        CGSize size;
+        size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+        [[theValue(size) should] equal:theValue(CGSizeMake(100, 90))];
+        
+        
+        [stackView insertArrangedSubview:createView(100, 40) atIndex:3];
+        size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+        [[theValue(size) should] equal:theValue(CGSizeMake(100, 130))];
+      });
+    });
+    
+    context(@"Alignemnt", ^{
+      
+      __block UIView *view1, *view2, *view3;
+      
+      beforeEach(^{
+        view1 = createViewP(200, 300, 20, 250);
+        view2 = createViewP(500, 300, 30, 250);
+        view3 = createViewP(600, 330, 40, 250);
+        
+        NSArray *views = @[view1, view2, view3];
+        
+        stackView = [[OAStackView alloc] initWithArrangedSubviews:views];
+        stackView.translatesAutoresizingMaskIntoConstraints = NO;
+      });
+      
+      it(@"Arrange the views to fill the whole axis if OAStackViewAlignmentFill is passed", ^{
+        stackView.alignment = OAStackViewAlignmentFill;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetMinX(view3.frame)) should] equal:theValue(0)];
+        [[theValue(CGRectGetWidth(view3.frame)) should] equal:theValue(600)];
+        
+        [[theValue(CGRectGetMinX(view2.frame)) should] equal:theValue(0)];
+        [[theValue(CGRectGetWidth(view2.frame)) should] equal:theValue(600)];
+      });
+      
+      it(@"Arrange the views on the begginning of the axis if OAStackViewAlignmentLeading is passed", ^{
+        stackView.alignment = OAStackViewAlignmentLeading;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetMinX(view1.frame)) should] equal:theValue(0)];
+        [[theValue(CGRectGetWidth(view1.frame)) should] equal:theValue(200)];
+        
+        [[theValue(CGRectGetMinX(view2.frame)) should] equal:theValue(0)];
+        [[theValue(CGRectGetWidth(view2.frame)) should] equal:theValue(500)];
+      });
+      
+      it(@"Arrange the views on the End of the axis if OAStackViewAlignmentTrailing is passed", ^{
+        stackView.alignment = OAStackViewAlignmentTrailing;;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetMinX(view1.frame)) should] equal:theValue(400)];
+        [[theValue(CGRectGetWidth(view1.frame)) should] equal:theValue(200)];
+        
+        [[theValue(CGRectGetMinX(view2.frame)) should] equal:theValue(100)];
+        [[theValue(CGRectGetWidth(view2.frame)) should] equal:theValue(500)];
+      });
+      
+      it(@"Arrange the views on the Center of the axis if OAStackViewAlignmentCenter is passed", ^{
+        stackView.alignment = OAStackViewAlignmentCenter;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetMinX(view1.frame)) should] equal:theValue(200)];
+        [[theValue(CGRectGetWidth(view1.frame)) should] equal:theValue(200)];
+        
+        [[theValue(CGRectGetMinX(view2.frame)) should] equal:theValue(50)];
+        [[theValue(CGRectGetWidth(view2.frame)) should] equal:theValue(500)];
+      });
+      
+    });
+    
+  });
+  
+  
+  context(@"Horizontal", ^{
+    
+    it(@"Can arrange views vertically", ^{
+      NSArray *views = @[createView(100, 40),createView(100, 40)];
+      
+      stackView = [[OAStackView alloc] initWithArrangedSubviews:views];
+      stackView.translatesAutoresizingMaskIntoConstraints = NO;
+      stackView.axis = UILayoutConstraintAxisHorizontal;
+      
+      CGSize size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+      [[theValue(size) should] equal:theValue(CGSizeMake(200, 40))];
+    });
+    
+    it(@"Can change the spacing between views", ^{
+      NSArray *views = @[createView(100, 40),createView(100, 40)];
+      
+      stackView = [[OAStackView alloc] initWithArrangedSubviews:views];
+      stackView.translatesAutoresizingMaskIntoConstraints = NO;
+      stackView.axis = UILayoutConstraintAxisHorizontal;
+      
+      CGSize size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+      [[theValue(size) should] equal:theValue(CGSizeMake(200, 40))];
+      
+      stackView.spacing = 20;
+      size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+      [[theValue(size) should] equal:theValue(CGSizeMake(220, 40))];
+      
+      stackView.spacing = 50;
+      size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+      [[theValue(size) should] equal:theValue(CGSizeMake(250, 40))];
+    });
+    
+    context(@"Removing views", ^{
+      __block UIView *view1, *view2, *view3;
+      
+      beforeEach(^{
+        view1 = createView(20, 100);
+        view2 = createView(30, 100);
+        view3 = createView(40, 100);
+        
+        NSArray *views = @[view1, view2, view3];
+        
+        stackView = [[OAStackView alloc] initWithArrangedSubviews:views];
+        stackView.axis = UILayoutConstraintAxisHorizontal;
+        stackView.translatesAutoresizingMaskIntoConstraints = NO;
+      });
+      
+      it(@"Can remove the first view", ^{
+        
+        CGSize size;
+        size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+        [[theValue(size) should] equal:theValue(CGSizeMake(90, 100))];
+        
+        [stackView removeArrangedSubview:view1];
+        size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+        [[theValue(size) should] equal:theValue(CGSizeMake(70, 100))];
+        
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetMinX([view2 frame])) should] equal:theValue(0)];
+      });
+      
+      it(@"Can remove a middle view", ^{
+        CGSize size;
+        size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+        [[theValue(size) should] equal:theValue(CGSizeMake(90, 100))];
+        
+        [stackView removeArrangedSubview:view2];
+        size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+        [[theValue(size) should] equal:theValue(CGSizeMake(60, 100))];
+        
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetMinX([view3 frame])) should] equal:theValue(20)];
+      });
+      
+      it(@"Can remove the last view", ^{
+        CGSize size;
+        size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+        [[theValue(size) should] equal:theValue(CGSizeMake(90, 100))];
+        
+        [stackView removeArrangedSubview:view3];
+        size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+        [[theValue(size) should] equal:theValue(CGSizeMake(50, 100))];
+      });
+      
+    });
+    
+    
+    context(@"Adding views", ^{
+      __block UIView *view1, *view2, *view3;
+      
+      beforeEach(^{
+        view1 = createView(20, 100 );
+        view2 = createView(30, 100);
+        view3 = createView(40, 100);
+        
+        NSArray *views = @[view1, view2, view3];
+        
+        stackView = [[OAStackView alloc] initWithArrangedSubviews:views];
+        stackView.axis = UILayoutConstraintAxisHorizontal;
+        stackView.translatesAutoresizingMaskIntoConstraints = NO;
+      });
+      
+      it(@"Can append a view", ^{
+        
+        CGSize size;
+        size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+        [[theValue(size) should] equal:theValue(CGSizeMake(90, 100))];
+        
+        
+        [stackView addArrangedSubview:createView(40, 100)];
+        size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+        [[theValue(size) should] equal:theValue(CGSizeMake(130, 100))];
+      });
+      
+      it(@"Can insert a view as first element", ^{
+        
+        CGSize size;
+        size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+        [[theValue(size) should] equal:theValue(CGSizeMake(90, 100))];
+        
+        
+        [stackView insertArrangedSubview:createView(40, 100) atIndex:0];
+        size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+        [[theValue(size) should] equal:theValue(CGSizeMake(130, 100))];
+        
+        layoutView(stackView);
+        [[theValue(CGRectGetMinX(view1.frame)) should] equal:theValue(40)];
+        
+      });
+      
+      it(@"Can insert a view in the middle", ^{
+        
+        CGSize size;
+        size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+        [[theValue(size) should] equal:theValue(CGSizeMake(90, 100))];
+        
+        
+        [stackView insertArrangedSubview:createView(40, 100) atIndex:1];
+        size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+        [[theValue(size) should] equal:theValue(CGSizeMake(130, 100))];
+        
+        layoutView(stackView);
+        [[theValue(CGRectGetMinX(view2.frame)) should] equal:theValue(60)];
+        
+      });
+      
+      it(@"Can insert a view at last index", ^{
+        
+        CGSize size;
+        size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+        [[theValue(size) should] equal:theValue(CGSizeMake(90, 100))];
+        
+        [stackView insertArrangedSubview:createView(40, 100) atIndex:3];
+        size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
+        [[theValue(size) should] equal:theValue(CGSizeMake(130, 100))];
+      });
+      
+    });
+    
+    
+    context(@"Alignemnt", ^{
+      
+      __block UIView *view1, *view2, *view3;
+      
+      beforeEach(^{
+        view1 = createViewP(20, 250, 200, 300);
+        view2 = createViewP(30, 250, 500, 300);
+        view3 = createViewP(40, 250, 600, 330);
+        
+        NSArray *views = @[view1, view2, view3];
+        
+        stackView = [[OAStackView alloc] initWithArrangedSubviews:views];
+        stackView.axis = UILayoutConstraintAxisHorizontal;
+        stackView.translatesAutoresizingMaskIntoConstraints = NO;
+      });
+      
+      it(@"Arrange the views to fill the whole axis if OAStackViewAlignmentFill is passed", ^{
+        stackView.alignment = OAStackViewAlignmentFill;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetMinY(view3.frame)) should] equal:theValue(0)];
+        [[theValue(CGRectGetHeight(view3.frame)) should] equal:theValue(600)];
+        
+        [[theValue(CGRectGetMinY(view2.frame)) should] equal:theValue(0)];
+        [[theValue(CGRectGetHeight(view2.frame)) should] equal:theValue(600)];
+      });
+      
+      it(@"Arrange the views on the begginning of the axis if OAStackViewAlignmentLeading is passed", ^{
+        stackView.alignment = OAStackViewAlignmentLeading;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetMinY(view1.frame)) should] equal:theValue(0)];
+        [[theValue(CGRectGetHeight(view1.frame)) should] equal:theValue(200)];
+        
+        [[theValue(CGRectGetMinY(view2.frame)) should] equal:theValue(0)];
+        [[theValue(CGRectGetHeight(view2.frame)) should] equal:theValue(500)];
+      });
+      
+      it(@"Arrange the views on the End of the axis if OAStackViewAlignmentTrailing is passed", ^{
+        stackView.alignment = OAStackViewAlignmentTrailing;;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetMinY(view1.frame)) should] equal:theValue(400)];
+        [[theValue(CGRectGetHeight(view1.frame)) should] equal:theValue(200)];
+        
+        [[theValue(CGRectGetMinY(view2.frame)) should] equal:theValue(100)];
+        [[theValue(CGRectGetHeight(view2.frame)) should] equal:theValue(500)];
+      });
+      
+      it(@"Arrange the views on the Center of the axis if OAStackViewAlignmentCenter is passed", ^{
+        stackView.alignment = OAStackViewAlignmentCenter;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetMinY(view1.frame)) should] equal:theValue(200)];
+        [[theValue(CGRectGetHeight(view1.frame)) should] equal:theValue(200)];
+        
+        [[theValue(CGRectGetMinY(view2.frame)) should] equal:theValue(50)];
+        [[theValue(CGRectGetHeight(view2.frame)) should] equal:theValue(500)];
+      });
+      
+    });
+    
+  });
+  
+});
+
+SPEC_END
+
+UIView *createView(float width, float height) {
+  return createViewP(width, 1000, height, 1000);
+}
+
+UIView *createViewP(float width, float widthPriority, float height, float heightPriority) {
+  UIColor *color = [UIColor redColor];
+  UIButton *view = [UIButton new];
+  view.translatesAutoresizingMaskIntoConstraints = NO;
+  [view setTitle:@"the title" forState:UIControlStateNormal];
+  NSString *constraintStr = [NSString stringWithFormat:@"V:[view(%f@%f)]", height, heightPriority];
+  [view addConstraints:
+   [NSLayoutConstraint constraintsWithVisualFormat:constraintStr
+                                           options:0
+                                           metrics:0
+                                             views:NSDictionaryOfVariableBindings(view)]];
+  
+  constraintStr = [NSString stringWithFormat:@"H:[view(%f@%f)]", width, widthPriority];
+  [view addConstraints:
+   [NSLayoutConstraint constraintsWithVisualFormat:constraintStr
+                                           options:0
+                                           metrics:0
+                                             views:NSDictionaryOfVariableBindings(view)]];
+  
+  view.backgroundColor = color;
+  return view;
+}
+
+
+void layoutView(UIView* view) {
+  UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+  [window addSubview:view];
+  
+  [window setNeedsLayout];
+  [window layoutIfNeeded];
+}

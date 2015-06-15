@@ -1,0 +1,25 @@
+{
+  "name": "OAStackView",
+  "version": "0.1.0",
+  "summary": "A short description of OAStackView.",
+  "description": "                       An optional longer description of OAStackView\n\n                       * Markdown format.\n                       * Don't worry about the indent, we strip it!\n",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/OAStackView",
+  "license": "MIT",
+  "authors": {
+    "Omar Abdelhafith": "omar.abdelhafith@mttnow.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/OAStackView.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "7.0"
+  },
+  "requires_arc": true,
+  "source_files": "Pod/Classes/**/*",
+  "resource_bundles": {
+    "OAStackView": [
+      "Pod/Assets/*.png"
+    ]
+  }
+}

@@ -3,11 +3,10 @@ use_frameworks!
 
 target 'OAStackView_Example', :exclusive => true do
   pod "OAStackView", :path => "../"
+  pod 'Reveal-iOS-SDK', '~> 1.5.1'
 end
 
 target 'OAStackView_Tests', :exclusive => true do
   pod "OAStackView", :path => "../"
-
-  pod 'Specta'
-  pod 'Expecta'
+  pod 'Kiwi'
 end

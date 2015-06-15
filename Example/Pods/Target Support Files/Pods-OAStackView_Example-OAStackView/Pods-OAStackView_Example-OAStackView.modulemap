@@ -1,0 +1,6 @@
+framework module OAStackView {
+  umbrella header "Pods-OAStackView_Example-OAStackView-umbrella.h"
+
+  export *
+  module * { export * }
+}
