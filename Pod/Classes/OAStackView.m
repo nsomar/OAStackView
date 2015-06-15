@@ -10,10 +10,14 @@
 #import "OAStackView+Constraint.h"
 #import "OAStackView+Hiding.h"
 #import "OAStackView+Traversal.h"
-
+#import "OAStackViewAlignmentStrategy.h"
+#import "OAStackViewDistributionStrategy.h"
 
 @interface OAStackView ()
 @property(nonatomic, copy) NSArray *arrangedSubviews;
+
+@property(nonatomic) OAStackViewAlignmentStrategy *alignmentStrategy;
+@property(nonatomic) OAStackViewDistributionStrategy *distributionStrategy;
 @end
 
 @implementation OAStackView
@@ -48,118 +52,12 @@
 - (void)commonInit {
   _axis = UILayoutConstraintAxisVertical;
   _alignment = OAStackViewAlignmentFill;
+  _distribution = OAStackViewDistributionFill;
   
-  [self removeDecendentConstraints];
+  _alignmentStrategy = [OAStackViewAlignmentStrategy strategyWithStackView:self];
+  _distributionStrategy = [OAStackViewDistributionStrategy strategyWithStackView:self];
+  
   [self layoutArrangedViews];
-}
-
-#pragma mark - Internals
-
-- (void)addViewsAsSubviews:(NSArray*)views {
-  for (UIView *view in views) {
-    [self addSubview:view];
-  }
-}
-
-- (void)removeDecendentConstraints {
-  for (NSInteger i = self.constraints.count - 1; i >= 0 ; i--) {
-    NSLayoutConstraint *constraint = self.constraints[i];
-    if ([self.subviews containsObject:constraint.firstItem] ||
-        [self.subviews containsObject:constraint.secondItem]) {
-      [self removeConstraint:constraint];
-    }
-  }
-}
-
-- (void)layoutArrangedViews {
-  __block UIView *previousView = nil;
-  
-  [self iterateVisibleViews:^(UIView *view) {
-    [self alignView:view previousView:previousView];
-    previousView = view;
-    [self alignViewOnOtherAxis:view];
-  }];
-  
-  [self alignView:nil previousView:[self lastVisibleItem]];
-}
-
-- (void)alignView:(UIView*)view previousView:(UIView*)previousView {
-  
-  if (previousView && view) {
-    NSString *str = [NSString stringWithFormat:@"%@:[previousView]-%f-[view]",
-                     [self currentAxisString], self.spacing];
-    [self addConstraints:
-     [NSLayoutConstraint constraintsWithVisualFormat:str
-                                             options:0
-                                             metrics:nil
-                                               views:NSDictionaryOfVariableBindings(view, previousView)]];
-  } else if(!view) {
-    NSString *constraintString = [NSString stringWithFormat:@"%@:[view]-0-|", [self currentAxisString]];
-    UIView *view = previousView;
-    [self addConstraints:
-     [NSLayoutConstraint constraintsWithVisualFormat:constraintString
-                                             options:0
-                                             metrics:nil
-                                               views:NSDictionaryOfVariableBindings(view)]];
-  } else {
-    NSString *str = [NSString stringWithFormat:@"%@:|-0-[view]", [self currentAxisString]];
-    [self addConstraints:
-     [NSLayoutConstraint constraintsWithVisualFormat:str
-                                             options:0
-                                             metrics:nil
-                                               views:NSDictionaryOfVariableBindings(view)]];
-  }
-  
-}
-
-- (NSString*)currentAxisString {
-  return self.axis == UILayoutConstraintAxisHorizontal ? @"H" : @"V";
-}
-
-- (NSString*)otherAxisString {
-  return self.axis == UILayoutConstraintAxisHorizontal ? @"V" : @"H";
-}
-
-- (NSLayoutAttribute)centerAttribute {
-  return self.axis == UILayoutConstraintAxisHorizontal ? NSLayoutAttributeCenterY : NSLayoutAttributeCenterX;
-}
-
-- (void)alignViewOnOtherAxis:(UIView*)view {
-  if (self.alignment == OAStackViewAlignmentCenter) {
-    [self addConstraint:
-     [NSLayoutConstraint constraintWithItem:view
-                                  attribute:[self centerAttribute]
-                                  relatedBy:NSLayoutRelationEqual
-                                     toItem:self
-                                  attribute:[self centerAttribute]
-                                 multiplier:1 constant:0]];
-    return;
-  }
-  
-  NSString *constraintString;
-  
-  switch (self.alignment) {
-    case OAStackViewAlignmentFill:
-      constraintString = [NSString stringWithFormat:@"%@:|-0-[view]-0-|", [self otherAxisString]];
-      break;
-      
-    case OAStackViewAlignmentLeading:
-      constraintString = [NSString stringWithFormat:@"%@:|-0-[view]", [self otherAxisString]];
-      break;
-      
-    case OAStackViewAlignmentTrailing:
-      constraintString = [NSString stringWithFormat:@"%@:[view]-0-|", [self otherAxisString]];
-      break;
-      
-    default:
-      break;
-  }
-  
-  [self addConstraints:
-   [NSLayoutConstraint constraintsWithVisualFormat:constraintString
-                                           options:0
-                                           metrics:nil
-                                             views:NSDictionaryOfVariableBindings(view)]];
 }
 
 #pragma mark - Properties
@@ -170,8 +68,13 @@
   _spacing = spacing;
   
   for (NSLayoutConstraint *constraint in self.constraints) {
+    BOOL isWidthOrHeight =
+    (constraint.firstAttribute == NSLayoutAttributeWidth) ||
+    (constraint.firstAttribute == NSLayoutAttributeHeight);
+    
     if ([self.subviews containsObject:constraint.firstItem] &&
-        [self.subviews containsObject:constraint.secondItem]) {
+        [self.subviews containsObject:constraint.secondItem] &&
+        !isWidthOrHeight) {
       constraint.constant = spacing;
     }
   }
@@ -181,8 +84,8 @@
   if (_axis == axis) { return; }
   
   _axis = axis;
+  _alignmentStrategy = [OAStackViewAlignmentStrategy strategyWithStackView:self];
   
-  [self removeDecendentConstraints];
   [self layoutArrangedViews];
 }
 
@@ -195,7 +98,13 @@
   if (_alignment == alignment) { return; }
   
   _alignment = alignment;
-  [self reAlignSecondaryAxis];
+  
+  [self.alignmentStrategy removeAddedConstraints];
+  self.alignmentStrategy = [OAStackViewAlignmentStrategy strategyWithStackView:self];
+  
+  [self iterateVisibleViews:^(UIView *view, UIView *previousView) {
+    [self.alignmentStrategy addConstraintsOnOtherAxis:view];
+  }];
 }
 
 - (void)setAlignmentValue:(NSInteger)alignmentValue {
@@ -203,26 +112,26 @@
   self.alignment = alignmentValue;
 }
 
-- (void)reAlignSecondaryAxis {
-  [self iterateVisibleViews:^(UIView *view) {
-    UILayoutConstraintAxis otherAxis = self.axis == UILayoutConstraintAxisHorizontal? UILayoutConstraintAxisVertical : UILayoutConstraintAxisHorizontal;
-    
-    NSArray *constraints = [self constraintsBetweenView:view andView:self inAxis:otherAxis];
-    [self removeConstraints:constraints];
-    [self alignViewOnOtherAxis:view];
+- (void)setDistribution:(OAStackViewDistribution)distribution {
+  if (_distribution == distribution) { return; }
+  
+  _distribution = distribution;
+  
+  [self.alignmentStrategy removeAddedConstraints];
+  [self.distributionStrategy removeAddedConstraints];
+  
+  self.alignmentStrategy = [OAStackViewAlignmentStrategy strategyWithStackView:self];
+  self.distributionStrategy = [OAStackViewDistributionStrategy strategyWithStackView:self];
+  
+  [self iterateVisibleViews:^(UIView *view, UIView *previousView) {
+    [self.alignmentStrategy addConstraintsOnOtherAxis:view];
+    [self.distributionStrategy alignView:view afterView:previousView];
   }];
 }
 
-#pragma mark subviews
-
-- (void)didAddSubview:(UIView *)subview {
-  [super didAddSubview:subview];
-  [self addObserverForView:subview];
-}
-
-- (void)willRemoveSubview:(UIView *)subview {
-  [super willRemoveSubview:subview];
-  [self removeObserverForView:subview];
+- (void)setDistributionValue:(NSInteger)distributionValue {
+  _distributionValue = distributionValue;
+  self.distribution = distributionValue;
 }
 
 #pragma mark Layouting
@@ -237,7 +146,7 @@
   
   __block float maxSize = 0;
   
-  [self iterateVisibleViews:^(UIView *view) {
+  [self iterateVisibleViews:^(UIView *view, UIView *previousView) {
     if (self.axis == UILayoutConstraintAxisVertical) {
       maxSize = fmaxf(maxSize, CGRectGetWidth(view.frame));
     } else {
@@ -274,15 +183,6 @@
   [self insertArrangedSubview:view atIndex:stackIndex newItem:YES];
 }
 
-- (void)hideView:(UIView*)view {
-  [self removeViewFromArrangedViews:view permanently:NO];
-}
-
-- (void)unHideView:(UIView*)view {
-  int index = [self.subviews indexOfObject:view];
-  [self insertArrangedSubview:view atIndex:index newItem:NO];
-}
-
 - (void)insertArrangedSubview:(UIView *)view atIndex:(NSUInteger)stackIndex newItem:(BOOL)newItem {
   
   id previousView, nextView;
@@ -310,9 +210,15 @@
     
     NSArray *constraints;
     BOOL isLastVisibleItem = [self isViewLastItem:previousView excludingItem:view];
+    BOOL isFirstVisibleView = previousView == nil;
+    BOOL isOnlyItem = previousView == nil && nextView == nil;
     
     if (isLastVisibleItem) {
       constraints = @[[self lastViewConstraint]];
+    } else if(isOnlyItem) {
+      constraints = [self constraintsBetweenView:previousView ?: self andView:nextView ?: self inAxis:self.axis];
+    } else if(isFirstVisibleView) {
+      constraints = @[[self firstViewConstraint]];
     } else {
       constraints = [self constraintsBetweenView:previousView ?: self andView:nextView ?: self inAxis:self.axis];
     }
@@ -324,9 +230,9 @@
     }
   }
   
-  [self alignView:view previousView:previousView];
-  [self alignViewOnOtherAxis:view];
-  [self alignView:nextView previousView:view];
+  [self.distributionStrategy alignView:view afterView:previousView];
+  [self.alignmentStrategy addConstraintsOnOtherAxis:view];
+  [self.distributionStrategy alignView:nextView afterView:view];
 }
 
 - (void)removeViewFromArrangedViews:(UIView*)view permanently:(BOOL)permanently {
@@ -344,9 +250,39 @@
   }
   
   if (nextView) {
-    [self alignView:nextView previousView:previousView];
+    [self.distributionStrategy alignView:nextView afterView:previousView];
   } else if(previousView) {
-    [self alignView:nil previousView:[self lastVisibleItem]];
+    [self.distributionStrategy alignView:nil afterView:[self lastVisibleItem]];
+  }
+}
+
+#pragma mark - Hide and Unhide
+
+- (void)hideView:(UIView*)view {
+  [self removeViewFromArrangedViews:view permanently:NO];
+}
+
+- (void)unHideView:(UIView*)view {
+  int index = [self.subviews indexOfObject:view];
+  [self insertArrangedSubview:view atIndex:index newItem:NO];
+}
+
+#pragma mark - Align View
+
+- (void)layoutArrangedViews {
+  [self removeDecendentConstraints];
+  
+  [self iterateVisibleViews:^(UIView *view, UIView *previousView) {
+    [self.distributionStrategy alignView:view afterView:previousView];
+    [self.alignmentStrategy addConstraintsOnOtherAxis:view];
+  }];
+  
+  [self.distributionStrategy alignView:nil afterView:[self lastVisibleItem]];
+}
+
+- (void)addViewsAsSubviews:(NSArray*)views {
+  for (UIView *view in views) {
+    [self addSubview:view];
   }
 }
 

@@ -13,6 +13,9 @@
 UIView *createView(float width, float height);
 UIView *createViewP(float width, float widthPriority, float height, float heightPriority);
 
+void addHightToView(UIView *view, float height, float heightPriority);
+void addWidthToView(UIView *view, float width, float widthPriority);
+
 void layoutView(UIView* view);
 
 SPEC_BEGIN(OAStackViewSpec)
@@ -355,6 +358,94 @@ describe(@"OAStackView", ^{
         layoutView(stackView);
         
         [[theValue(CGRectGetHeight(stackView.frame)) should] equal:theValue(90)];
+        
+      });
+      
+      it(@"Can Unhide a non hidden view normally", ^{
+        stackView.alignment = OAStackViewAlignmentFill;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetMinY(view2.frame)) should] equal:theValue(20)];
+        
+        view1.hidden = YES;
+        view2.hidden = YES;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetHeight(stackView.frame)) should] equal:theValue(40)];
+        
+        view2.hidden = NO;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetHeight(stackView.frame)) should] equal:theValue(70)];
+        
+        view1.hidden = NO;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetHeight(stackView.frame)) should] equal:theValue(90)];
+        
+      });
+      
+      
+    });
+    
+    
+    context(@"Distribution", ^{
+      
+      __block UIView *view1, *view2, *view3;
+      
+      beforeEach(^{
+        view1 = createViewP(200, 300, 50, 250);
+        view2 = createViewP(500, 300, 60, 250);
+        view3 = createViewP(600, 330, 100, 250);
+        
+        NSArray *views = @[view1, view2, view3];
+        
+        stackView = [[OAStackView alloc] initWithArrangedSubviews:views];
+        stackView.translatesAutoresizingMaskIntoConstraints = NO;
+      });
+      
+      context(@"OAStackViewDistributionFill", ^{
+        
+        it(@"Distributes the view based on their fill using OAStackViewDistributionFill", ^{
+          stackView.distribution = OAStackViewDistributionFill;
+          addHightToView(stackView, 400, 1000);
+          layoutView(stackView);
+          
+          [[theValue(CGRectGetMinY(view1.frame)) should] equal:theValue(0)];
+          
+          [[theValue(CGRectGetMinY(view2.frame)) should] equal:theValue(240)];
+          
+          [[theValue(CGRectGetMinY(view3.frame)) should] equal:theValue(300)];
+        });
+        
+      });
+      
+      context(@"OAStackViewDistributionFillEqually", ^{
+        
+        it(@"Distributes the views equally using OAStackViewDistributionFillEqually", ^{
+          stackView.distribution = OAStackViewDistributionFillEqually;
+          addHightToView(stackView, 400, 1000);
+          layoutView(stackView);
+          
+          [[theValue(CGRectGetMinY(view1.frame)) should] equal:theValue(0)];
+          
+          [[theValue(CGRectGetMinY(view2.frame)) should] equal:theValue(133.5)];
+          
+          [[theValue(CGRectGetMinY(view3.frame)) should] equal:theValue(266.5)];
+        });
+        
+        it(@"Adds the correct spacing between views", ^{
+          stackView.distribution = OAStackViewDistributionFillEqually;
+          stackView.spacing = 50;
+          addHightToView(stackView, 400, 1000);
+          layoutView(stackView);
+          
+          [[theValue(CGRectGetMinY(view1.frame)) should] equal:theValue(0)];
+          
+          [[theValue(CGRectGetMinY(view2.frame)) should] equal:theValue(150)];
+          
+          [[theValue(CGRectGetMinY(view3.frame)) should] equal:theValue(300)];
+        });
         
       });
       
@@ -709,6 +800,71 @@ describe(@"OAStackView", ^{
       });
       
       
+      context(@"Distribution", ^{
+        
+        __block UIView *view1, *view2, *view3;
+        
+        beforeEach(^{
+          view1 = createViewP(50, 300, 200, 300);
+          view2 = createViewP(60, 300, 500, 300);
+          view3 = createViewP(100, 300, 600, 330);
+          
+          NSArray *views = @[view1, view2, view3];
+          
+          stackView = [[OAStackView alloc] initWithArrangedSubviews:views];
+          stackView.axis = UILayoutConstraintAxisHorizontal;
+          stackView.translatesAutoresizingMaskIntoConstraints = NO;
+        });
+        
+        context(@"OAStackViewDistributionFill", ^{
+          
+          it(@"Distributes the view based on their fill using OAStackViewDistributionFill", ^{
+            stackView.distribution = OAStackViewDistributionFill;
+            addWidthToView(stackView, 400, 1000);
+            layoutView(stackView);
+            
+            [[theValue(CGRectGetMinX(view1.frame)) should] equal:theValue(0)];
+            
+            [[theValue(CGRectGetMinX(view2.frame)) should] equal:theValue(240)];
+            
+            [[theValue(CGRectGetMinX(view3.frame)) should] equal:theValue(300)];
+          });
+          
+        });
+        
+        context(@"OAStackViewDistributionFillEqually", ^{
+          
+          it(@"Distributes the views equally using OAStackViewDistributionFillEqually", ^{
+            stackView.distribution = OAStackViewDistributionFillEqually;
+            addWidthToView(stackView, 400, 1000);
+            layoutView(stackView);
+            
+            [[theValue(CGRectGetMinX(view1.frame)) should] equal:theValue(0)];
+            
+            [[theValue(CGRectGetMinX(view2.frame)) should] equal:theValue(133.5)];
+            
+            [[theValue(CGRectGetMinX(view3.frame)) should] equal:theValue(266.5)];
+          });
+          
+          it(@"Adds the correct spacing between views", ^{
+            stackView.distribution = OAStackViewDistributionFillEqually;
+            stackView.spacing = 50;
+            addWidthToView(stackView, 400, 1000);
+            layoutView(stackView);
+            
+            [[theValue(CGRectGetMinX(view1.frame)) should] equal:theValue(0)];
+            
+            [[theValue(CGRectGetMinX(view2.frame)) should] equal:theValue(150)];
+            
+            [[theValue(CGRectGetMinX(view3.frame)) should] equal:theValue(300)];
+          });
+          
+        });
+        
+        
+      });
+      
+      
     });
     
   });
@@ -717,12 +873,20 @@ describe(@"OAStackView", ^{
 
 SPEC_END
 
+UIColor *randomColor() {
+  CGFloat hue = ( arc4random() % 256 / 256.0 );  //  0.0 to 1.0
+  CGFloat saturation = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from white
+  CGFloat brightness = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from black
+  UIColor *color = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1];
+  return color;
+}
+
 UIView *createView(float width, float height) {
   return createViewP(width, 1000, height, 1000);
 }
 
 UIView *createViewP(float width, float widthPriority, float height, float heightPriority) {
-  UIColor *color = [UIColor redColor];
+  UIColor *color = randomColor();
   UIButton *view = [UIButton new];
   view.translatesAutoresizingMaskIntoConstraints = NO;
   [view setTitle:@"the title" forState:UIControlStateNormal];
@@ -744,6 +908,23 @@ UIView *createViewP(float width, float widthPriority, float height, float height
   return view;
 }
 
+void addWidthToView(UIView *view, float width, float widthPriority) {
+  NSString *constraintStr = [NSString stringWithFormat:@"H:[view(%f@%f)]", width, widthPriority];
+  [view addConstraints:
+   [NSLayoutConstraint constraintsWithVisualFormat:constraintStr
+                                           options:0
+                                           metrics:0
+                                             views:NSDictionaryOfVariableBindings(view)]];
+}
+
+void addHightToView(UIView *view, float height, float heightPriority) {
+  NSString *constraintStr = [NSString stringWithFormat:@"V:[view(%f@%f)]", height, heightPriority];
+  [view addConstraints:
+   [NSLayoutConstraint constraintsWithVisualFormat:constraintStr
+                                           options:0
+                                           metrics:0
+                                             views:NSDictionaryOfVariableBindings(view)]];
+}
 
 void layoutView(UIView* view) {
   UIWindow *window = [[UIApplication sharedApplication] keyWindow];

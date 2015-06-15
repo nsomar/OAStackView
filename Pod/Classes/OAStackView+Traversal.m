@@ -50,18 +50,20 @@
   return [self visibleViewBeforeIndex:self.subviews.count];
 }
 
-- (void)iterateVisibleViews:(void (^) (UIView *view))block {
+- (void)iterateVisibleViews:(void (^) (UIView *view, UIView *previousView))block {
+  
+  id previousView;
   for (UIView *view in self.subviews) {
-    
     if (view.isHidden) { continue; }
     
-    block(view);
+    block(view, previousView);
+    previousView = view;
   }
 }
 
 - (NSArray*)currentVisibleViews {
   NSMutableArray *arr = [@[] mutableCopy];
-  [self iterateVisibleViews:^(UIView *view) {
+  [self iterateVisibleViews:^(UIView *view, UIView *previousView) {
     [arr addObject:view];
   }];
   return arr;
@@ -82,6 +84,26 @@
     } else {
       if ( (constraint.firstItem == self && constraint.firstAttribute == NSLayoutAttributeTrailing) ||
           (constraint.secondItem == self && constraint.secondAttribute == NSLayoutAttributeTrailing)) {
+        return constraint;
+      }
+    }
+    
+  }
+  return nil;
+}
+
+
+- (NSLayoutConstraint*)firstViewConstraint {
+  for (NSLayoutConstraint *constraint in self.constraints) {
+    
+    if (self.axis == UILayoutConstraintAxisVertical) {
+      if ( (constraint.firstItem == self && constraint.firstAttribute == NSLayoutAttributeTop) ||
+          (constraint.secondItem == self && constraint.secondAttribute == NSLayoutAttributeTop)) {
+        return constraint;
+      }
+    } else {
+      if ( (constraint.firstItem == self && constraint.firstAttribute == NSLayoutAttributeLeading) ||
+          (constraint.secondItem == self && constraint.secondAttribute == NSLayoutAttributeLeading)) {
         return constraint;
       }
     }

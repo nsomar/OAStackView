@@ -8,6 +8,44 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, OAStackViewDistribution) {
+  
+  /* When items do not fit (overflow) or fill (underflow) the space available
+   adjustments occur according to compressionResistance or hugging
+   priorities of items, or when that is ambiguous, according to arrangement
+   order.
+   */
+  OAStackViewDistributionFill = 0,
+  
+  /* Items are all the same size.
+   When space allows, this will be the size of the item with the largest
+   intrinsicContentSize (along the axis of the stack).
+   Overflow or underflow adjustments are distributed equally among the items.
+   */
+  OAStackViewDistributionFillEqually,
+  
+  /* Overflow or underflow adjustments are distributed among the items proportional
+   to their intrinsicContentSizes.
+   */
+  OAStackViewDistributionFillProportionally,
+  
+  /* Additional underflow spacing is divided equally in the spaces between the items.
+   Overflow squeezing is controlled by compressionResistance priorities followed by
+   arrangement order.
+   */
+  OAStackViewDistributionEqualSpacing,
+  
+  /* Equal center-to-center spacing of the items is maintained as much
+   as possible while still maintaining a minimum edge-to-edge spacing within the
+   allowed area.
+   Additional underflow spacing is divided equally in the spacing. Overflow
+   squeezing is distributed first according to compressionResistance priorities
+   of items, then according to subview order while maintaining the configured
+   (edge-to-edge) spacing as a minimum.
+   */
+  OAStackViewDistributionEqualCentering,
+};
+
 typedef NS_ENUM(NSInteger, OAStackViewAlignment) {
   OAStackViewAlignmentFill,
   
@@ -33,6 +71,7 @@ typedef NS_ENUM(NSInteger, OAStackViewAlignment) {
   OAStackViewAlignmentLastBaseline, // Valid for horizontal axis only
 };
 
+
 NS_ASSUME_NONNULL_BEGIN
 @interface OAStackView : UIView
 
@@ -47,6 +86,10 @@ NS_ASSUME_NONNULL_BEGIN
 //Default is Fill
 @property(nonatomic) OAStackViewAlignment alignment;
 @property(nonatomic) IBInspectable NSInteger alignmentValue;
+
+
+@property(nonatomic) OAStackViewDistribution distribution;
+@property(nonatomic) IBInspectable NSInteger distributionValue;
 
 - (instancetype)initWithArrangedSubviews:(NSArray*)views;
 

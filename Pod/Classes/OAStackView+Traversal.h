@@ -16,9 +16,11 @@
 - (UIView*)visibleViewAfterIndex:(NSInteger)index;
 - (UIView*)visibleViewAfterView:(UIView*)view;
 
-- (void)iterateVisibleViews:(void (^) (UIView *view))block;
+- (void)iterateVisibleViews:(void (^) (UIView *view, UIView *previousView))block;
 
 - (UIView*)lastVisibleItem;
+
+- (NSLayoutConstraint*)firstViewConstraint;
 - (NSLayoutConstraint*)lastViewConstraint;
 
 - (BOOL)isViewLastItem:(UIView*)view excludingItem:(UIView*)excludingItem;
