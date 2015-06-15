@@ -139,6 +139,8 @@
 		A2297B87285E5BCEA865C238 /* KWBeSubclassOfClassMatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = C5D64938BD5C009841C14909 /* KWBeSubclassOfClassMatcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A2B351BAECBAB8EBA0E5B7EC /* KWStringContainsMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8C4A8C2D6BA7A6F6043B79 /* KWStringContainsMatcher.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		A7476742A83DEA4425974BB8 /* KWContainStringMatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B5E858B57C40467BA58E544 /* KWContainStringMatcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A7F0ED0B1B2F128F0068A7CE /* OAStackView+Traversal.h in Headers */ = {isa = PBXBuildFile; fileRef = A7F0ED091B2F128F0068A7CE /* OAStackView+Traversal.h */; };
+		A7F0ED0C1B2F128F0068A7CE /* OAStackView+Traversal.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F0ED0A1B2F128F0068A7CE /* OAStackView+Traversal.m */; };
 		A8A8501A6283AD79EF587ABE /* KWBeTrueMatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = E8C3DF1B5873B3429E1DFFBB /* KWBeTrueMatcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A8CCBD9F80BE24896E6EBE3A /* KWMatchers.m in Sources */ = {isa = PBXBuildFile; fileRef = 026190145DD5C22628D10E2B /* KWMatchers.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		A9FA9114AC923EFE20E377D9 /* KWBlockRaiseMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5D8C3A18131855E1C1A3A4 /* KWBlockRaiseMatcher.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
@@ -406,6 +408,8 @@
 		A520D7897A7AAC983CB80CE8 /* Pods-OAStackView_Example-OAStackView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OAStackView_Example-OAStackView.xcconfig"; sourceTree = "<group>"; };
 		A59305EA512A9771A1803A89 /* NSInvocation+OCMAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSInvocation+OCMAdditions.m"; path = "Classes/Core/NSInvocation+OCMAdditions.m"; sourceTree = "<group>"; };
 		A777CEF9A9630E9C106065D3 /* KWUserDefinedMatcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KWUserDefinedMatcher.m; path = Classes/Matchers/KWUserDefinedMatcher.m; sourceTree = "<group>"; };
+		A7F0ED091B2F128F0068A7CE /* OAStackView+Traversal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OAStackView+Traversal.h"; sourceTree = "<group>"; };
+		A7F0ED0A1B2F128F0068A7CE /* OAStackView+Traversal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OAStackView+Traversal.m"; sourceTree = "<group>"; };
 		A9A9AC459E5F8ECF7EB4D21C /* KWBeSubclassOfClassMatcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KWBeSubclassOfClassMatcher.m; path = Classes/Matchers/KWBeSubclassOfClassMatcher.m; sourceTree = "<group>"; };
 		A9BB36F8606A008045F1CA83 /* KWExistVerifier.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KWExistVerifier.m; path = Classes/Verifiers/KWExistVerifier.m; sourceTree = "<group>"; };
 		AA8B9BB055446600FF140B1E /* Pods-OAStackView_Example-OAStackView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-OAStackView_Example-OAStackView-prefix.pch"; sourceTree = "<group>"; };
@@ -811,6 +815,8 @@
 				D963A399FA27F2297AFD83BF /* OAStackView+Constraint.m */,
 				B9110CB76782ADA6928B5C8A /* OAStackView+Hiding.h */,
 				1B6AC11A85A6C8CD9F0BDF3D /* OAStackView+Hiding.m */,
+				A7F0ED091B2F128F0068A7CE /* OAStackView+Traversal.h */,
+				A7F0ED0A1B2F128F0068A7CE /* OAStackView+Traversal.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1074,6 +1080,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FEC15891C4E34BCB40C7A4E2 /* Pods-OAStackView_Example-umbrella.h in Headers */,
+				A7F0ED0B1B2F128F0068A7CE /* OAStackView+Traversal.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1391,6 +1398,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7F0ED0C1B2F128F0068A7CE /* OAStackView+Traversal.m in Sources */,
 				74774FD4A9D81A685AADCB54 /* Pods-OAStackView_Example-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

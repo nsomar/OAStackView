@@ -9,11 +9,11 @@
 #import "OAStackView.h"
 #import "OAStackView+Constraint.h"
 #import "OAStackView+Hiding.h"
+#import "OAStackView+Traversal.h"
 
 
 @interface OAStackView ()
 @property(nonatomic, copy) NSArray *arrangedSubviews;
-@property(nonatomic) NSMutableArray *visibleItemsXXXX;
 @end
 
 @implementation OAStackView
@@ -285,41 +285,48 @@
 
 - (void)insertArrangedSubview:(UIView *)view atIndex:(NSUInteger)stackIndex newItem:(BOOL)newItem {
   
-  if (stackIndex == self.subviews.count) {
+  id previousView, nextView;
+  view.translatesAutoresizingMaskIntoConstraints = NO;
+  BOOL isAppending = stackIndex == self.subviews.count;
+  
+  if (isAppending) {
     //Appending a new item
     
-    id lastView = [self lastVisibleItem];
-    NSArray *constraints = [self constraintsBetweenView:self andView:lastView inAxis:self.axis];
+    previousView = [self lastVisibleItem];
+    nextView = nil;
     
+    NSArray *constraints = [self constraintsBetweenView:self andView:previousView inAxis:self.axis];
     [self removeConstraints:constraints];
     
     if (newItem) {
-      view.translatesAutoresizingMaskIntoConstraints = NO;
       [self addSubview:view];
     }
-    
-    [self alignView:view previousView:lastView];
-    [self alignViewOnOtherAxis:view];
-    [self alignView:nil previousView:view];
     
   } else {
     //Item insertion
     
-    id previousView = [self visibleViewBeforeIndex:stackIndex];
-    id nextView = [self visibleViewAfterIndex:stackIndex - 1];
+    previousView = [self visibleViewBeforeIndex:stackIndex];
+    nextView = [self visibleViewAfterIndex:newItem ? stackIndex - 1: stackIndex];
     
-    NSArray *constraints = [self constraintsBetweenView:previousView ?: self andView:nextView inAxis:self.axis];
+    NSArray *constraints;
+    BOOL isLastVisibleItem = [self isViewLastItem:previousView excludingItem:view];
+    
+    if (isLastVisibleItem) {
+      constraints = @[[self lastViewConstraint]];
+    } else {
+      constraints = [self constraintsBetweenView:previousView ?: self andView:nextView ?: self inAxis:self.axis];
+    }
+    
     [self removeConstraints:constraints];
     
     if (newItem) {
-      view.translatesAutoresizingMaskIntoConstraints = NO;
       [self insertSubview:view atIndex:stackIndex];
     }
-    
-    [self alignView:view previousView:previousView];
-    [self alignView:nextView previousView:view];
-    [self alignViewOnOtherAxis:view];
   }
+  
+  [self alignView:view previousView:previousView];
+  [self alignViewOnOtherAxis:view];
+  [self alignView:nextView previousView:view];
 }
 
 - (void)removeViewFromArrangedViews:(UIView*)view permanently:(BOOL)permanently {
@@ -338,59 +345,8 @@
   
   if (nextView) {
     [self alignView:nextView previousView:previousView];
-  } else {
+  } else if(previousView) {
     [self alignView:nil previousView:[self lastVisibleItem]];
-  }
-}
-
-#pragma mark - view traversal
-
-- (UIView*)visibleViewBeforeView:(UIView*)view {
-  int index = [self.subviews indexOfObject:view];
-  if (index == NSNotFound) { return nil; }
-  
-  return [self visibleViewBeforeIndex:index];
-}
-
-- (UIView*)visibleViewAfterView:(UIView*)view {
-  int index = [self.subviews indexOfObject:view];
-  if (index == NSNotFound) { return nil; }
-  
-  return [self visibleViewAfterIndex:index];
-}
-
-- (UIView*)visibleViewAfterIndex:(NSInteger)index {
-  for (int i = index + 1; i < self.subviews.count; i++) {
-    UIView *theView = self.subviews[i];
-    if (!theView.hidden) {
-      return theView;
-    }
-  }
-  
-  return nil;
-}
-
-- (UIView*)visibleViewBeforeIndex:(NSInteger)index {
-  for (int i = index - 1; i >= 0; i--) {
-    UIView *theView = self.subviews[i];
-    if (!theView.hidden) {
-      return theView;
-    }
-  }
-  
-  return nil;
-}
-
-- (UIView*)lastVisibleItem {
-  return [self visibleViewBeforeIndex:self.subviews.count];
-}
-
-- (void)iterateVisibleViews:(void (^) (UIView *view))block {
-  for (UIView *view in self.subviews) {
-    
-    if (view.isHidden) { continue; }
-    
-    block(view);
   }
 }
 

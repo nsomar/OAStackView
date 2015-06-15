@@ -11,7 +11,12 @@
 @interface OAStackView (Constraint)
 
 - (NSArray*)constraintsAffectingView:(UIView*)view;
+
 - (NSArray*)constraintsBetweenView:(UIView*)firstView andView:(UIView*)otherView;
+
 - (NSArray*)constraintsBetweenView:(UIView*)firstView andView:(UIView*)otherView inAxis:(UILayoutConstraintAxis)axis;
+
+- (NSArray*)constraintsBetweenView:(UIView*)firstView andView:(UIView*)otherView
+                            inAxis:(UILayoutConstraintAxis)axis includeReversed:(BOOL)includeReversed;
 
 @end

@@ -8,6 +8,11 @@
 
 #import "OAStackView+Hiding.h"
 
+@interface OAStackView ()
+- (void)hideView:(UIView*)view;
+- (void)unHideView:(UIView*)view;
+@end
+
 @implementation OAStackView (Hiding)
 
 - (void)addObserverForView:(UIView*)view {

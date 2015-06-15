@@ -1,0 +1,26 @@
+//
+//  OAStackView+Traversal.h
+//  Pods
+//
+//  Created by Omar Abdelhafith on 15/06/2015.
+//
+//
+
+#import <OAStackView/OAStackView.h>
+
+@interface OAStackView (Traversal)
+
+- (UIView*)visibleViewBeforeIndex:(NSInteger)index;
+- (UIView*)visibleViewBeforeView:(UIView*)view;
+
+- (UIView*)visibleViewAfterIndex:(NSInteger)index;
+- (UIView*)visibleViewAfterView:(UIView*)view;
+
+- (void)iterateVisibleViews:(void (^) (UIView *view))block;
+
+- (UIView*)lastVisibleItem;
+- (NSLayoutConstraint*)lastViewConstraint;
+
+- (BOOL)isViewLastItem:(UIView*)view excludingItem:(UIView*)excludingItem;
+
+@end

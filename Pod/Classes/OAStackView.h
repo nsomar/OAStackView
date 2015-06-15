@@ -54,10 +54,5 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeArrangedSubview:(UIView *)view;
 - (void)insertArrangedSubview:(UIView *)view atIndex:(NSUInteger)stackIndex;
 
-
-//TEMP
-- (void)hideView:(UIView*)view;
-- (void)unHideView:(UIView*)view;
-
 @end
 NS_ASSUME_NONNULL_END

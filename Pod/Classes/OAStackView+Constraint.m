@@ -10,12 +10,16 @@
 
 @implementation OAStackView (Constraint)
 
-- (NSArray*)constraintsBetweenView:(UIView*)firstView andView:(UIView*)otherView inAxis:(UILayoutConstraintAxis)axis {
+- (NSArray*)constraintsBetweenView:(UIView*)firstView andView:(UIView*)otherView
+                            inAxis:(UILayoutConstraintAxis)axis includeReversed:(BOOL)includeReversed {
   NSMutableArray *arr = [@[] mutableCopy];
   
   for (NSLayoutConstraint *constraint in self.constraints) {
-    BOOL viewMatches = (firstView == constraint.firstItem && otherView == constraint.secondItem) ||
-    (firstView == constraint.secondItem && otherView == constraint.firstItem);
+    BOOL viewMatches = (firstView == constraint.firstItem && otherView == constraint.secondItem);
+    
+    if (includeReversed) {
+      viewMatches = viewMatches || (firstView == constraint.secondItem && otherView == constraint.firstItem);
+    }
     
     BOOL isCorrectAxis = [self isConstraintAttribute:constraint.firstAttribute affectingAxis:axis] ||
     [self isConstraintAttribute:constraint.secondAttribute affectingAxis:axis];
@@ -26,6 +30,9 @@
   }
   
   return arr;
+}
+- (NSArray*)constraintsBetweenView:(UIView*)firstView andView:(UIView*)otherView inAxis:(UILayoutConstraintAxis)axis {
+  return [self constraintsBetweenView:firstView andView:otherView inAxis:axis includeReversed:YES];
 }
 
 - (BOOL)isConstraintAttribute:(NSLayoutAttribute)attribute affectingAxis:(UILayoutConstraintAxis)axis {

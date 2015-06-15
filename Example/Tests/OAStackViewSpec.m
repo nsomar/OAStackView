@@ -240,6 +240,127 @@ describe(@"OAStackView", ^{
       
     });
     
+    context(@"Hiding views", ^{
+      
+      __block UIView *view1, *view2, *view3;
+      
+      beforeEach(^{
+        view1 = createViewP(200, 300, 20, 1000);
+        view2 = createViewP(500, 300, 30, 1000);
+        view3 = createViewP(600, 330, 40, 1000);
+        
+        NSArray *views = @[view1, view2, view3];
+        
+        stackView = [[OAStackView alloc] initWithArrangedSubviews:views];
+        stackView.translatesAutoresizingMaskIntoConstraints = NO;
+      });
+      
+      it(@"Decreases the height when view is hidden", ^{
+        stackView.alignment = OAStackViewAlignmentFill;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetHeight(stackView.frame)) should] equal:theValue(90)];
+        
+        view1.hidden = YES;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetHeight(stackView.frame)) should] equal:theValue(70)];
+      });
+      
+      it(@"Adjustes frames when views are hidden", ^{
+        stackView.alignment = OAStackViewAlignmentFill;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetMinY(view2.frame)) should] equal:theValue(20)];
+        
+        view1.hidden = YES;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetMinY(view2.frame)) should] equal:theValue(0)];
+      });
+      
+      it(@"Adjustes frames when multiple views are hidden", ^{
+        stackView.alignment = OAStackViewAlignmentFill;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetMinY(view3.frame)) should] equal:theValue(50)];
+        
+        view1.hidden = YES;
+        view2.hidden = YES;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetMinY(view3.frame)) should] equal:theValue(0)];
+      });
+      
+      it(@"Adjustes frames when the first view are hidden and unhidden", ^{
+        stackView.alignment = OAStackViewAlignmentFill;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetMinY(view2.frame)) should] equal:theValue(20)];
+        
+        view1.hidden = YES;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetMinY(view2.frame)) should] equal:theValue(0)];
+        
+        view1.hidden = NO;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetMinY(view2.frame)) should] equal:theValue(20)];
+        
+      });
+      
+      it(@"Adjustes frames when all the views are hidden and brought back", ^{
+        stackView.alignment = OAStackViewAlignmentFill;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetMinY(view2.frame)) should] equal:theValue(20)];
+        
+        view1.hidden = YES;
+        view2.hidden = YES;
+        view3.hidden = YES;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetHeight(stackView.frame)) should] equal:theValue(0)];
+        
+        view1.hidden = NO;
+        view2.hidden = NO;
+        view3.hidden = NO;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetHeight(stackView.frame)) should] equal:theValue(90)];
+        
+      });
+      
+      it(@"Adjustes frames when all the views are hidden and brought back in different orders", ^{
+        stackView.alignment = OAStackViewAlignmentFill;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetMinY(view2.frame)) should] equal:theValue(20)];
+        
+        view1.hidden = YES;
+        view2.hidden = YES;
+        view3.hidden = YES;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetHeight(stackView.frame)) should] equal:theValue(0)];
+        
+        view1.hidden = NO;
+        view3.hidden = NO;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetHeight(stackView.frame)) should] equal:theValue(60)];
+        
+        view2.hidden = NO;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetHeight(stackView.frame)) should] equal:theValue(90)];
+        
+      });
+      
+      
+    });
+    
   });
   
   
@@ -464,6 +585,129 @@ describe(@"OAStackView", ^{
         [[theValue(CGRectGetMinY(view2.frame)) should] equal:theValue(50)];
         [[theValue(CGRectGetHeight(view2.frame)) should] equal:theValue(500)];
       });
+      
+    });
+    
+    
+    context(@"Hiding views", ^{
+      
+      __block UIView *view1, *view2, *view3;
+      
+      beforeEach(^{
+        view1 = createViewP(20, 1000, 200, 300);
+        view2 = createViewP(30, 1000, 500, 300);
+        view3 = createViewP(40, 1000, 600, 330);
+        
+        NSArray *views = @[view1, view2, view3];
+        
+        stackView = [[OAStackView alloc] initWithArrangedSubviews:views];
+        stackView.axis = UILayoutConstraintAxisHorizontal;
+        stackView.translatesAutoresizingMaskIntoConstraints = NO;
+      });
+      
+      it(@"Decreases the height when view is hidden", ^{
+        stackView.alignment = OAStackViewAlignmentFill;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetWidth(stackView.frame)) should] equal:theValue(90)];
+        
+        view1.hidden = YES;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetWidth(stackView.frame)) should] equal:theValue(70)];
+      });
+      
+      it(@"Adjustes frames when views are hidden", ^{
+        stackView.alignment = OAStackViewAlignmentFill;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetMinX(view2.frame)) should] equal:theValue(20)];
+        
+        view1.hidden = YES;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetMinX(view2.frame)) should] equal:theValue(0)];
+      });
+      
+      it(@"Adjustes frames when multiple views are hidden", ^{
+        stackView.alignment = OAStackViewAlignmentFill;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetMinX(view3.frame)) should] equal:theValue(50)];
+        
+        view1.hidden = YES;
+        view2.hidden = YES;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetMinX(view3.frame)) should] equal:theValue(0)];
+      });
+      
+      it(@"Adjustes frames when the first view are hidden and unhidden", ^{
+        stackView.alignment = OAStackViewAlignmentFill;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetMinX(view2.frame)) should] equal:theValue(20)];
+        
+        view1.hidden = YES;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetMinX(view2.frame)) should] equal:theValue(0)];
+        
+        view1.hidden = NO;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetMinX(view2.frame)) should] equal:theValue(20)];
+        
+      });
+      
+      it(@"Adjustes frames when all the views are hidden and brought back", ^{
+        stackView.alignment = OAStackViewAlignmentFill;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetMinX(view2.frame)) should] equal:theValue(20)];
+        
+        view1.hidden = YES;
+        view2.hidden = YES;
+        view3.hidden = YES;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetWidth(stackView.frame)) should] equal:theValue(0)];
+        
+        view1.hidden = NO;
+        view2.hidden = NO;
+        view3.hidden = NO;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetWidth(stackView.frame)) should] equal:theValue(90)];
+        
+      });
+      
+      it(@"Adjustes frames when all the views are hidden and brought back in different orders", ^{
+        stackView.alignment = OAStackViewAlignmentFill;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetMinX(view2.frame)) should] equal:theValue(20)];
+        
+        view1.hidden = YES;
+        view2.hidden = YES;
+        view3.hidden = YES;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetWidth(stackView.frame)) should] equal:theValue(0)];
+        
+        view1.hidden = NO;
+        view3.hidden = NO;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetWidth(stackView.frame)) should] equal:theValue(60)];
+        
+        view2.hidden = NO;
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetWidth(stackView.frame)) should] equal:theValue(90)];
+        
+      });
+      
       
     });
     
