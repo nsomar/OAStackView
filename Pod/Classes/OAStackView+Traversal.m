@@ -11,21 +11,21 @@
 @implementation OAStackView (Traversal)
 
 - (UIView*)visibleViewBeforeView:(UIView*)view {
-  int index = [self.subviews indexOfObject:view];
+  NSInteger index = [self.subviews indexOfObject:view];
   if (index == NSNotFound) { return nil; }
   
   return [self visibleViewBeforeIndex:index];
 }
 
 - (UIView*)visibleViewAfterView:(UIView*)view {
-  int index = [self.subviews indexOfObject:view];
+  NSInteger index = [self.subviews indexOfObject:view];
   if (index == NSNotFound) { return nil; }
   
   return [self visibleViewAfterIndex:index];
 }
 
 - (UIView*)visibleViewAfterIndex:(NSInteger)index {
-  for (int i = index + 1; i < self.subviews.count; i++) {
+  for (NSInteger i = index + 1; i < self.subviews.count; i++) {
     UIView *theView = self.subviews[i];
     if (!theView.hidden) {
       return theView;
@@ -36,7 +36,7 @@
 }
 
 - (UIView*)visibleViewBeforeIndex:(NSInteger)index {
-  for (int i = index - 1; i >= 0; i--) {
+  for (NSInteger i = index - 1; i >= 0; i--) {
     UIView *theView = self.subviews[i];
     if (!theView.hidden) {
       return theView;

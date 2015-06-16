@@ -236,7 +236,7 @@
 }
 
 - (void)removeViewFromArrangedViews:(UIView*)view permanently:(BOOL)permanently {
-  int index = [self.subviews indexOfObject:view];
+  NSInteger index = [self.subviews indexOfObject:view];
   if (index == NSNotFound) { return; }
   
   id previousView = [self visibleViewBeforeView:view];
@@ -263,7 +263,7 @@
 }
 
 - (void)unHideView:(UIView*)view {
-  int index = [self.subviews indexOfObject:view];
+  NSInteger index = [self.subviews indexOfObject:view];
   [self insertArrangedSubview:view atIndex:index newItem:NO];
 }
 
