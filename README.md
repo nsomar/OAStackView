@@ -43,7 +43,7 @@ Run the project!
 
 ### From Code
 
-To use `OAStackView` from code, Please refer to [UIStackView](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIStackView_Class_Reference/) for propper documentation.
+To use `OAStackView` from code, Please refer to [UIStackView](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIStackView_Class_Reference/) for proper documentation.
 
 As a quick example on its usage do the following:
 
@@ -98,7 +98,7 @@ The following a [human readable](https://raw.githubusercontent.com/oarrabi/OASta
 
 All contributions in any form are welcomed, if you find the project helpful, and you want to contribute then please do.
 
-## Known Issues, and future improvments
+## Known Issues, and future improvements
 
 ### Missing functionality
 `OAStackView` implements most of the features from `UIStackView` except the following:
