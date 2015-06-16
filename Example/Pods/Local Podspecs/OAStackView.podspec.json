@@ -1,15 +1,15 @@
 {
   "name": "OAStackView",
   "version": "0.1.0",
-  "summary": "A short description of OAStackView.",
-  "description": "                       An optional longer description of OAStackView\n\n                       * Markdown format.\n                       * Don't worry about the indent, we strip it!\n",
-  "homepage": "https://github.com/<GITHUB_USERNAME>/OAStackView",
+  "summary": "Porting UIStackView to iOS 7+.",
+  "description": "  iOS 9 introduced the very cool [UIStackView](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIStackView_Class_Reference/), UIStackView can be used to easily create simple and complex layouts.\n\n  As expected `UIStackView` can only be used for iOS9 and up. This project tries to port back the stackview to iOS 6+.\n",
+  "homepage": "https://github.com/oarrabi/OAStackView",
   "license": "MIT",
   "authors": {
-    "Omar Abdelhafith": "omar.abdelhafith@mttnow.com"
+    "Omar Abdelhafith": "o.arrabi@me.com"
   },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/OAStackView.git",
+    "git": "https://github.com/oarrabi/OAStackView.git",
     "tag": "0.1.0"
   },
   "platforms": {
