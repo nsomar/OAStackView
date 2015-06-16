@@ -39,7 +39,7 @@
 }
 
 - (instancetype)initWithArrangedSubviews:(NSArray*)views {
-  self = [super init];
+  self = [super initWithFrame:CGRectZero];
   
   if (self) {
     [self addViewsAsSubviews:views];
@@ -47,6 +47,10 @@
   }
   
   return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    return [self initWithArrangedSubviews:@[]];
 }
 
 - (void)commonInit {
