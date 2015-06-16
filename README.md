@@ -1,6 +1,6 @@
 # OAStackView
 
-[![CI Status](http://img.shields.io/travis/Omar Abdelhafith/OAStackView.svg?style=flat)](https://travis-ci.org/Omar Abdelhafith/OAStackView)
+[![Build Status](https://travis-ci.org/oarrabi/OAStackView.svg)](https://travis-ci.org/oarrabi/OAStackView)
 [![Version](https://img.shields.io/cocoapods/v/OAStackView.svg?style=flat)](http://cocoapods.org/pods/OAStackView)
 [![License](https://img.shields.io/cocoapods/l/OAStackView.svg?style=flat)](http://cocoapods.org/pods/OAStackView)
 [![Platform](https://img.shields.io/cocoapods/p/OAStackView.svg?style=flat)](http://cocoapods.org/pods/OAStackView)
