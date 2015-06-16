@@ -22,6 +22,10 @@
 
 @implementation OAStackView
 
++ (Class)layerClass {
+    return [CATransformLayer class];
+}
+
 #pragma mark - Initialization
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
@@ -45,10 +49,6 @@
   return self;
 }
 
-- (UIColor * __nullable)backgroundColor {
-  return [UIColor clearColor];
-}
-
 - (void)commonInit {
   _axis = UILayoutConstraintAxisVertical;
   _alignment = OAStackViewAlignmentFill;
@@ -61,6 +61,10 @@
 }
 
 #pragma mark - Properties
+
+- (void)setBackgroundColor:(UIColor *)backgroundColor {
+    // Does not have any effect because `CATransformLayer` is not rendered.
+}
 
 - (void)setSpacing:(CGFloat)spacing {
   if (_spacing == spacing) { return; }
