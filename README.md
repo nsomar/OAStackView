@@ -127,7 +127,7 @@ The following would be nice to have for future versions
 - [ ] Covering the remaining functionality from `UIStackView`
 - [ ] Better Documentation
 - [ ] Better test coverage for come edge cases
-- [ ] Rewrite in swift, or more swift friend
+- [ ] Rewrite in swift, or more swift friendly
 
 ## Author
 
