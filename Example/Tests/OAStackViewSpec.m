@@ -429,9 +429,9 @@ describe(@"OAStackView", ^{
           
           [[theValue(CGRectGetMinY(view1.frame)) should] equal:theValue(0)];
           
-          [[theValue(CGRectGetMinY(view2.frame)) should] equal:theValue(133.5)];
+          [[theValue(CGRectGetMinY(view2.frame)) should] equal:133 withDelta:1];
           
-          [[theValue(CGRectGetMinY(view3.frame)) should] equal:theValue(266.5)];
+          [[theValue(CGRectGetMinY(view3.frame)) should] equal:266 withDelta:1];
         });
         
         it(@"Adds the correct spacing between views", ^{
@@ -841,9 +841,9 @@ describe(@"OAStackView", ^{
             
             [[theValue(CGRectGetMinX(view1.frame)) should] equal:theValue(0)];
             
-            [[theValue(CGRectGetMinX(view2.frame)) should] equal:theValue(133.5)];
+            [[theValue(CGRectGetMinX(view2.frame)) should] equal:133 withDelta:1];
             
-            [[theValue(CGRectGetMinX(view3.frame)) should] equal:theValue(266.5)];
+            [[theValue(CGRectGetMinX(view3.frame)) should] equal:266 withDelta:1];
           });
           
           it(@"Adds the correct spacing between views", ^{

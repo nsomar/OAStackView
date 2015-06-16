@@ -71,6 +71,14 @@ typedef NS_ENUM(NSInteger, OAStackViewAlignment) {
   OAStackViewAlignmentLastBaseline, // Valid for horizontal axis only
 };
 
+// Keep older versions of the compiler happy
+#ifndef NS_ASSUME_NONNULL_BEGIN
+#define NS_ASSUME_NONNULL_BEGIN
+#define NS_ASSUME_NONNULL_END
+#define nullable
+#define nonnullable
+#define __nullable
+#endif
 
 NS_ASSUME_NONNULL_BEGIN
 @interface OAStackView : UIView
