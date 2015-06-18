@@ -7,7 +7,7 @@
 
 iOS 9 introduced the very cool [UIStackView](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIStackView_Class_Reference/), UIStackView can be used to easily create simple and complex layouts.
 
-As expected `UIStackView` can only be used for iOS9 and up. This project tries to port back the stackview to iOS 6+.
+As expected `UIStackView` can only be used for iOS 9 and up. This project tries to port back the stackview to iOS 7+.
 
 `OAStackView` aims at replicating all the features in `UIStackView`
 
