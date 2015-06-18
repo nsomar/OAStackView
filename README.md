@@ -119,14 +119,14 @@ All contributions in any form are welcomed, if you find the project helpful, and
 - [ ] `UIStackViewDistributionEqualSpacing`    
 - [ ] `UIStackViewDistributionEqualCentering`   
 
-Please refer to [UIStackView](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIStackView_Class_Reference/) for propper documentation.
+Please refer to [UIStackView](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIStackView_Class_Reference/) for proper documentation.
 
-### Future improvments
+### Future improvements
 The following would be nice to have for future versions
 
 - [ ] Covering the remaining functionality from `UIStackView`
 - [ ] Better Documentation
-- [ ] Better test coverage for come edge cases
+- [ ] Better test coverage for some edge cases
 - [ ] Rewrite in swift, or more swift friendly
 
 ## Author
