@@ -21,7 +21,7 @@
 @end
 
 @interface OAStackViewAlignmentStrategy ()
-@property(nonatomic) OAStackView *stackView;
+@property(nonatomic, weak) OAStackView *stackView;
 @property(nonatomic) NSMutableArray *constraints;
 @end
 
