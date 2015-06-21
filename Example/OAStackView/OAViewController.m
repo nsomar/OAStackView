@@ -80,4 +80,24 @@
   self.stackView.alignment = OAStackViewAlignmentLeading;
 }
 
+- (IBAction)distributionFill:(UIButton *)sender {
+  self.stackView.distribution = OAStackViewDistributionFill;
+}
+
+- (IBAction)distributionFillEqually:(UIButton *)sender {
+  self.stackView.distribution = OAStackViewDistributionFillEqually;
+}
+
+- (IBAction)distributionFillProportionally:(UIButton *)sender {
+  self.stackView.distribution = OAStackViewDistributionFillProportionally;
+}
+
+- (IBAction)distributionEqualSpacing:(UIButton *)sender {
+   self.stackView.distribution = OAStackViewDistributionEqualSpacing;
+}
+
+- (IBAction)distributionEqualCentering:(UIButton *)sender {
+   self.stackView.distribution = OAStackViewDistributionEqualCentering;
+}
+
 @end

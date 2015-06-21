@@ -14,6 +14,15 @@
 @interface OAStackViewDistributionStrategyFillEqually : OAStackViewDistributionStrategy
 @end
 
+@interface OAStackViewDistributionStrategyFillProportionally : OAStackViewDistributionStrategy
+@end
+
+@interface OAStackViewDistributionStrategyEqualSpacing : OAStackViewDistributionStrategy
+@end
+
+@interface OAStackViewDistributionStrategyEqualCentering : OAStackViewDistributionStrategy
+@end
+
 @interface OAStackViewDistributionStrategy ()
 @property(nonatomic, weak) OAStackView *stackView;
 @property(nonatomic) NSMutableArray *constraints;
@@ -31,6 +40,18 @@
       
     case OAStackViewDistributionFillEqually:
       cls = [OAStackViewDistributionStrategyFillEqually class];
+      break;
+   
+    case OAStackViewDistributionFillProportionally:
+      cls = [OAStackViewDistributionStrategyFillProportionally class];
+      break;
+      
+    case OAStackViewDistributionEqualSpacing:
+      cls = [OAStackViewDistributionStrategyEqualCentering class];
+      break;
+      
+    case OAStackViewDistributionEqualCentering:
+      cls = [OAStackViewDistributionStrategyEqualCentering class];
       break;
       
     default:
@@ -101,6 +122,10 @@
   return self.stackView.axis == UILayoutConstraintAxisHorizontal ? @"H" : @"V";
 }
 
+- (NSLayoutAttribute)equalityAxis {
+  return self.stackView.axis == UILayoutConstraintAxisVertical ? NSLayoutAttributeHeight : NSLayoutAttributeWidth;
+}
+
 - (NSMutableArray *)constraints {
   if (!_constraints) {
     _constraints = [@[] mutableCopy];
@@ -143,8 +168,45 @@
   [self.stackView addConstraint:constraint];
 }
 
-- (NSLayoutAttribute)equalityAxis {
-  return self.stackView.axis == UILayoutConstraintAxisVertical ? NSLayoutAttributeHeight : NSLayoutAttributeWidth;
+@end
+
+@implementation OAStackViewDistributionStrategyFillProportionally
+
+- (void)alignMiddleView:(UIView*)view afterView:(UIView*)previousView {
+  [super alignMiddleView:view afterView:previousView];
+  [self addProportionalityConstraintsBetween:view otherView:previousView];
 }
+
+- (void)addProportionalityConstraintsBetween:(UIView *)view otherView:(UIView *)otherView {
+  if (view == nil || otherView == nil) {
+    return;
+  }
+  
+  CGFloat multiplier = 1;
+  if (self.stackView.axis == UILayoutConstraintAxisHorizontal) {
+    multiplier = view.intrinsicContentSize.width / otherView.intrinsicContentSize.width;
+  } else {
+    multiplier = view.intrinsicContentSize.height / otherView.intrinsicContentSize.height;
+  }
+
+  id constraint = [NSLayoutConstraint constraintWithItem:view
+                                               attribute:[self equalityAxis]
+                                               relatedBy:NSLayoutRelationEqual
+                                                  toItem:otherView
+                                               attribute:[self equalityAxis]
+                                              multiplier:multiplier
+                                                constant:0];
+  
+  [self.constraints addObject:constraint];
+  [self.stackView addConstraint:constraint];
+}
+
+@end
+
+@implementation OAStackViewDistributionStrategyEqualSpacing
+
+@end
+
+@implementation OAStackViewDistributionStrategyEqualCentering
 
 @end
