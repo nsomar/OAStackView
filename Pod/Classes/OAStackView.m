@@ -70,6 +70,10 @@
     // Does not have any effect because `CATransformLayer` is not rendered.
 }
 
+-(void)setOpaque:(BOOL)opaque {
+    // Does not have any effect because `CATransformLayer` is not rendered.
+}
+
 - (void)setSpacing:(CGFloat)spacing {
   if (_spacing == spacing) { return; }
   
