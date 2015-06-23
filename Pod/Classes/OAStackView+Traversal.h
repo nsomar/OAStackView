@@ -18,6 +18,8 @@
 
 - (void)iterateVisibleViews:(void (^) (UIView *view, UIView *previousView))block;
 
+- (NSArray*)currentVisibleViews;
+
 - (UIView*)lastVisibleItem;
 
 - (NSLayoutConstraint*)firstViewConstraint;

@@ -125,6 +125,7 @@
   
   [self iterateVisibleViews:^(UIView *view, UIView *previousView) {
     [self.alignmentStrategy addConstraintsOnOtherAxis:view];
+    [self.alignmentStrategy alignView:view withPreviousView:previousView];
   }];
 }
 
@@ -147,6 +148,7 @@
   [self iterateVisibleViews:^(UIView *view, UIView *previousView) {
     [self.alignmentStrategy addConstraintsOnOtherAxis:view];
     [self.distributionStrategy alignView:view afterView:previousView];
+    [self.alignmentStrategy alignView:view withPreviousView:previousView];
   }];
 }
 
@@ -264,8 +266,10 @@
   }
   
   [self.distributionStrategy alignView:view afterView:previousView];
+  [self.alignmentStrategy alignView:view withPreviousView:previousView];
   [self.alignmentStrategy addConstraintsOnOtherAxis:view];
   [self.distributionStrategy alignView:nextView afterView:view];
+  [self.alignmentStrategy alignView:nextView withPreviousView:view];
 }
 
 - (void)removeViewFromArrangedViews:(UIView*)view permanently:(BOOL)permanently {
