@@ -906,6 +906,30 @@ describe(@"OAStackView", ^{
     
   });
   
+  
+  context(@"bug fixes", ^{
+  
+    __block UIView *view1, *view2, *view3;
+    
+    beforeEach(^{
+      view1 = createView(20, 100);
+      view2 = createView(30, 100);
+      view3 = createView(40, 100);
+      
+      stackView = [[OAStackView alloc] initWithArrangedSubviews:@[]];
+      stackView.axis = UILayoutConstraintAxisHorizontal;
+      stackView.translatesAutoresizingMaskIntoConstraints = NO;
+    });
+    
+    it(@"should add the trailing and leading superview constraint in case insert the first view", ^{
+      [stackView insertArrangedSubview:view1 atIndex:0];
+      [stackView insertArrangedSubview:view2 atIndex:1];
+      layoutView(stackView);
+      [[theValue(CGRectGetHeight(stackView.frame)) should] equal:theValue(100)];
+      [[theValue(CGRectGetWidth(stackView.frame)) should] equal:theValue(50)];
+    });
+    
+  });
 });
 
 SPEC_END
