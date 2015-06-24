@@ -112,12 +112,13 @@ All contributions in any form are welcomed, if you find the project helpful, and
 
 	@property(nonatomic,getter=isLayoutMarginsRelativeArrangement) BOOL layoutMarginsRelativeArrangement;    
 
-`UIStackViewDistribution` is also partially implemented (3 elements out of 5 are still not implemented)    
+`UIStackViewDistribution` is also partially implemented (2 elements out of 5 are still not implemented)    
+
 - [x] `UIStackViewDistributionFill`
 - [x] `UIStackViewDistributionFillEqually`    
-- [ ] `UIStackViewDistributionFillProportionally`   
+- [x] `UIStackViewDistributionFillProportionally`   
 - [ ] `UIStackViewDistributionEqualSpacing`    
-- [ ] `UIStackViewDistributionEqualCentering`   
+- [ ] `UIStackViewDistributionEqualCentering`
 
 Please refer to [UIStackView](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIStackView_Class_Reference/) for proper documentation.
 
