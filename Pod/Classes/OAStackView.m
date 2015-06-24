@@ -207,7 +207,7 @@
     previousView = [self lastVisibleItem];
     nextView = nil;
     
-    NSArray *constraints = [self constraintsBetweenView:self andView:previousView inAxis:self.axis];
+    NSArray *constraints = [self lastConstraintAffectingView:self andView:previousView inAxis:self.axis];
     [self removeConstraints:constraints];
     
     if (newItem) {
