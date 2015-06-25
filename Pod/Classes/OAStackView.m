@@ -38,6 +38,14 @@
   return self;
 }
 
+- (instancetype)init {
+  self = [self initWithArrangedSubviews:@[]];
+  if (self) {
+  
+  }
+  return self;
+}
+
 - (instancetype)initWithArrangedSubviews:(NSArray*)views {
   self = [super initWithFrame:CGRectZero];
   
