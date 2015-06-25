@@ -7,6 +7,7 @@
 //
 
 #import "OAStackView.h"
+#import "OAStackView_ArrangedSubviews.h"
 #import "OAStackView+Constraint.h"
 #import "OAStackView+Hiding.h"
 #import "OAStackView+Traversal.h"
@@ -14,7 +15,8 @@
 #import "OAStackViewDistributionStrategy.h"
 
 @interface OAStackView ()
-@property(nonatomic, copy) NSArray *arrangedSubviews;
+
+@property (nonatomic) NSMutableArray *mutableArrangedSubviews;
 
 @property(nonatomic) OAStackViewAlignmentStrategy *alignmentStrategy;
 @property(nonatomic) OAStackViewDistributionStrategy *distributionStrategy;
@@ -33,6 +35,7 @@
   
   if (self) {
     [self commonInit];
+    [self addAllSubviewsAsArrangedSubviews];
   }
   
   return self;
@@ -50,8 +53,8 @@
   self = [super initWithFrame:CGRectZero];
   
   if (self) {
-    [self addViewsAsSubviews:views];
     [self commonInit];
+    [self addArrangedSubviews:views];
   }
   
   return self;
@@ -62,6 +65,7 @@
 }
 
 - (void)commonInit {
+  _mutableArrangedSubviews = [NSMutableArray new];
   _axis = UILayoutConstraintAxisVertical;
   _alignment = OAStackViewAlignmentFill;
   _distribution = OAStackViewDistributionFill;
@@ -70,6 +74,12 @@
   _distributionStrategy = [OAStackViewDistributionStrategy strategyWithStackView:self];
   
   [self layoutArrangedViews];
+}
+
+- (void)addAllSubviewsAsArrangedSubviews {
+  for (UIView *view in self.subviews) {
+    [self addArrangedSubview:view];
+  }
 }
 
 #pragma mark - Properties
@@ -92,8 +102,8 @@
     (constraint.firstAttribute == NSLayoutAttributeWidth) ||
     (constraint.firstAttribute == NSLayoutAttributeHeight);
     
-    if ([self.subviews containsObject:constraint.firstItem] &&
-        [self.subviews containsObject:constraint.secondItem] &&
+    if ([_mutableArrangedSubviews containsObject:constraint.firstItem] &&
+        [_mutableArrangedSubviews containsObject:constraint.secondItem] &&
         !isWidthOrHeight) {
       constraint.constant = spacing;
     }
@@ -122,7 +132,7 @@
   [self.alignmentStrategy removeAddedConstraints];
   self.alignmentStrategy = [OAStackViewAlignmentStrategy strategyWithStackView:self];
   
-  [self iterateVisibleViews:^(UIView *view, UIView *previousView) {
+  [self iterateArrangedSubviews:^(UIView *view, UIView *previousView) {
     [self.alignmentStrategy addConstraintsOnOtherAxis:view];
   }];
 }
@@ -143,7 +153,7 @@
   self.alignmentStrategy = [OAStackViewAlignmentStrategy strategyWithStackView:self];
   self.distributionStrategy = [OAStackViewDistributionStrategy strategyWithStackView:self];
   
-  [self iterateVisibleViews:^(UIView *view, UIView *previousView) {
+  [self iterateArrangedSubviews:^(UIView *view, UIView *previousView) {
     [self.alignmentStrategy addConstraintsOnOtherAxis:view];
     [self.distributionStrategy alignView:view afterView:previousView];
   }];
@@ -166,7 +176,7 @@
   
   __block float maxSize = 0;
   
-  [self iterateVisibleViews:^(UIView *view, UIView *previousView) {
+  [self iterateArrangedSubviews:^(UIView *view, UIView *previousView) {
     if (self.axis == UILayoutConstraintAxisVertical) {
       maxSize = fmaxf(maxSize, CGRectGetWidth(view.frame));
     } else {
@@ -185,69 +195,55 @@
 
 #pragma mark - Adding and removing
 
+- (void)addArrangedSubviews:(NSArray *)views
+{
+  for (UIView *view in views) {
+    [self addArrangedSubview:view];
+  }
+}
+
 - (void)addArrangedSubview:(UIView *)view {
-  [self insertArrangedSubview:view atIndex:self.subviews.count];
+  [self insertArrangedSubview:view atIndex:[self countOfArrangedSubviews]];
+}
+
+- (void)insertArrangedSubview:(UIView * __nonnull)view atIndex:(NSUInteger)stackIndex {
+  [self insertObject:view inArrangedSubviewsAtIndex:stackIndex];
 }
 
 - (void)removeArrangedSubview:(UIView *)view {
-  
-  if (self.subviews.count == 1) {
-    [view removeFromSuperview];
-    return;
+  NSUInteger index = [_mutableArrangedSubviews indexOfObject:view];
+  if (index != NSNotFound) {
+    [self removeObjectFromArrangedSubviewsAtIndex:index];
   }
-  
-  [self removeViewFromArrangedViews:view permanently:YES];
 }
 
-- (void)insertArrangedSubview:(UIView *)view atIndex:(NSUInteger)stackIndex {
-  [self insertArrangedSubview:view atIndex:stackIndex newItem:YES];
-}
-
-- (void)insertArrangedSubview:(UIView *)view atIndex:(NSUInteger)stackIndex newItem:(BOOL)newItem {
+- (void)didAddArrangedSubview:(UIView *)view {
+  NSAssert([_mutableArrangedSubviews containsObject:view] && [self.subviews containsObject:view], @"View should already be added as subview and arranged view");
+  NSUInteger stackIndex = [_mutableArrangedSubviews indexOfObject:view];
   
-  id previousView, nextView;
+  UIView *previousView = [self arrangedSubviewBeforeIndex:stackIndex];
+  UIView *nextView = [self arrangedSubviewAfterIndex:stackIndex];
   view.translatesAutoresizingMaskIntoConstraints = NO;
-  BOOL isAppending = stackIndex == self.subviews.count;
   
-  if (isAppending) {
+  if (stackIndex == [self countOfArrangedSubviews]-1) {
     //Appending a new item
-    
-    previousView = [self lastVisibleItem];
-    nextView = nil;
-    
+      
     NSArray *constraints = [self lastConstraintAffectingView:self andView:previousView inAxis:self.axis];
     [self removeConstraints:constraints];
     
-    if (newItem) {
-      [self addSubview:view];
+    if ([self firstArrangedSubview] == previousView) {
+      [self.distributionStrategy alignView:previousView afterView:nil];
     }
-    
-  } else {
-    //Item insertion
-    
-    previousView = [self visibleViewBeforeIndex:stackIndex];
-    nextView = [self visibleViewAfterIndex:newItem ? stackIndex - 1: stackIndex];
-    
-    NSArray *constraints;
-    BOOL isLastVisibleItem = [self isViewLastItem:previousView excludingItem:view];
-    BOOL isFirstVisibleView = previousView == nil;
-    BOOL isOnlyItem = previousView == nil && nextView == nil;
-    
-    if (isLastVisibleItem) {
-      constraints = @[[self lastViewConstraint]];
-    } else if(isOnlyItem) {
-      constraints = [self constraintsBetweenView:previousView ?: self andView:nextView ?: self inAxis:self.axis];
-    } else if(isFirstVisibleView) {
-      constraints = @[[self firstViewConstraint]];
-    } else {
-      constraints = [self constraintsBetweenView:previousView ?: self andView:nextView ?: self inAxis:self.axis];
-    }
-    
+  } else if (stackIndex == 0) {
+    // Prepending a new item
+    NSArray *constraints = [self firstConstraintAffectingView:self andView:nextView inAxis:self.axis];
     [self removeConstraints:constraints];
+  } else {
+    NSAssert(previousView && nextView, @"Should have both a next and previous view");
     
-    if (newItem) {
-      [self insertSubview:view atIndex:stackIndex];
-    }
+    //Item insertion, never as last or first view
+    NSArray *constraints = [self constraintsBetweenView:previousView andView:nextView inAxis:self.axis];
+    [self removeConstraints:constraints];
   }
   
   [self.distributionStrategy alignView:view afterView:previousView];
@@ -255,36 +251,46 @@
   [self.distributionStrategy alignView:nextView afterView:view];
 }
 
-- (void)removeViewFromArrangedViews:(UIView*)view permanently:(BOOL)permanently {
-  NSInteger index = [self.subviews indexOfObject:view];
-  if (index == NSNotFound) { return; }
+- (void)willRemoveArrangedSubview:(UIView *)view {
+  id previousView = [self arrangedSubviewBeforeView:view];
+  id nextView = [self arrangedSubviewAfterView:view];
   
-  id previousView = [self visibleViewBeforeView:view];
-  id nextView = [self visibleViewAfterView:view];
-  
-  if (permanently) {
-    [view removeFromSuperview];
-  } else {
-    NSArray *constraint = [self constraintsAffectingView:view];
-    [self removeConstraints:constraint];
-  }
+  NSArray *constraint = [self constraintsAffectingView:view];
+  [self removeConstraints:constraint];
   
   if (nextView) {
     [self.distributionStrategy alignView:nextView afterView:previousView];
   } else if(previousView) {
-    [self.distributionStrategy alignView:nil afterView:[self lastVisibleItem]];
+    [self.distributionStrategy alignView:nil afterView:previousView];
   }
 }
 
 #pragma mark - Hide and Unhide
 
 - (void)hideView:(UIView*)view {
-  [self removeViewFromArrangedViews:view permanently:NO];
+  [self removeArrangedSubview:view];
 }
 
 - (void)unHideView:(UIView*)view {
+  // insert the view just before the next arranged view
+  
   NSInteger index = [self.subviews indexOfObject:view];
-  [self insertArrangedSubview:view atIndex:index newItem:NO];
+  NSAssert(index != NSNotFound, @"Cannot handle a view that is becoming visible that is not our subview");
+  if (index != NSNotFound) {
+    UIView *nextArrangedSubview = nil;
+    NSUInteger i = index+1;
+    for (; i < [self.subviews count] && !nextArrangedSubview; i++) {
+      UIView *view = self.subviews[i];
+      if ([_mutableArrangedSubviews containsObject:view]) {
+        nextArrangedSubview = view;
+      }
+    }
+    if (nextArrangedSubview) {
+      [self insertArrangedSubview:view atIndex:[self indexInArrangedSubviewsOfObject:nextArrangedSubview]];
+    } else {
+      [self addArrangedSubview:view];
+    }
+  }
 }
 
 #pragma mark - Align View
@@ -292,19 +298,57 @@
 - (void)layoutArrangedViews {
   [self removeDecendentConstraints];
   
-  [self iterateVisibleViews:^(UIView *view, UIView *previousView) {
+  [self iterateArrangedSubviews:^(UIView *view, UIView *previousView) {
     [self.distributionStrategy alignView:view afterView:previousView];
     [self.alignmentStrategy addConstraintsOnOtherAxis:view];
   }];
   
-  [self.distributionStrategy alignView:nil afterView:[self lastVisibleItem]];
+  [self.distributionStrategy alignView:nil afterView:[self lastArrangedSubview]];
 }
 
-- (void)addViewsAsSubviews:(NSArray*)views {
-  for (UIView *view in views) {
-    view.translatesAutoresizingMaskIntoConstraints = NO;
-    [self addSubview:view];
-  }
+- (void)didAddSubview:(UIView *)subview {
+  [self addObserverForView:subview];
+}
+
+- (void)willRemoveSubview:(UIView *)subview {
+  [self removeArrangedSubview:subview];
+  [self removeObserverForView:subview];
+}
+
+#pragma mark KVO-compatible Mutable Indexed Accessors for arrangedSubviews
+- (NSUInteger)countOfArrangedSubviews {
+  return [_mutableArrangedSubviews count];
+}
+
+- (UIView *)objectInArrangedSubviewsAtIndex:(NSUInteger)index {
+  return [_mutableArrangedSubviews objectAtIndex:index];
+}
+
+- (NSUInteger)indexInArrangedSubviewsOfObject:(UIView *)view {
+  return [_mutableArrangedSubviews indexOfObject:view];
+}
+
+- (void)insertObject:(UIView *)object inArrangedSubviewsAtIndex:(NSUInteger)index {
+  [_mutableArrangedSubviews insertObject:object atIndex:index];
+  [self didAddArrangedSubview:object];
+}
+
+- (void)removeObjectFromArrangedSubviewsAtIndex:(NSUInteger)index {
+  UIView *view = _mutableArrangedSubviews[index];
+  [self willRemoveArrangedSubview:view];
+  [_mutableArrangedSubviews removeObjectAtIndex:index];
+}
+
+- (NSArray * __nonnull)arrangedSubviews {
+  return [_mutableArrangedSubviews copy];
+}
+
+- (UIView *)firstArrangedSubview {
+  return [_mutableArrangedSubviews firstObject];
+}
+
+- (UIView *)lastArrangedSubview {
+  return [_mutableArrangedSubviews lastObject];
 }
 
 @end
