@@ -195,8 +195,7 @@
 
 #pragma mark - Adding and removing
 
-- (void)addArrangedSubviews:(NSArray *)views
-{
+- (void)addArrangedSubviews:(NSArray *)views {
   for (UIView *view in views) {
     [self addArrangedSubview:view];
   }
@@ -207,6 +206,7 @@
 }
 
 - (void)insertArrangedSubview:(UIView * __nonnull)view atIndex:(NSUInteger)stackIndex {
+  [self addSubview:view];
   [self insertObject:view inArrangedSubviewsAtIndex:stackIndex];
 }
 
