@@ -183,8 +183,21 @@
 }
 
 - (void)insertArrangedSubview:(UIView * __nonnull)view atIndex:(NSUInteger)stackIndex {
+  NSUInteger previousIndex = [self indexInArrangedSubviewsOfObject:view];
+  NSUInteger newIndex = stackIndex;
+  
+  if (previousIndex == newIndex) { return; }
+  
+  if (previousIndex != NSNotFound) {
+    // view was already arranged, remove first
+    [self removeArrangedSubview:view];
+    if (previousIndex < newIndex) {
+      newIndex--;
+    }
+  }
+
   [self addSubview:view];
-  [self insertObject:view inArrangedSubviewsAtIndex:stackIndex];
+  [self insertObject:view inArrangedSubviewsAtIndex:newIndex];
 }
 
 - (void)removeArrangedSubview:(UIView *)view {
