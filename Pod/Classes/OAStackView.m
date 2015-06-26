@@ -305,6 +305,25 @@
   [self removeObserverForView:subview];
 }
 
+- (UIView *)viewForBaselineLayout {
+  UIView *res = nil;
+  if (self.axis == UILayoutConstraintAxisHorizontal) {
+    for (UIView *arrangedView in _mutableArrangedSubviews) {
+      if (!res || CGRectGetHeight(res.frame) < CGRectGetHeight(arrangedView.frame)) {
+        res = arrangedView;
+      }
+    }
+    
+  } else {
+    res = [self lastArrangedSubview];
+  }
+    
+  if ([res isKindOfClass:[self class]]) {
+    res = [res viewForBaselineLayout];
+  }
+  return res;
+}
+
 #pragma mark KVO-compatible Mutable Indexed Accessors for arrangedSubviews
 - (NSUInteger)countOfArrangedSubviews {
   return [_mutableArrangedSubviews count];
