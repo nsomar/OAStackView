@@ -321,15 +321,15 @@
   return [_mutableArrangedSubviews count];
 }
 
-- (UIView *)objectInArrangedSubviewsAtIndex:(NSUInteger)index {
+- (UIView * __nonnull)objectInArrangedSubviewsAtIndex:(NSUInteger)index {
   return [_mutableArrangedSubviews objectAtIndex:index];
 }
 
-- (NSUInteger)indexInArrangedSubviewsOfObject:(UIView *)view {
+- (NSUInteger)indexInArrangedSubviewsOfObject:(UIView * __nonnull)view {
   return [_mutableArrangedSubviews indexOfObject:view];
 }
 
-- (void)insertObject:(UIView *)object inArrangedSubviewsAtIndex:(NSUInteger)index {
+- (void)insertObject:(UIView * __nonnull)object inArrangedSubviewsAtIndex:(NSUInteger)index {
   [_mutableArrangedSubviews insertObject:object atIndex:index];
   [self didAddArrangedSubview:object];
 }
@@ -344,11 +344,11 @@
   return [_mutableArrangedSubviews copy];
 }
 
-- (UIView *)firstArrangedSubview {
+- (UIView * __nullable)firstArrangedSubview {
   return [_mutableArrangedSubviews firstObject];
 }
 
-- (UIView *)lastArrangedSubview {
+- (UIView * __nullable)lastArrangedSubview {
   return [_mutableArrangedSubviews lastObject];
 }
 

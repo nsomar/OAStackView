@@ -12,16 +12,16 @@
 
 - (NSUInteger)countOfArrangedSubviews;
 
-- (nonnull UIView*)objectInArrangedSubviewsAtIndex:(NSUInteger)index;
+- (UIView* __nonnull)objectInArrangedSubviewsAtIndex:(NSUInteger)index;
 
-- (NSUInteger)indexInArrangedSubviewsOfObject:(nonnull UIView *)view;
+- (NSUInteger)indexInArrangedSubviewsOfObject:(UIView * __nonnull)view;
 
-- (void)insertObject:(nullable UIView *)object inArrangedSubviewsAtIndex:(NSUInteger)index;
+- (void)insertObject:(UIView * __nonnull)object inArrangedSubviewsAtIndex:(NSUInteger)index;
 
 - (void)removeObjectFromArrangedSubviewsAtIndex:(NSUInteger)index;
 
-- (nullable UIView *)firstArrangedSubview;
+- (UIView * __nullable)firstArrangedSubview;
 
-- (nullable UIView *)lastArrangedSubview;
+- (UIView * __nullable)lastArrangedSubview;
 
 @end
