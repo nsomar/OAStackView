@@ -113,7 +113,7 @@
 
 - (NSArray*)constraintsalignViewOnOtherAxis:(UIView*)view {
   
-  id constraintString = [NSString stringWithFormat:@"%@:|-0-[view]", [self otherAxisString]];
+  id constraintString = [NSString stringWithFormat:@"%@:|-0-[view]-(>=0)-|", [self otherAxisString]];
   
   return [NSLayoutConstraint constraintsWithVisualFormat:constraintString
                                                  options:0
@@ -127,7 +127,7 @@
 
 - (NSArray*)constraintsalignViewOnOtherAxis:(UIView*)view {
   
-  id constraintString = [NSString stringWithFormat:@"%@:[view]-0-|", [self otherAxisString]];
+  id constraintString = [NSString stringWithFormat:@"%@:|-(>=0)-[view]-0-|", [self otherAxisString]];
   
   return [NSLayoutConstraint constraintsWithVisualFormat:constraintString
                                                  options:0
@@ -141,12 +141,22 @@
 
 - (NSArray*)constraintsalignViewOnOtherAxis:(UIView*)view {
   
-  return @[[NSLayoutConstraint constraintWithItem:view
-                               attribute:[self centerAttribute]
-                               relatedBy:NSLayoutRelationEqual
-                                  toItem:view.superview
-                               attribute:[self centerAttribute]
-                                       multiplier:1 constant:0]];
+  NSString *constraintString = [NSString stringWithFormat:@"%@:|-(>=0)-[view]-(>=0)-|", [self otherAxisString]];
+  
+  NSArray *edgeConstraints = [NSLayoutConstraint constraintsWithVisualFormat:constraintString
+                                                 options:0
+                                                 metrics:nil
+                                                   views:NSDictionaryOfVariableBindings(view)];
+  
+  NSLayoutConstraint *centerContraint = [NSLayoutConstraint constraintWithItem:view
+                                                                     attribute:[self centerAttribute]
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:view.superview
+                                                                     attribute:[self centerAttribute]
+                                                                    multiplier:1
+                                                                      constant:0];
+    
+  return [edgeConstraints arrayByAddingObject:centerContraint];
 }
 
 @end

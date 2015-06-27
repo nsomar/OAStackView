@@ -7,70 +7,48 @@
 //
 
 #import "OAStackView+Traversal.h"
+#import "OAStackView_ArrangedSubviews.h"
 
 @implementation OAStackView (Traversal)
 
-- (UIView*)visibleViewBeforeView:(UIView*)view {
-  NSInteger index = [self.subviews indexOfObject:view];
+- (UIView*)arrangedSubviewBeforeView:(UIView*)view {
+  NSInteger index = [self indexInArrangedSubviewsOfObject:view];
   if (index == NSNotFound) { return nil; }
   
-  return [self visibleViewBeforeIndex:index];
+  return [self arrangedSubviewBeforeIndex:index];
 }
 
-- (UIView*)visibleViewAfterView:(UIView*)view {
-  NSInteger index = [self.subviews indexOfObject:view];
+- (UIView*)arrangedSubviewAfterView:(UIView*)view {
+  NSInteger index = [self indexInArrangedSubviewsOfObject:view];
   if (index == NSNotFound) { return nil; }
   
-  return [self visibleViewAfterIndex:index];
+  return [self arrangedSubviewAfterIndex:index];
 }
 
-- (UIView*)visibleViewAfterIndex:(NSInteger)index {
-  for (NSInteger i = index + 1; i < self.subviews.count; i++) {
-    UIView *theView = self.subviews[i];
-    if (!theView.hidden) {
-      return theView;
-    }
+- (UIView*)arrangedSubviewAfterIndex:(NSInteger)index {
+  if ((index + 1) < [self countOfArrangedSubviews]) {
+    return [self objectInArrangedSubviewsAtIndex:index+1];
   }
   
   return nil;
 }
 
-- (UIView*)visibleViewBeforeIndex:(NSInteger)index {
-  for (NSInteger i = index - 1; i >= 0; i--) {
-    UIView *theView = self.subviews[i];
-    if (!theView.hidden) {
-      return theView;
-    }
+- (UIView*)arrangedSubviewBeforeIndex:(NSInteger)index {
+  if (index > 0) {
+    return [self objectInArrangedSubviewsAtIndex:index-1];
   }
   
   return nil;
 }
 
-- (UIView*)lastVisibleItem {
-  return [self visibleViewBeforeIndex:self.subviews.count];
-}
-
-- (void)iterateVisibleViews:(void (^) (UIView *view, UIView *previousView))block {
-  
-  id previousView;
-  for (UIView *view in self.subviews) {
-    if (view.isHidden) { continue; }
+- (void)iterateArrangedSubviews:(void (^) (UIView *view, UIView *previousView))block {
+  UIView *previousView = nil;
+  for (NSUInteger i = 0; i < [self countOfArrangedSubviews]; i++) {
+    UIView *view = [self objectInArrangedSubviewsAtIndex:i];
     
     block(view, previousView);
     previousView = view;
   }
-}
-
-- (NSArray*)currentVisibleViews {
-  NSMutableArray *arr = [@[] mutableCopy];
-  [self iterateVisibleViews:^(UIView *view, UIView *previousView) {
-    [arr addObject:view];
-  }];
-  return arr;
-}
-
-- (BOOL)isLastVisibleItem:(UIView*)view {
-  return view == [self lastVisibleItem];
 }
 
 - (NSLayoutConstraint*)lastViewConstraint {
@@ -113,7 +91,7 @@
 }
 
 - (BOOL)isViewLastItem:(UIView*)view excludingItem:(UIView*)excludingItem {
-  NSArray *visible = [self currentVisibleViews];
+  NSArray *visible = [self arrangedSubviews];
   NSInteger index = [visible indexOfObject:view];
   NSInteger exclutedIndex = [visible indexOfObject:excludingItem];
   

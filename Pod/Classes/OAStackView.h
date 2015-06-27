@@ -76,13 +76,16 @@ typedef NS_ENUM(NSInteger, OAStackViewAlignment) {
 #define NS_ASSUME_NONNULL_BEGIN
 #define NS_ASSUME_NONNULL_END
 #define nullable
-#define nonnullable
+#define nonnull
 #define __nullable
+#define __nonnull
 #endif
 
 NS_ASSUME_NONNULL_BEGIN
 @interface OAStackView : UIView
 
+// The views that are currently being arranged.
+// Views that are hidden will be removed from this list
 @property(nonatomic,readonly,copy) NSArray *arrangedSubviews;
 
 //Default is Vertical

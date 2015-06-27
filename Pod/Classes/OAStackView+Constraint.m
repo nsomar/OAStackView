@@ -21,8 +21,7 @@
       viewMatches = viewMatches || (firstView == constraint.secondItem && otherView == constraint.firstItem);
     }
     
-    BOOL isCorrectAxis = [self isConstraintAttribute:constraint.firstAttribute affectingAxis:axis] ||
-    [self isConstraintAttribute:constraint.secondAttribute affectingAxis:axis];
+    BOOL isCorrectAxis = [self isConstraint:constraint affectingAxis:axis];
     
     if (viewMatches && isCorrectAxis) {
       [arr addObject:constraint];
@@ -141,15 +140,29 @@
     case UILayoutConstraintAxisHorizontal:
       return attribute == NSLayoutAttributeLeft || attribute == NSLayoutAttributeRight ||
       attribute == NSLayoutAttributeLeading || attribute == NSLayoutAttributeTrailing ||
-      attribute == NSLayoutAttributeCenterX || attribute == NSLayoutAttributeWidth;
+      attribute == NSLayoutAttributeCenterX || attribute == NSLayoutAttributeWidth
+#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_7_1
+      || attribute == NSLayoutAttributeLeftMargin || attribute == NSLayoutAttributeRightMargin ||
+      attribute == NSLayoutAttributeLeadingMargin || attribute == NSLayoutAttributeTrailingMargin ||
+      attribute == NSLayoutAttributeCenterXWithinMargins
+#endif
+      ;
       break;
       
     case UILayoutConstraintAxisVertical:
       return attribute == NSLayoutAttributeTop || attribute == NSLayoutAttributeBottom ||
-      attribute == NSLayoutAttributeCenterY || attribute == NSLayoutAttributeHeight;
+      attribute == NSLayoutAttributeCenterY || attribute == NSLayoutAttributeHeight ||
+      attribute == NSLayoutAttributeBaseline
+#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_7_1
+      || attribute == NSLayoutAttributeLastBaseline || attribute == NSLayoutAttributeFirstBaseline ||
+      attribute == NSLayoutAttributeTopMargin || attribute == NSLayoutAttributeBottomMargin ||
+      attribute == NSLayoutAttributeCenterYWithinMargins
+#endif
+      ;
       break;
       
     default:
+      return NO;
       break;
   }
 }

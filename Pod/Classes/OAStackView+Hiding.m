@@ -51,16 +51,4 @@
   
 }
 
-#pragma mark subviews
-
-- (void)didAddSubview:(UIView *)subview {
-  [super didAddSubview:subview];
-  [self addObserverForView:subview];
-}
-
-- (void)willRemoveSubview:(UIView *)subview {
-  [super willRemoveSubview:subview];
-  [self removeObserverForView:subview];
-}
-
 @end

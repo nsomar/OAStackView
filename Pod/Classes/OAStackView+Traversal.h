@@ -10,15 +10,13 @@
 
 @interface OAStackView (Traversal)
 
-- (UIView*)visibleViewBeforeIndex:(NSInteger)index;
-- (UIView*)visibleViewBeforeView:(UIView*)view;
+- (UIView*)arrangedSubviewBeforeIndex:(NSInteger)index;
+- (UIView*)arrangedSubviewBeforeView:(UIView*)view;
 
-- (UIView*)visibleViewAfterIndex:(NSInteger)index;
-- (UIView*)visibleViewAfterView:(UIView*)view;
+- (UIView*)arrangedSubviewAfterIndex:(NSInteger)index;
+- (UIView*)arrangedSubviewAfterView:(UIView*)view;
 
-- (void)iterateVisibleViews:(void (^) (UIView *view, UIView *previousView))block;
-
-- (UIView*)lastVisibleItem;
+- (void)iterateArrangedSubviews:(void (^) (UIView *view, UIView *previousView))block;
 
 - (NSLayoutConstraint*)firstViewConstraint;
 - (NSLayoutConstraint*)lastViewConstraint;

@@ -206,6 +206,8 @@
 		E91726963A1D70D65A0C6428 /* KWRespondToSelectorMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CA8AD367C971DD82427F4AE /* KWRespondToSelectorMatcher.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		E943786F62DF61D7A6454356 /* KWBeMemberOfClassMatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 0EFCED26B5D9A256C2B1F238 /* KWBeMemberOfClassMatcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E961F1E03FB1C2349361DD43 /* KWProbe.h in Headers */ = {isa = PBXBuildFile; fileRef = 1ED94E0B9B0394509B3E09C5 /* KWProbe.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E98AFA0C1B3C336D00CDF427 /* OAStackView_ArrangedSubviews.h in Headers */ = {isa = PBXBuildFile; fileRef = E98AFA0B1B3C336D00CDF427 /* OAStackView_ArrangedSubviews.h */; };
+		E98AFA0E1B3C337400CDF427 /* OAStackView_ArrangedSubviews.h in Headers */ = {isa = PBXBuildFile; fileRef = E98AFA0B1B3C336D00CDF427 /* OAStackView_ArrangedSubviews.h */; };
 		EB6342DDFC16EA1697673367 /* NSInvocation+OCMAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 87EF738D1C4A43D46DF7218C /* NSInvocation+OCMAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EBA3CB1AFC1C14BE0CE682AD /* KWRegisterMatchersNode.h in Headers */ = {isa = PBXBuildFile; fileRef = ACC8D3E191EA0619F7399012 /* KWRegisterMatchersNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EBD4862464FD997A831166EA /* KWSuiteConfigurationBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 30DA7C8C1EFC416457FC8B42 /* KWSuiteConfigurationBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -498,6 +500,7 @@
 		E91B86F74BD64D5D3108D23A /* Pods-OAStackView_Example-OAStackView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-OAStackView_Example-OAStackView-umbrella.h"; sourceTree = "<group>"; };
 		E96052DEDBABAD6DE67AB9CC /* KWVerifying.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KWVerifying.h; path = Classes/Verifiers/KWVerifying.h; sourceTree = "<group>"; };
 		E9763017ABDD60733231C7B9 /* KWBeforeEachNode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KWBeforeEachNode.m; path = Classes/Nodes/KWBeforeEachNode.m; sourceTree = "<group>"; };
+		E98AFA0B1B3C336D00CDF427 /* OAStackView_ArrangedSubviews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAStackView_ArrangedSubviews.h; sourceTree = "<group>"; };
 		E9DCF701A29E982F7F76150C /* Pods-OAStackView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OAStackView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		EC4FD93B76378B54BA02E9D3 /* KWGenericMatchEvaluator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KWGenericMatchEvaluator.m; path = Classes/Matchers/KWGenericMatchEvaluator.m; sourceTree = "<group>"; };
 		EE003196DB6E4BE2B7583341 /* Pods-OAStackView_Tests-OAStackView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OAStackView_Tests-OAStackView.xcconfig"; path = "../Pods-OAStackView_Tests-OAStackView/Pods-OAStackView_Tests-OAStackView.xcconfig"; sourceTree = "<group>"; };
@@ -586,6 +589,7 @@
 			children = (
 				8B90E6BD21591A4585962496 /* OAStackView.h */,
 				5D2F4F1397A17E203EA8112B /* OAStackView.m */,
+				E98AFA0B1B3C336D00CDF427 /* OAStackView_ArrangedSubviews.h */,
 				C809B772AB6D8B7D66C7D8A2 /* OAStackView+Constraint.h */,
 				E822B703CD09D5556B8F8265 /* OAStackView+Constraint.m */,
 				E86334892F73798F2B097D5F /* OAStackView+Hiding.h */,
@@ -1067,6 +1071,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E98AFA0E1B3C337400CDF427 /* OAStackView_ArrangedSubviews.h in Headers */,
 				D69542A762933D4119F4037C /* OAStackView+Constraint.h in Headers */,
 				05794B5F4247E3A648C40B51 /* OAStackView+Hiding.h in Headers */,
 				B1868D729956D7DEC9C9FE06 /* OAStackView+Traversal.h in Headers */,
@@ -1089,6 +1094,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E98AFA0C1B3C336D00CDF427 /* OAStackView_ArrangedSubviews.h in Headers */,
 				06EC4010B3D981437FC3D92B /* OAStackView+Constraint.h in Headers */,
 				19308B2A9CB35F4AD26FD0CF /* OAStackView+Hiding.h in Headers */,
 				46CA8779A92EBC2D28E4C1EC /* OAStackView+Traversal.h in Headers */,
