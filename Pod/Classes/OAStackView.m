@@ -208,7 +208,9 @@
     nextView = nil;
     
     NSArray *constraints = [self lastConstraintAffectingView:self andView:previousView inAxis:self.axis];
-    [self removeConstraints:constraints];
+    if (constraints) {
+      [self removeConstraints:constraints];
+    }
     
     if (newItem) {
       [self addSubview:view];
