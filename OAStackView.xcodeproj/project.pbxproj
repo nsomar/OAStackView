@@ -1,0 +1,371 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8298C9401B4188F50006C53E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8298C93F1B4188F50006C53E /* Info.plist */; };
+		8298C9521B4188FF0006C53E /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 8298C9431B4188FF0006C53E /* .gitkeep */; };
+		8298C9531B4188FF0006C53E /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 8298C9451B4188FF0006C53E /* .gitkeep */; };
+		8298C9541B4188FF0006C53E /* OAStackView+Constraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 8298C9461B4188FF0006C53E /* OAStackView+Constraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8298C9551B4188FF0006C53E /* OAStackView+Constraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 8298C9471B4188FF0006C53E /* OAStackView+Constraint.m */; };
+		8298C9561B4188FF0006C53E /* OAStackView+Hiding.h in Headers */ = {isa = PBXBuildFile; fileRef = 8298C9481B4188FF0006C53E /* OAStackView+Hiding.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8298C9571B4188FF0006C53E /* OAStackView+Hiding.m in Sources */ = {isa = PBXBuildFile; fileRef = 8298C9491B4188FF0006C53E /* OAStackView+Hiding.m */; };
+		8298C9581B4188FF0006C53E /* OAStackView+Traversal.h in Headers */ = {isa = PBXBuildFile; fileRef = 8298C94A1B4188FF0006C53E /* OAStackView+Traversal.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8298C9591B4188FF0006C53E /* OAStackView+Traversal.m in Sources */ = {isa = PBXBuildFile; fileRef = 8298C94B1B4188FF0006C53E /* OAStackView+Traversal.m */; };
+		8298C95A1B4188FF0006C53E /* OAStackView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8298C94C1B4188FF0006C53E /* OAStackView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8298C95B1B4188FF0006C53E /* OAStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8298C94D1B4188FF0006C53E /* OAStackView.m */; };
+		8298C95C1B4188FF0006C53E /* OAStackViewAlignmentStrategy.h in Headers */ = {isa = PBXBuildFile; fileRef = 8298C94E1B4188FF0006C53E /* OAStackViewAlignmentStrategy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8298C95D1B4188FF0006C53E /* OAStackViewAlignmentStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8298C94F1B4188FF0006C53E /* OAStackViewAlignmentStrategy.m */; };
+		8298C95E1B4188FF0006C53E /* OAStackViewDistributionStrategy.h in Headers */ = {isa = PBXBuildFile; fileRef = 8298C9501B4188FF0006C53E /* OAStackViewDistributionStrategy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8298C95F1B4188FF0006C53E /* OAStackViewDistributionStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8298C9511B4188FF0006C53E /* OAStackViewDistributionStrategy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		8298C9231B4188700006C53E /* OAStackView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OAStackView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8298C93F1B4188F50006C53E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
+		8298C9431B4188FF0006C53E /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		8298C9451B4188FF0006C53E /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		8298C9461B4188FF0006C53E /* OAStackView+Constraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OAStackView+Constraint.h"; sourceTree = "<group>"; };
+		8298C9471B4188FF0006C53E /* OAStackView+Constraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OAStackView+Constraint.m"; sourceTree = "<group>"; };
+		8298C9481B4188FF0006C53E /* OAStackView+Hiding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OAStackView+Hiding.h"; sourceTree = "<group>"; };
+		8298C9491B4188FF0006C53E /* OAStackView+Hiding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OAStackView+Hiding.m"; sourceTree = "<group>"; };
+		8298C94A1B4188FF0006C53E /* OAStackView+Traversal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OAStackView+Traversal.h"; sourceTree = "<group>"; };
+		8298C94B1B4188FF0006C53E /* OAStackView+Traversal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OAStackView+Traversal.m"; sourceTree = "<group>"; };
+		8298C94C1B4188FF0006C53E /* OAStackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAStackView.h; sourceTree = "<group>"; };
+		8298C94D1B4188FF0006C53E /* OAStackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAStackView.m; sourceTree = "<group>"; };
+		8298C94E1B4188FF0006C53E /* OAStackViewAlignmentStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAStackViewAlignmentStrategy.h; sourceTree = "<group>"; };
+		8298C94F1B4188FF0006C53E /* OAStackViewAlignmentStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAStackViewAlignmentStrategy.m; sourceTree = "<group>"; };
+		8298C9501B4188FF0006C53E /* OAStackViewDistributionStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAStackViewDistributionStrategy.h; sourceTree = "<group>"; };
+		8298C9511B4188FF0006C53E /* OAStackViewDistributionStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAStackViewDistributionStrategy.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8298C91F1B4188700006C53E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8298C9191B4188700006C53E = {
+			isa = PBXGroup;
+			children = (
+				8298C9251B4188700006C53E /* OAStackView */,
+				8298C9241B4188700006C53E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8298C9241B4188700006C53E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8298C9231B4188700006C53E /* OAStackView.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8298C9251B4188700006C53E /* OAStackView */ = {
+			isa = PBXGroup;
+			children = (
+				8298C9411B4188FF0006C53E /* Pod */,
+				8298C9261B4188700006C53E /* Supporting Files */,
+			);
+			path = OAStackView;
+			sourceTree = "<group>";
+		};
+		8298C9261B4188700006C53E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8298C93F1B4188F50006C53E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8298C9411B4188FF0006C53E /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				8298C9421B4188FF0006C53E /* Assets */,
+				8298C9441B4188FF0006C53E /* Classes */,
+			);
+			path = Pod;
+			sourceTree = SOURCE_ROOT;
+		};
+		8298C9421B4188FF0006C53E /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				8298C9431B4188FF0006C53E /* .gitkeep */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		8298C9441B4188FF0006C53E /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				8298C9451B4188FF0006C53E /* .gitkeep */,
+				8298C9461B4188FF0006C53E /* OAStackView+Constraint.h */,
+				8298C9471B4188FF0006C53E /* OAStackView+Constraint.m */,
+				8298C9481B4188FF0006C53E /* OAStackView+Hiding.h */,
+				8298C9491B4188FF0006C53E /* OAStackView+Hiding.m */,
+				8298C94A1B4188FF0006C53E /* OAStackView+Traversal.h */,
+				8298C94B1B4188FF0006C53E /* OAStackView+Traversal.m */,
+				8298C94C1B4188FF0006C53E /* OAStackView.h */,
+				8298C94D1B4188FF0006C53E /* OAStackView.m */,
+				8298C94E1B4188FF0006C53E /* OAStackViewAlignmentStrategy.h */,
+				8298C94F1B4188FF0006C53E /* OAStackViewAlignmentStrategy.m */,
+				8298C9501B4188FF0006C53E /* OAStackViewDistributionStrategy.h */,
+				8298C9511B4188FF0006C53E /* OAStackViewDistributionStrategy.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		8298C9201B4188700006C53E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8298C95A1B4188FF0006C53E /* OAStackView.h in Headers */,
+				8298C9541B4188FF0006C53E /* OAStackView+Constraint.h in Headers */,
+				8298C9581B4188FF0006C53E /* OAStackView+Traversal.h in Headers */,
+				8298C9561B4188FF0006C53E /* OAStackView+Hiding.h in Headers */,
+				8298C95E1B4188FF0006C53E /* OAStackViewDistributionStrategy.h in Headers */,
+				8298C95C1B4188FF0006C53E /* OAStackViewAlignmentStrategy.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		8298C9221B4188700006C53E /* OAStackView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8298C9391B4188700006C53E /* Build configuration list for PBXNativeTarget "OAStackView" */;
+			buildPhases = (
+				8298C91E1B4188700006C53E /* Sources */,
+				8298C91F1B4188700006C53E /* Frameworks */,
+				8298C9201B4188700006C53E /* Headers */,
+				8298C9211B4188700006C53E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OAStackView;
+			productName = OAStackView;
+			productReference = 8298C9231B4188700006C53E /* OAStackView.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8298C91A1B4188700006C53E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = OAStackView;
+				TargetAttributes = {
+					8298C9221B4188700006C53E = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+				};
+			};
+			buildConfigurationList = 8298C91D1B4188700006C53E /* Build configuration list for PBXProject "OAStackView" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 8298C9191B4188700006C53E;
+			productRefGroup = 8298C9241B4188700006C53E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8298C9221B4188700006C53E /* OAStackView */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8298C9211B4188700006C53E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8298C9531B4188FF0006C53E /* .gitkeep in Resources */,
+				8298C9401B4188F50006C53E /* Info.plist in Resources */,
+				8298C9521B4188FF0006C53E /* .gitkeep in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8298C91E1B4188700006C53E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8298C9571B4188FF0006C53E /* OAStackView+Hiding.m in Sources */,
+				8298C95B1B4188FF0006C53E /* OAStackView.m in Sources */,
+				8298C95F1B4188FF0006C53E /* OAStackViewDistributionStrategy.m in Sources */,
+				8298C95D1B4188FF0006C53E /* OAStackViewAlignmentStrategy.m in Sources */,
+				8298C9591B4188FF0006C53E /* OAStackView+Traversal.m in Sources */,
+				8298C9551B4188FF0006C53E /* OAStackView+Constraint.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		8298C9371B4188700006C53E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8298C9381B4188700006C53E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8298C93A1B4188700006C53E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8298C93B1B4188700006C53E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8298C91D1B4188700006C53E /* Build configuration list for PBXProject "OAStackView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8298C9371B4188700006C53E /* Debug */,
+				8298C9381B4188700006C53E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8298C9391B4188700006C53E /* Build configuration list for PBXNativeTarget "OAStackView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8298C93A1B4188700006C53E /* Debug */,
+				8298C93B1B4188700006C53E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8298C91A1B4188700006C53E /* Project object */;
+}
