@@ -468,6 +468,27 @@ describe(@"OAStackView", ^{
           [[theValue(CGRectGetHeight(view3.frame)) should] beWithin:theValue(1) of:theValue(CGRectGetHeight(view2.frame) * proportion)];
         });
       });
+
+      context(@"OAStackViewDistributionEqualSpacing", ^{
+        it(@"Distributes the views with equal spacing between each view", ^{
+          // Views 1, 2 and 3 are UIButtons. Changing the title affects their intrinsicContentSize.
+
+          [(UIButton *)view1 setTitle:@"A short title" forState:UIControlStateNormal];
+          [(UIButton *)view2 setTitle:@"A bit longer title" forState:UIControlStateNormal];
+          [(UIButton *)view3 setTitle:@"A really really really really long title"
+                             forState:UIControlStateNormal];
+
+          stackView.distribution = OAStackViewDistributionEqualSpacing;
+          stackView.spacing = 40;
+
+          layoutView(stackView);
+
+          CGFloat firstGap = CGRectGetMinY(view2.frame) - CGRectGetMaxY(view1.frame);
+          CGFloat secondGap = CGRectGetMinY(view3.frame) - CGRectGetMaxY(view2.frame);
+          [[theValue(firstGap) should] equal:theValue(secondGap)];
+          [[theValue(firstGap) should] beBetween:theValue(stackView.spacing) and:theValue(CGRectGetHeight(stackView.bounds))];
+        });
+      });
     });
     
   });
@@ -816,94 +837,114 @@ describe(@"OAStackView", ^{
         [[theValue(CGRectGetWidth(stackView.frame)) should] equal:theValue(90)];
         
       });
-      
-      
-      context(@"Distribution", ^{
-        
-        __block UIView *view1, *view2, *view3;
-        
-        beforeEach(^{
-          view1 = createViewP(50, 300, 200, 300);
-          view2 = createViewP(60, 300, 500, 300);
-          view3 = createViewP(100, 300, 600, 330);
-          
-          NSArray *views = @[view1, view2, view3];
-          
-          stackView = [[OAStackView alloc] initWithArrangedSubviews:views];
-          stackView.axis = UILayoutConstraintAxisHorizontal;
-          stackView.translatesAutoresizingMaskIntoConstraints = NO;
-        });
-        
-        context(@"OAStackViewDistributionFill", ^{
-          
-          it(@"Distributes the view based on their fill using OAStackViewDistributionFill", ^{
-            stackView.distribution = OAStackViewDistributionFill;
-            addWidthToView(stackView, 400, 1000);
-            layoutView(stackView);
-            
-            [[theValue(CGRectGetMinX(view1.frame)) should] equal:theValue(0)];
-            
-            [[theValue(CGRectGetMinX(view2.frame)) should] equal:theValue(240)];
-            
-            [[theValue(CGRectGetMinX(view3.frame)) should] equal:theValue(300)];
-          });
-          
-        });
-        
-        context(@"OAStackViewDistributionFillEqually", ^{
-          
-          it(@"Distributes the views equally using OAStackViewDistributionFillEqually", ^{
-            stackView.distribution = OAStackViewDistributionFillEqually;
-            addWidthToView(stackView, 400, 1000);
-            layoutView(stackView);
-            
-            [[theValue(CGRectGetMinX(view1.frame)) should] equal:theValue(0)];
-            
-            [[theValue(CGRectGetMinX(view2.frame)) should] equal:133 withDelta:1];
-            
-            [[theValue(CGRectGetMinX(view3.frame)) should] equal:266 withDelta:1];
-          });
-          
-          it(@"Adds the correct spacing between views", ^{
-            stackView.distribution = OAStackViewDistributionFillEqually;
-            stackView.spacing = 50;
-            addWidthToView(stackView, 400, 1000);
-            layoutView(stackView);
-            
-            [[theValue(CGRectGetMinX(view1.frame)) should] equal:theValue(0)];
-            
-            [[theValue(CGRectGetMinX(view2.frame)) should] equal:theValue(150)];
-            
-            [[theValue(CGRectGetMinX(view3.frame)) should] equal:theValue(300)];
-          });
-          
-        });
-        
-        context(@"OAStackViewDistributionFillProportionally", ^{
-          it(@"Distributes the views proportionally based on their intrinsicContentSize", ^{
-            // Views 1, 2 and 3 are UIButtons. Changing the title affects their intrinsicContentSize.
-            
-            [(UIButton *)view1 setTitle:@"the title" forState:UIControlStateNormal];
-            [(UIButton *)view2 setTitle:@"the title" forState:UIControlStateNormal];
-            [(UIButton *)view3 setTitle:@"the title the title" forState:UIControlStateNormal];
-            
-            stackView.distribution = OAStackViewDistributionFillProportionally;
-            
-            layoutView(stackView);
-            CGFloat proportion = view2.intrinsicContentSize.width / view1.intrinsicContentSize.width;
-            [[theValue(CGRectGetWidth(view2.frame)) should] beWithin:theValue(1) of:theValue(CGRectGetWidth(view1.frame) * proportion)];
-            
-            proportion = view3.intrinsicContentSize.width / view2.intrinsicContentSize.width;
-            [[theValue(CGRectGetWidth(view3.frame)) should] beWithin:theValue(1) of:theValue(CGRectGetWidth(view2.frame) * proportion)];
-          });
-        });
-        
-        
-      });
-      
-      
+
     });
-    
+      
+      
+    context(@"Distribution", ^{
+
+      __block UIView *view1, *view2, *view3;
+
+      beforeEach(^{
+        view1 = createViewP(50, 300, 200, 300);
+        view2 = createViewP(60, 300, 500, 300);
+        view3 = createViewP(100, 300, 600, 330);
+
+        NSArray *views = @[view1, view2, view3];
+
+        stackView = [[OAStackView alloc] initWithArrangedSubviews:views];
+        stackView.axis = UILayoutConstraintAxisHorizontal;
+        stackView.translatesAutoresizingMaskIntoConstraints = NO;
+      });
+
+      context(@"OAStackViewDistributionFill", ^{
+
+        it(@"Distributes the view based on their fill using OAStackViewDistributionFill", ^{
+          stackView.distribution = OAStackViewDistributionFill;
+          addWidthToView(stackView, 400, 1000);
+          layoutView(stackView);
+
+          [[theValue(CGRectGetMinX(view1.frame)) should] equal:theValue(0)];
+
+          [[theValue(CGRectGetMinX(view2.frame)) should] equal:theValue(240)];
+
+          [[theValue(CGRectGetMinX(view3.frame)) should] equal:theValue(300)];
+        });
+
+      });
+
+      context(@"OAStackViewDistributionFillEqually", ^{
+
+        it(@"Distributes the views equally using OAStackViewDistributionFillEqually", ^{
+          stackView.distribution = OAStackViewDistributionFillEqually;
+          addWidthToView(stackView, 400, 1000);
+          layoutView(stackView);
+
+          [[theValue(CGRectGetMinX(view1.frame)) should] equal:theValue(0)];
+
+          [[theValue(CGRectGetMinX(view2.frame)) should] equal:133 withDelta:1];
+
+          [[theValue(CGRectGetMinX(view3.frame)) should] equal:266 withDelta:1];
+        });
+
+        it(@"Adds the correct spacing between views", ^{
+          stackView.distribution = OAStackViewDistributionFillEqually;
+          stackView.spacing = 50;
+          addWidthToView(stackView, 400, 1000);
+          layoutView(stackView);
+
+          [[theValue(CGRectGetMinX(view1.frame)) should] equal:theValue(0)];
+
+          [[theValue(CGRectGetMinX(view2.frame)) should] equal:theValue(150)];
+
+          [[theValue(CGRectGetMinX(view3.frame)) should] equal:theValue(300)];
+        });
+
+      });
+
+      context(@"OAStackViewDistributionFillProportionally", ^{
+        it(@"Distributes the views proportionally based on their intrinsicContentSize", ^{
+          // Views 1, 2 and 3 are UIButtons. Changing the title affects their intrinsicContentSize.
+
+          [(UIButton *)view1 setTitle:@"the title" forState:UIControlStateNormal];
+          [(UIButton *)view2 setTitle:@"the title" forState:UIControlStateNormal];
+          [(UIButton *)view3 setTitle:@"the title the title" forState:UIControlStateNormal];
+
+          stackView.distribution = OAStackViewDistributionFillProportionally;
+
+          layoutView(stackView);
+          CGFloat proportion = view2.intrinsicContentSize.width / view1.intrinsicContentSize.width;
+          [[theValue(CGRectGetWidth(view2.frame)) should] beWithin:theValue(1) of:theValue(CGRectGetWidth(view1.frame) * proportion)];
+
+          proportion = view3.intrinsicContentSize.width / view2.intrinsicContentSize.width;
+          [[theValue(CGRectGetWidth(view3.frame)) should] beWithin:theValue(1) of:theValue(CGRectGetWidth(view2.frame) * proportion)];
+        });
+      });
+
+      context(@"OAStackViewDistributionEqualSpacing", ^{
+        it(@"Distributes the views with equal spacing between each view", ^{
+          // Views 1, 2 and 3 are UIButtons. Changing the title affects their intrinsicContentSize.
+
+          [(UIButton *)view1 setTitle:@"A short title" forState:UIControlStateNormal];
+          [(UIButton *)view2 setTitle:@"A bit longer title" forState:UIControlStateNormal];
+          [(UIButton *)view3 setTitle:@"A really really really really long title"
+                             forState:UIControlStateNormal];
+
+          stackView.distribution = OAStackViewDistributionEqualSpacing;
+          stackView.spacing = 40;
+
+          layoutView(stackView);
+
+          CGFloat firstGap = CGRectGetMinX(view2.frame) - CGRectGetMaxX(view1.frame);
+          CGFloat secondGap = CGRectGetMinX(view3.frame) - CGRectGetMaxX(view2.frame);
+          [[theValue(firstGap) should] equal:theValue(secondGap)];
+          [[theValue(firstGap) should] beBetween:theValue(stackView.spacing)
+                                             and:theValue(CGRectGetWidth(stackView.bounds))];
+        });
+      });
+
+    });
+
   });
   
   
