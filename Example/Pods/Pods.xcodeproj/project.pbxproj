@@ -69,9 +69,10 @@
 		46CA8779A92EBC2D28E4C1EC /* OAStackView+Traversal.h in Headers */ = {isa = PBXBuildFile; fileRef = 00B132E002F0EAE6F7C4C007 /* OAStackView+Traversal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		493526E82666FF2E67312D04 /* KWBeSubclassOfClassMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = A0352A63AB9BF027C69D98B2 /* KWBeSubclassOfClassMatcher.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		4980BB2E4FBE7EA2EED0FF92 /* KWNilMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E77CA3AFAADCEC9394516EF /* KWNilMatcher.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		4B0F8F231B44C36F0036F739 /* _OALayoutGuide.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B0F8F211B44C36F0036F739 /* _OALayoutGuide.h */; };
 		4B0F8F251B44C37B0036F739 /* _OALayoutGuide.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0F8F221B44C36F0036F739 /* _OALayoutGuide.m */; };
 		4B0F8F261B44C3850036F739 /* _OALayoutGuide.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0F8F221B44C36F0036F739 /* _OALayoutGuide.m */; };
+		4B2AD8901B46F04900285D06 /* _OALayoutGuide.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B0F8F211B44C36F0036F739 /* _OALayoutGuide.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		4B2AD8911B46F05300285D06 /* _OALayoutGuide.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B0F8F211B44C36F0036F739 /* _OALayoutGuide.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4D581923EEB3544ED549CB5B /* KWPendingNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A52C7E63345A9BCDFEE5B3F6 /* KWPendingNode.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		4DEE1BB8F64C4763D6585683 /* OAStackView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 667360543B85E1CE0E6BD756 /* OAStackView.bundle */; };
 		4DFB3EBCDB8022C0B5768FD4 /* KWExistVerifier.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ED9899540CA916F53DBEC34 /* KWExistVerifier.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1075,6 +1076,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D69542A762933D4119F4037C /* OAStackView+Constraint.h in Headers */,
+				4B2AD8911B46F05300285D06 /* _OALayoutGuide.h in Headers */,
 				05794B5F4247E3A648C40B51 /* OAStackView+Hiding.h in Headers */,
 				B1868D729956D7DEC9C9FE06 /* OAStackView+Traversal.h in Headers */,
 				37B2C7C8BF93DB6160C1D1A9 /* OAStackView.h in Headers */,
@@ -1089,7 +1091,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0092151033DD1E9F907BAF60 /* Pods-OAStackView_Example-umbrella.h in Headers */,
-				4B0F8F231B44C36F0036F739 /* _OALayoutGuide.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1098,6 +1099,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06EC4010B3D981437FC3D92B /* OAStackView+Constraint.h in Headers */,
+				4B2AD8901B46F04900285D06 /* _OALayoutGuide.h in Headers */,
 				19308B2A9CB35F4AD26FD0CF /* OAStackView+Hiding.h in Headers */,
 				46CA8779A92EBC2D28E4C1EC /* OAStackView+Traversal.h in Headers */,
 				CE2D928275880C806D33DE2D /* OAStackView.h in Headers */,
