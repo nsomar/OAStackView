@@ -113,7 +113,7 @@
 
 - (NSArray*)constraintsalignViewOnOtherAxis:(UIView*)view {
   
-  id constraintString = [NSString stringWithFormat:@"%@:|-0-[view]", [self otherAxisString]];
+  id constraintString = [NSString stringWithFormat:@"%@:|-0-[view]->=0-|", [self otherAxisString]];
   
   return [NSLayoutConstraint constraintsWithVisualFormat:constraintString
                                                  options:0
@@ -127,7 +127,7 @@
 
 - (NSArray*)constraintsalignViewOnOtherAxis:(UIView*)view {
   
-  id constraintString = [NSString stringWithFormat:@"%@:[view]-0-|", [self otherAxisString]];
+  id constraintString = [NSString stringWithFormat:@"%@:|->=0-[view]-0-|", [self otherAxisString]];
   
   return [NSLayoutConstraint constraintsWithVisualFormat:constraintString
                                                  options:0
