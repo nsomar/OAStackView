@@ -71,7 +71,12 @@
 }
 
 -(void)setOpaque:(BOOL)opaque {
-    // Does not have any effect because `CATransformLayer` is not rendered.
+  // Does not have any effect because `CATransformLayer` is not rendered.
+}
+
+- (void)setClipsToBounds:(BOOL)clipsToBounds
+{
+  // Does not have any effect because `CATransformLayer` is not rendered.
 }
 
 - (void)setSpacing:(CGFloat)spacing {

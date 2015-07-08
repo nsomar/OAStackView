@@ -8,6 +8,8 @@
 
 #import "OAStackViewDistributionStrategy.h"
 
+#import "_OALayoutGuide.h"
+
 @interface OAStackViewDistributionStrategyFill : OAStackViewDistributionStrategy
 @end
 
@@ -47,7 +49,7 @@
       break;
       
     case OAStackViewDistributionEqualSpacing:
-      cls = [OAStackViewDistributionStrategyEqualCentering class];
+      cls = [OAStackViewDistributionStrategyEqualSpacing class];
       break;
       
     case OAStackViewDistributionEqualCentering:
@@ -105,8 +107,10 @@
 
 
 - (void)alignMiddleView:(UIView*)view afterView:(UIView*)previousView {
-  NSString *str = [NSString stringWithFormat:@"%@:[previousView]-%f-[view]",
-                   [self currentAxisString], self.stackView.spacing];
+  NSString *str = [NSString stringWithFormat:@"%@:[previousView]-(%@%f)-[view]",
+                   [self currentAxisString],
+                   [self symbolicSpacingRelation],
+                   self.stackView.spacing];
   
   id arr = [NSLayoutConstraint constraintsWithVisualFormat:str
                                                    options:0
@@ -137,6 +141,11 @@
 - (void)removeAddedConstraints {
   [self.stackView removeConstraints:self.constraints];
   [self.constraints removeAllObjects];
+}
+
+- (NSString *)symbolicSpacingRelation
+{
+  return @"==";
 }
 
 @end
@@ -203,7 +212,104 @@
 
 @end
 
+@interface OAStackViewDistributionStrategyEqualSpacing ()
+
+@property (nonatomic, strong) NSMutableArray *equalSpacingLayoutGuides;
+
+@end
+
 @implementation OAStackViewDistributionStrategyEqualSpacing
+
+- (NSLayoutAttribute)spanningAttributeForAxis:(UILayoutConstraintAxis)axis
+                                isInitialEdge:(BOOL)isInitialConstraint
+{
+  switch (axis) {
+    case UILayoutConstraintAxisHorizontal:
+      return isInitialConstraint ? NSLayoutAttributeLeading : NSLayoutAttributeTrailing;
+
+    case UILayoutConstraintAxisVertical:
+      return isInitialConstraint ? NSLayoutAttributeTop : NSLayoutAttributeBottom;
+  }
+}
+
+- (NSMutableArray *)equalSpacingLayoutGuides
+{
+  if (!_equalSpacingLayoutGuides) {
+    _equalSpacingLayoutGuides = [NSMutableArray array];
+  }
+
+  return _equalSpacingLayoutGuides;
+}
+
+- (NSString *)symbolicSpacingRelation
+{
+  return @">=";
+}
+
+- (void)alignMiddleView:(UIView *)view afterView:(UIView *)previousView
+{
+  [super alignMiddleView:view afterView:previousView];
+
+  _OALayoutGuide *guide = [_OALayoutGuide new];
+  [self.equalSpacingLayoutGuides addObject:guide];
+  [self.stackView addSubview:guide];
+
+  NSMutableArray *newConstraints = [NSMutableArray array];
+
+  UILayoutConstraintAxis axis = self.stackView.axis;
+
+  NSLayoutConstraint *firstEdgeConstraint =
+  [NSLayoutConstraint constraintWithItem:guide
+                               attribute:[self spanningAttributeForAxis:axis
+                                                          isInitialEdge:YES]
+                               relatedBy:NSLayoutRelationEqual
+                                  toItem:previousView
+                               attribute:[self spanningAttributeForAxis:axis
+                                                          isInitialEdge:NO]
+                              multiplier:1
+                                constant:0];
+
+  NSLayoutConstraint *secondEdgeConstraint =
+  [NSLayoutConstraint constraintWithItem:view
+                               attribute:[self spanningAttributeForAxis:axis
+                                                          isInitialEdge:YES]
+                               relatedBy:NSLayoutRelationEqual
+                                  toItem:guide
+                               attribute:[self spanningAttributeForAxis:axis
+                                                          isInitialEdge:NO]
+                              multiplier:1
+                                constant:0];
+
+  [newConstraints addObjectsFromArray:@[firstEdgeConstraint, secondEdgeConstraint]];
+
+  id firstGuide = self.equalSpacingLayoutGuides.firstObject;
+  if (firstGuide != guide) {
+    NSLayoutConstraint *equalWidth =
+    [NSLayoutConstraint constraintWithItem:firstGuide
+                                 attribute:[self equalityAxis]
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:guide
+                                 attribute:[self equalityAxis]
+                                multiplier:1
+                                  constant:0];
+
+    equalWidth.identifier = @"OA-fill-equally";
+
+    [newConstraints addObject:equalWidth];
+  }
+
+  [self.constraints addObjectsFromArray:newConstraints];
+  [self.stackView addConstraints:newConstraints];
+}
+
+- (void)removeAddedConstraints
+{
+  [self.stackView removeConstraints:self.constraints];
+  [self.constraints removeAllObjects];
+
+  [self.equalSpacingLayoutGuides makeObjectsPerformSelector:@selector(removeFromSuperview)];
+  [self.equalSpacingLayoutGuides removeAllObjects];
+}
 
 @end
 
