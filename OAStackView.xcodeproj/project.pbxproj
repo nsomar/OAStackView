@@ -7,40 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8298C9401B4188F50006C53E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8298C93F1B4188F50006C53E /* Info.plist */; };
-		8298C9521B4188FF0006C53E /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 8298C9431B4188FF0006C53E /* .gitkeep */; };
-		8298C9531B4188FF0006C53E /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 8298C9451B4188FF0006C53E /* .gitkeep */; };
-		8298C9541B4188FF0006C53E /* OAStackView+Constraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 8298C9461B4188FF0006C53E /* OAStackView+Constraint.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8298C9551B4188FF0006C53E /* OAStackView+Constraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 8298C9471B4188FF0006C53E /* OAStackView+Constraint.m */; };
-		8298C9561B4188FF0006C53E /* OAStackView+Hiding.h in Headers */ = {isa = PBXBuildFile; fileRef = 8298C9481B4188FF0006C53E /* OAStackView+Hiding.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8298C9571B4188FF0006C53E /* OAStackView+Hiding.m in Sources */ = {isa = PBXBuildFile; fileRef = 8298C9491B4188FF0006C53E /* OAStackView+Hiding.m */; };
-		8298C9581B4188FF0006C53E /* OAStackView+Traversal.h in Headers */ = {isa = PBXBuildFile; fileRef = 8298C94A1B4188FF0006C53E /* OAStackView+Traversal.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8298C9591B4188FF0006C53E /* OAStackView+Traversal.m in Sources */ = {isa = PBXBuildFile; fileRef = 8298C94B1B4188FF0006C53E /* OAStackView+Traversal.m */; };
-		8298C95A1B4188FF0006C53E /* OAStackView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8298C94C1B4188FF0006C53E /* OAStackView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8298C95B1B4188FF0006C53E /* OAStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8298C94D1B4188FF0006C53E /* OAStackView.m */; };
-		8298C95C1B4188FF0006C53E /* OAStackViewAlignmentStrategy.h in Headers */ = {isa = PBXBuildFile; fileRef = 8298C94E1B4188FF0006C53E /* OAStackViewAlignmentStrategy.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8298C95D1B4188FF0006C53E /* OAStackViewAlignmentStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8298C94F1B4188FF0006C53E /* OAStackViewAlignmentStrategy.m */; };
-		8298C95E1B4188FF0006C53E /* OAStackViewDistributionStrategy.h in Headers */ = {isa = PBXBuildFile; fileRef = 8298C9501B4188FF0006C53E /* OAStackViewDistributionStrategy.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8298C95F1B4188FF0006C53E /* OAStackViewDistributionStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8298C9511B4188FF0006C53E /* OAStackViewDistributionStrategy.m */; };
+		3B1224581B4DF25200C02D3A /* _OALayoutGuide.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B12244A1B4DF25200C02D3A /* _OALayoutGuide.h */; };
+		3B1224591B4DF25200C02D3A /* _OALayoutGuide.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B12244B1B4DF25200C02D3A /* _OALayoutGuide.m */; };
+		3B12245A1B4DF25200C02D3A /* OAStackView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B12244C1B4DF25200C02D3A /* OAStackView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3B12245B1B4DF25200C02D3A /* OAStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B12244D1B4DF25200C02D3A /* OAStackView.m */; };
+		3B12245C1B4DF25200C02D3A /* OAStackView+Constraint.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B12244E1B4DF25200C02D3A /* OAStackView+Constraint.h */; };
+		3B12245D1B4DF25200C02D3A /* OAStackView+Constraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B12244F1B4DF25200C02D3A /* OAStackView+Constraint.m */; };
+		3B12245E1B4DF25200C02D3A /* OAStackView+Hiding.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B1224501B4DF25200C02D3A /* OAStackView+Hiding.h */; };
+		3B12245F1B4DF25200C02D3A /* OAStackView+Hiding.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1224511B4DF25200C02D3A /* OAStackView+Hiding.m */; };
+		3B1224601B4DF25200C02D3A /* OAStackView+Traversal.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B1224521B4DF25200C02D3A /* OAStackView+Traversal.h */; };
+		3B1224611B4DF25200C02D3A /* OAStackView+Traversal.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1224531B4DF25200C02D3A /* OAStackView+Traversal.m */; };
+		3B1224621B4DF25200C02D3A /* OAStackViewAlignmentStrategy.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B1224541B4DF25200C02D3A /* OAStackViewAlignmentStrategy.h */; };
+		3B1224631B4DF25200C02D3A /* OAStackViewAlignmentStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1224551B4DF25200C02D3A /* OAStackViewAlignmentStrategy.m */; };
+		3B1224641B4DF25200C02D3A /* OAStackViewDistributionStrategy.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B1224561B4DF25200C02D3A /* OAStackViewDistributionStrategy.h */; };
+		3B1224651B4DF25200C02D3A /* OAStackViewDistributionStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1224571B4DF25200C02D3A /* OAStackViewDistributionStrategy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B12244A1B4DF25200C02D3A /* _OALayoutGuide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _OALayoutGuide.h; path = Pod/Classes/_OALayoutGuide.h; sourceTree = SOURCE_ROOT; };
+		3B12244B1B4DF25200C02D3A /* _OALayoutGuide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _OALayoutGuide.m; path = Pod/Classes/_OALayoutGuide.m; sourceTree = SOURCE_ROOT; };
+		3B12244C1B4DF25200C02D3A /* OAStackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OAStackView.h; path = Pod/Classes/OAStackView.h; sourceTree = SOURCE_ROOT; };
+		3B12244D1B4DF25200C02D3A /* OAStackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OAStackView.m; path = Pod/Classes/OAStackView.m; sourceTree = SOURCE_ROOT; };
+		3B12244E1B4DF25200C02D3A /* OAStackView+Constraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "OAStackView+Constraint.h"; path = "Pod/Classes/OAStackView+Constraint.h"; sourceTree = SOURCE_ROOT; };
+		3B12244F1B4DF25200C02D3A /* OAStackView+Constraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "OAStackView+Constraint.m"; path = "Pod/Classes/OAStackView+Constraint.m"; sourceTree = SOURCE_ROOT; };
+		3B1224501B4DF25200C02D3A /* OAStackView+Hiding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "OAStackView+Hiding.h"; path = "Pod/Classes/OAStackView+Hiding.h"; sourceTree = SOURCE_ROOT; };
+		3B1224511B4DF25200C02D3A /* OAStackView+Hiding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "OAStackView+Hiding.m"; path = "Pod/Classes/OAStackView+Hiding.m"; sourceTree = SOURCE_ROOT; };
+		3B1224521B4DF25200C02D3A /* OAStackView+Traversal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "OAStackView+Traversal.h"; path = "Pod/Classes/OAStackView+Traversal.h"; sourceTree = SOURCE_ROOT; };
+		3B1224531B4DF25200C02D3A /* OAStackView+Traversal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "OAStackView+Traversal.m"; path = "Pod/Classes/OAStackView+Traversal.m"; sourceTree = SOURCE_ROOT; };
+		3B1224541B4DF25200C02D3A /* OAStackViewAlignmentStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OAStackViewAlignmentStrategy.h; path = Pod/Classes/OAStackViewAlignmentStrategy.h; sourceTree = SOURCE_ROOT; };
+		3B1224551B4DF25200C02D3A /* OAStackViewAlignmentStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OAStackViewAlignmentStrategy.m; path = Pod/Classes/OAStackViewAlignmentStrategy.m; sourceTree = SOURCE_ROOT; };
+		3B1224561B4DF25200C02D3A /* OAStackViewDistributionStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OAStackViewDistributionStrategy.h; path = Pod/Classes/OAStackViewDistributionStrategy.h; sourceTree = SOURCE_ROOT; };
+		3B1224571B4DF25200C02D3A /* OAStackViewDistributionStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OAStackViewDistributionStrategy.m; path = Pod/Classes/OAStackViewDistributionStrategy.m; sourceTree = SOURCE_ROOT; };
 		8298C9231B4188700006C53E /* OAStackView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OAStackView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8298C93F1B4188F50006C53E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
-		8298C9431B4188FF0006C53E /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		8298C9451B4188FF0006C53E /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		8298C9461B4188FF0006C53E /* OAStackView+Constraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OAStackView+Constraint.h"; sourceTree = "<group>"; };
-		8298C9471B4188FF0006C53E /* OAStackView+Constraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OAStackView+Constraint.m"; sourceTree = "<group>"; };
-		8298C9481B4188FF0006C53E /* OAStackView+Hiding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OAStackView+Hiding.h"; sourceTree = "<group>"; };
-		8298C9491B4188FF0006C53E /* OAStackView+Hiding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OAStackView+Hiding.m"; sourceTree = "<group>"; };
-		8298C94A1B4188FF0006C53E /* OAStackView+Traversal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OAStackView+Traversal.h"; sourceTree = "<group>"; };
-		8298C94B1B4188FF0006C53E /* OAStackView+Traversal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OAStackView+Traversal.m"; sourceTree = "<group>"; };
-		8298C94C1B4188FF0006C53E /* OAStackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAStackView.h; sourceTree = "<group>"; };
-		8298C94D1B4188FF0006C53E /* OAStackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAStackView.m; sourceTree = "<group>"; };
-		8298C94E1B4188FF0006C53E /* OAStackViewAlignmentStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAStackViewAlignmentStrategy.h; sourceTree = "<group>"; };
-		8298C94F1B4188FF0006C53E /* OAStackViewAlignmentStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAStackViewAlignmentStrategy.m; sourceTree = "<group>"; };
-		8298C9501B4188FF0006C53E /* OAStackViewDistributionStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAStackViewDistributionStrategy.h; sourceTree = "<group>"; };
-		8298C9511B4188FF0006C53E /* OAStackViewDistributionStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAStackViewDistributionStrategy.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,55 +72,23 @@
 		8298C9251B4188700006C53E /* OAStackView */ = {
 			isa = PBXGroup;
 			children = (
-				8298C9411B4188FF0006C53E /* Pod */,
-				8298C9261B4188700006C53E /* Supporting Files */,
-			);
-			path = OAStackView;
-			sourceTree = "<group>";
-		};
-		8298C9261B4188700006C53E /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
+				3B12244A1B4DF25200C02D3A /* _OALayoutGuide.h */,
+				3B12244B1B4DF25200C02D3A /* _OALayoutGuide.m */,
+				3B12244C1B4DF25200C02D3A /* OAStackView.h */,
+				3B12244D1B4DF25200C02D3A /* OAStackView.m */,
+				3B12244E1B4DF25200C02D3A /* OAStackView+Constraint.h */,
+				3B12244F1B4DF25200C02D3A /* OAStackView+Constraint.m */,
+				3B1224501B4DF25200C02D3A /* OAStackView+Hiding.h */,
+				3B1224511B4DF25200C02D3A /* OAStackView+Hiding.m */,
+				3B1224521B4DF25200C02D3A /* OAStackView+Traversal.h */,
+				3B1224531B4DF25200C02D3A /* OAStackView+Traversal.m */,
+				3B1224541B4DF25200C02D3A /* OAStackViewAlignmentStrategy.h */,
+				3B1224551B4DF25200C02D3A /* OAStackViewAlignmentStrategy.m */,
+				3B1224561B4DF25200C02D3A /* OAStackViewDistributionStrategy.h */,
+				3B1224571B4DF25200C02D3A /* OAStackViewDistributionStrategy.m */,
 				8298C93F1B4188F50006C53E /* Info.plist */,
 			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		8298C9411B4188FF0006C53E /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				8298C9421B4188FF0006C53E /* Assets */,
-				8298C9441B4188FF0006C53E /* Classes */,
-			);
-			path = Pod;
-			sourceTree = SOURCE_ROOT;
-		};
-		8298C9421B4188FF0006C53E /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				8298C9431B4188FF0006C53E /* .gitkeep */,
-			);
-			path = Assets;
-			sourceTree = "<group>";
-		};
-		8298C9441B4188FF0006C53E /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				8298C9451B4188FF0006C53E /* .gitkeep */,
-				8298C9461B4188FF0006C53E /* OAStackView+Constraint.h */,
-				8298C9471B4188FF0006C53E /* OAStackView+Constraint.m */,
-				8298C9481B4188FF0006C53E /* OAStackView+Hiding.h */,
-				8298C9491B4188FF0006C53E /* OAStackView+Hiding.m */,
-				8298C94A1B4188FF0006C53E /* OAStackView+Traversal.h */,
-				8298C94B1B4188FF0006C53E /* OAStackView+Traversal.m */,
-				8298C94C1B4188FF0006C53E /* OAStackView.h */,
-				8298C94D1B4188FF0006C53E /* OAStackView.m */,
-				8298C94E1B4188FF0006C53E /* OAStackViewAlignmentStrategy.h */,
-				8298C94F1B4188FF0006C53E /* OAStackViewAlignmentStrategy.m */,
-				8298C9501B4188FF0006C53E /* OAStackViewDistributionStrategy.h */,
-				8298C9511B4188FF0006C53E /* OAStackViewDistributionStrategy.m */,
-			);
-			path = Classes;
+			path = OAStackView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,12 +98,13 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8298C95A1B4188FF0006C53E /* OAStackView.h in Headers */,
-				8298C9541B4188FF0006C53E /* OAStackView+Constraint.h in Headers */,
-				8298C9581B4188FF0006C53E /* OAStackView+Traversal.h in Headers */,
-				8298C9561B4188FF0006C53E /* OAStackView+Hiding.h in Headers */,
-				8298C95E1B4188FF0006C53E /* OAStackViewDistributionStrategy.h in Headers */,
-				8298C95C1B4188FF0006C53E /* OAStackViewAlignmentStrategy.h in Headers */,
+				3B12245A1B4DF25200C02D3A /* OAStackView.h in Headers */,
+				3B1224621B4DF25200C02D3A /* OAStackViewAlignmentStrategy.h in Headers */,
+				3B12245E1B4DF25200C02D3A /* OAStackView+Hiding.h in Headers */,
+				3B1224601B4DF25200C02D3A /* OAStackView+Traversal.h in Headers */,
+				3B12245C1B4DF25200C02D3A /* OAStackView+Constraint.h in Headers */,
+				3B1224581B4DF25200C02D3A /* _OALayoutGuide.h in Headers */,
+				3B1224641B4DF25200C02D3A /* OAStackViewDistributionStrategy.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,9 +165,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8298C9531B4188FF0006C53E /* .gitkeep in Resources */,
-				8298C9401B4188F50006C53E /* Info.plist in Resources */,
-				8298C9521B4188FF0006C53E /* .gitkeep in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,12 +175,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8298C9571B4188FF0006C53E /* OAStackView+Hiding.m in Sources */,
-				8298C95B1B4188FF0006C53E /* OAStackView.m in Sources */,
-				8298C95F1B4188FF0006C53E /* OAStackViewDistributionStrategy.m in Sources */,
-				8298C95D1B4188FF0006C53E /* OAStackViewAlignmentStrategy.m in Sources */,
-				8298C9591B4188FF0006C53E /* OAStackView+Traversal.m in Sources */,
-				8298C9551B4188FF0006C53E /* OAStackView+Constraint.m in Sources */,
+				3B1224651B4DF25200C02D3A /* OAStackViewDistributionStrategy.m in Sources */,
+				3B1224591B4DF25200C02D3A /* _OALayoutGuide.m in Sources */,
+				3B12245B1B4DF25200C02D3A /* OAStackView.m in Sources */,
+				3B1224631B4DF25200C02D3A /* OAStackViewAlignmentStrategy.m in Sources */,
+				3B1224611B4DF25200C02D3A /* OAStackView+Traversal.m in Sources */,
+				3B12245F1B4DF25200C02D3A /* OAStackView+Hiding.m in Sources */,
+				3B12245D1B4DF25200C02D3A /* OAStackView+Constraint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
