@@ -57,7 +57,10 @@
   _axis = UILayoutConstraintAxisVertical;
   _alignment = OAStackViewAlignmentFill;
   _distribution = OAStackViewDistributionFill;
-  
+
+  _layoutMargins = UIEdgeInsetsMake(0, 8, 0, 8);
+  _layoutMarginsRelativeArrangement = NO;
+
   _alignmentStrategy = [OAStackViewAlignmentStrategy strategyWithStackView:self];
   _distributionStrategy = [OAStackViewDistributionStrategy strategyWithStackView:self];
   
