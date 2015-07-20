@@ -107,7 +107,7 @@ All contributions in any form are welcomed, if you find the project helpful, and
 
 	@property(nonatomic,getter=isBaselineRelativeArrangement) BOOL baselineRelativeArrangement;
 
-- [ ] `layoutMarginsRelativeArrangement`     
+- [x] `layoutMarginsRelativeArrangement`     
 
 
 	@property(nonatomic,getter=isLayoutMarginsRelativeArrangement) BOOL layoutMarginsRelativeArrangement;    
