@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="whP-gf-Uak">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E26a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="whP-gf-Uak">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -18,6 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aOB-5r-4uZ" userLabel="Background View">
+                                <rect key="frame" x="16" y="28" width="272" height="128"/>
+                                <color key="backgroundColor" red="0.94901960780000005" green="0.90588235289999997" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="177" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="o1j-UM-Q0C" customClass="OAStackView">
                                 <rect key="frame" x="16" y="28" width="272" height="128"/>
                                 <subviews>
@@ -52,7 +56,6 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.94901960780000005" green="0.90588235289999997" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="AwR-JP-fkI" firstAttribute="leading" secondItem="Ehd-QC-zJx" secondAttribute="trailing" constant="23" id="7Qi-07-WtC"/>
                                     <constraint firstAttribute="width" constant="272" id="Q65-yu-Z4C"/>
@@ -221,6 +224,33 @@
                                             <action selector="distributionEqualCentering:" destination="whP-gf-Uak" eventType="touchUpInside" id="WKO-AX-4ab"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="47g-89-34P">
+                                        <rect key="frame" x="249" y="238" width="79" height="30"/>
+                                        <state key="normal" title="No Margins">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="marginsTapped:" destination="whP-gf-Uak" eventType="touchUpInside" id="DuV-QU-yFb"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="100" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h1s-to-MhG">
+                                        <rect key="frame" x="197" y="185" width="131" height="30"/>
+                                        <state key="normal" title="Margins (10,0,10,0)">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="marginsTapped:" destination="whP-gf-Uak" eventType="touchUpInside" id="G32-LY-9Bk"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="200" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ut8-pm-Xgm">
+                                        <rect key="frame" x="181" y="211" width="148" height="30"/>
+                                        <state key="normal" title="Margins (10,20,30,40)">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="marginsTapped:" destination="whP-gf-Uak" eventType="touchUpInside" id="j2w-o5-yjd"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -266,11 +296,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="aOB-5r-4uZ" firstAttribute="centerY" secondItem="o1j-UM-Q0C" secondAttribute="centerY" id="0M5-p6-GWa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hOV-vh-kIh" secondAttribute="trailing" id="7k8-7m-x17"/>
+                            <constraint firstItem="aOB-5r-4uZ" firstAttribute="centerX" secondItem="o1j-UM-Q0C" secondAttribute="centerX" id="8b5-ZU-7zD"/>
                             <constraint firstItem="hOV-vh-kIh" firstAttribute="top" secondItem="o1j-UM-Q0C" secondAttribute="bottom" constant="17" id="MjS-ee-sqP"/>
                             <constraint firstItem="o1j-UM-Q0C" firstAttribute="leading" secondItem="TpU-gO-2f1" secondAttribute="leadingMargin" id="MlC-bZ-a9a"/>
                             <constraint firstItem="o1j-UM-Q0C" firstAttribute="top" secondItem="uEw-UM-LJ8" secondAttribute="bottom" constant="8" id="OKI-dU-jvL"/>
+                            <constraint firstItem="aOB-5r-4uZ" firstAttribute="width" secondItem="o1j-UM-Q0C" secondAttribute="width" id="V3Z-AR-HLg"/>
                             <constraint firstItem="hOV-vh-kIh" firstAttribute="leading" secondItem="TpU-gO-2f1" secondAttribute="leadingMargin" id="gZg-tv-ITI"/>
+                            <constraint firstItem="aOB-5r-4uZ" firstAttribute="height" secondItem="o1j-UM-Q0C" secondAttribute="height" id="zH4-kr-eV3"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
