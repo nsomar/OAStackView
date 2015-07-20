@@ -162,13 +162,14 @@
 
 - (NSArray*)constraintsalignViewOnOtherAxis:(UIView*)view {
     NSArray *constraints = [super constraintsalignViewOnOtherAxis:view];
+    CGFloat centerAdjustment = ([self firstMargin] - [self lastMargin]) / 2;
     return [constraints arrayByAddingObject:[NSLayoutConstraint constraintWithItem:view
                                                                          attribute:[self centerAttribute]
                                                                          relatedBy:NSLayoutRelationEqual
                                                                             toItem:view.superview
                                                                          attribute:[self centerAttribute]
                                                                         multiplier:1
-                                                                          constant:0]];
+                                                                          constant:centerAdjustment]];
 }
 
 @end
