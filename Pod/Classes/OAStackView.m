@@ -154,6 +154,16 @@
   self.distribution = distributionValue;
 }
 
+- (void)setLayoutMargins:(UIEdgeInsets)layoutMargins {
+    _layoutMargins = layoutMargins;
+    [self layoutArrangedViews];
+}
+
+- (void)setLayoutMarginsRelativeArrangement:(BOOL)layoutMarginsRelativeArrangement {
+    _layoutMarginsRelativeArrangement = layoutMarginsRelativeArrangement;
+    [self layoutArrangedViews];
+}
+
 #pragma mark Layouting
 
 - (void)layoutSubviews {
