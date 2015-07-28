@@ -4,6 +4,7 @@
 //
 
 #import "_OALayoutGuide.h"
+#import "OATransformLayer.h"
 
 @interface _OALayoutGuide ()
 
@@ -15,7 +16,7 @@
 
 + (Class)layerClass
 {
-  return [CATransformLayer class];
+  return [OATransformLayer class];
 }
 
 + (BOOL)requiresConstraintBasedLayout

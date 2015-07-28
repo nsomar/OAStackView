@@ -39,6 +39,10 @@
 		210796EB688C6ABD89F3EE18 /* KWStringPrefixMatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 289C519B41B7A75A2B4D4F2A /* KWStringPrefixMatcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		235C8C9E0E1BC9B6C63772E7 /* OAStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2F4F1397A17E203EA8112B /* OAStackView.m */; };
 		24C4AAE0534CDCE8D6E46D93 /* KWGenericMatchingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF6F20100AAE1CA9538A76F /* KWGenericMatchingAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		24D2763B1B564210006FBE44 /* OATransformLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 24D276371B5641FB006FBE44 /* OATransformLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		24D2763C1B564214006FBE44 /* OATransformLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 24D276371B5641FB006FBE44 /* OATransformLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		24D2763D1B56422D006FBE44 /* OATransformLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 24D276381B5641FB006FBE44 /* OATransformLayer.m */; };
+		24D2763E1B56422F006FBE44 /* OATransformLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 24D276381B5641FB006FBE44 /* OATransformLayer.m */; };
 		26DB8BFE41E064ECDB11D8C8 /* OAStackViewDistributionStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = C23A1311AA2C1EA1D567AE58 /* OAStackViewDistributionStrategy.m */; };
 		280A06AF115C587F60C07F65 /* KWFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 43F43A32CC59A45C8930A23D /* KWFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2A4BCA79FAB91BD01D029BEA /* KWHaveMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B2353F3CD3094DA2FF2308 /* KWHaveMatcher.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
@@ -310,6 +314,8 @@
 		2411E3D92988EE8ED2F5781F /* KWProbePoller.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KWProbePoller.m; path = Classes/Core/KWProbePoller.m; sourceTree = "<group>"; };
 		242F82F079F82A603E9FD011 /* KWIntercept.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = KWIntercept.m; path = Classes/Stubbing/KWIntercept.m; sourceTree = "<group>"; };
 		243DE5C9223FA42DA139B96F /* KWMessageTracker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KWMessageTracker.h; path = Classes/Core/KWMessageTracker.h; sourceTree = "<group>"; };
+		24D276371B5641FB006FBE44 /* OATransformLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OATransformLayer.h; sourceTree = "<group>"; };
+		24D276381B5641FB006FBE44 /* OATransformLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OATransformLayer.m; sourceTree = "<group>"; };
 		251C6C0D56338AB4219E6BB3 /* KWMatching.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KWMatching.h; path = Classes/Core/KWMatching.h; sourceTree = "<group>"; };
 		259FE7E096986B690B85576F /* KWIntercept.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KWIntercept.h; path = Classes/Stubbing/KWIntercept.h; sourceTree = "<group>"; };
 		28313395E0E6FD06CC778A3B /* Pods-OAStackView_Tests-OAStackView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Pods-OAStackView_Tests-OAStackView-umbrella.h"; path = "../Pods-OAStackView_Tests-OAStackView/Pods-OAStackView_Tests-OAStackView-umbrella.h"; sourceTree = "<group>"; };
@@ -602,6 +608,8 @@
 				024194B58731070E9AC9710B /* OAStackViewAlignmentStrategy.m */,
 				63CD8F567707C8CFAFF87734 /* OAStackViewDistributionStrategy.h */,
 				C23A1311AA2C1EA1D567AE58 /* OAStackViewDistributionStrategy.m */,
+				24D276371B5641FB006FBE44 /* OATransformLayer.h */,
+				24D276381B5641FB006FBE44 /* OATransformLayer.m */,
 				4B0F8F211B44C36F0036F739 /* _OALayoutGuide.h */,
 				4B0F8F221B44C36F0036F739 /* _OALayoutGuide.m */,
 			);
@@ -1075,6 +1083,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24D2763C1B564214006FBE44 /* OATransformLayer.h in Headers */,
 				D69542A762933D4119F4037C /* OAStackView+Constraint.h in Headers */,
 				4B2AD8911B46F05300285D06 /* _OALayoutGuide.h in Headers */,
 				05794B5F4247E3A648C40B51 /* OAStackView+Hiding.h in Headers */,
@@ -1098,6 +1107,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24D2763B1B564210006FBE44 /* OATransformLayer.h in Headers */,
 				06EC4010B3D981437FC3D92B /* OAStackView+Constraint.h in Headers */,
 				4B2AD8901B46F04900285D06 /* _OALayoutGuide.h in Headers */,
 				19308B2A9CB35F4AD26FD0CF /* OAStackView+Hiding.h in Headers */,
@@ -1316,6 +1326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58DCEDE8B878506E6FC76A6C /* OAStackView+Constraint.m in Sources */,
+				24D2763E1B56422F006FBE44 /* OATransformLayer.m in Sources */,
 				F27AC0C8EBEBA418A364A342 /* OAStackView+Hiding.m in Sources */,
 				176687AE221D864862460D2F /* OAStackView+Traversal.m in Sources */,
 				7CCD749F07E4C3F9C9E0C687 /* OAStackView.m in Sources */,
@@ -1444,6 +1455,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				821E86B2B15AC40A1F067EC2 /* OAStackView+Constraint.m in Sources */,
+				24D2763D1B56422D006FBE44 /* OATransformLayer.m in Sources */,
 				A74399994CB4836F76ABCDA7 /* OAStackView+Hiding.m in Sources */,
 				39B7C35F9F84FAECEEF7423C /* OAStackView+Traversal.m in Sources */,
 				235C8C9E0E1BC9B6C63772E7 /* OAStackView.m in Sources */,
