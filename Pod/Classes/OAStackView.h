@@ -55,7 +55,7 @@ typedef NS_ENUM(NSInteger, OAStackViewAlignment) {
    */
   OAStackViewAlignmentLeading,
   OAStackViewAlignmentTop = OAStackViewAlignmentLeading,
-  OAStackViewAlignmentFirstBaseline, // Valid for horizontal axis only
+  OAStackViewAlignmentFirstBaseline NS_ENUM_AVAILABLE_IOS(8_0), // Valid for horizontal axis only
   
   /* Center the items in a vertical stack horizontally
    or the items in a horizontal stack vertically
@@ -68,7 +68,8 @@ typedef NS_ENUM(NSInteger, OAStackViewAlignment) {
    */
   OAStackViewAlignmentTrailing,
   OAStackViewAlignmentBottom = OAStackViewAlignmentTrailing,
-  OAStackViewAlignmentLastBaseline, // Valid for horizontal axis only
+  OAStackViewAlignmentBaseline,
+  OAStackViewAlignmentLastBaseline = OAStackViewAlignmentBaseline, // Valid for horizontal axis only
 };
 
 // Keep older versions of the compiler happy
