@@ -490,12 +490,39 @@ describe(@"OAStackView", ^{
         });
       });
     });
-    
+
+    context(@"Margins", ^{
+
+      __block UIView *view1, *view2, *view3;
+
+      beforeEach(^{
+        view1 = createView(100, 100);
+        view2 = createView(100, 100);
+        view3 = createView(100, 100);
+
+        NSArray *views = @[view1, view2, view3];
+
+        stackView = [[OAStackView alloc] initWithArrangedSubviews:views];
+        stackView.translatesAutoresizingMaskIntoConstraints = NO;
+        stackView.layoutMarginsRelativeArrangement = YES;
+        stackView.layoutMargins = UIEdgeInsetsMake(10, 20, 30, 40);
+      });
+
+      it(@"Arranges the views relative to margins if set", ^{
+        layoutView(stackView);
+
+        [[theValue(view1.frame) should] equal:theValue(CGRectMake(20, 10, 100, 100))];
+        [[theValue(view2.frame) should] equal:theValue(CGRectMake(20, 110, 100, 100))];
+        [[theValue(view3.frame) should] equal:theValue(CGRectMake(20, 210, 100, 100))];
+        [[theValue(stackView.frame) should] equal:theValue(CGRectMake(0, 0, 160, 340))];
+      });
+    });
+
   });
   
-  
+
   context(@"Horizontal", ^{
-    
+
     it(@"Can arrange views vertically", ^{
       NSArray *views = @[createView(100, 40),createView(100, 40)];
       
@@ -946,8 +973,36 @@ describe(@"OAStackView", ^{
     });
 
   });
-  
-  
+
+  context(@"Margins", ^{
+
+    __block UIView *view1, *view2, *view3;
+
+    beforeEach(^{
+      view1 = createView(100, 100);
+      view2 = createView(100, 100);
+      view3 = createView(100, 100);
+
+      NSArray *views = @[view1, view2, view3];
+
+      stackView = [[OAStackView alloc] initWithArrangedSubviews:views];
+      stackView.translatesAutoresizingMaskIntoConstraints = NO;
+      stackView.axis = UILayoutConstraintAxisHorizontal;
+      stackView.layoutMarginsRelativeArrangement = YES;
+      stackView.layoutMargins = UIEdgeInsetsMake(10, 20, 30, 40);
+    });
+
+    it(@"Arranges the views relative to margins if set", ^{
+      layoutView(stackView);
+
+      [[theValue(view1.frame) should] equal:theValue(CGRectMake(20, 10, 100, 100))];
+      [[theValue(view2.frame) should] equal:theValue(CGRectMake(120, 10, 100, 100))];
+      [[theValue(view3.frame) should] equal:theValue(CGRectMake(220, 10, 100, 100))];
+      [[theValue(stackView.frame) should] equal:theValue(CGRectMake(0, 0, 360, 140))];
+    });
+  });
+
+
   context(@"bug fixes", ^{
   
     __block UIView *view1, *view2, *view3;
