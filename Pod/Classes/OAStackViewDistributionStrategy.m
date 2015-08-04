@@ -88,20 +88,22 @@
 }
 
 - (void)alignLastView:(UIView*)view {
-  NSString *constraintString = [NSString stringWithFormat:@"%@:[view]-0-|", [self currentAxisString]];
+  NSString *constraintString = [NSString stringWithFormat:@"%@:[view]-(lastMargin)-|", [self currentAxisString]];
+  NSNumber *lastMargin = @([self lastMargin]);
   [self.stackView addConstraints:
    [NSLayoutConstraint constraintsWithVisualFormat:constraintString
                                            options:0
-                                           metrics:nil
+                                           metrics:NSDictionaryOfVariableBindings(lastMargin)
                                              views:NSDictionaryOfVariableBindings(view)]];
 }
 
 - (void)alignFirstView:(UIView*)view {
-  NSString *str = [NSString stringWithFormat:@"%@:|-0-[view]", [self currentAxisString]];
+  NSString *str = [NSString stringWithFormat:@"%@:|-(firstMargin)-[view]", [self currentAxisString]];
+  NSNumber *firstMargin = @([self firstMargin]);
   [self.stackView addConstraints:
    [NSLayoutConstraint constraintsWithVisualFormat:str
                                            options:0
-                                           metrics:nil
+                                           metrics:NSDictionaryOfVariableBindings(firstMargin)
                                              views:NSDictionaryOfVariableBindings(view)]];
 }
 
@@ -128,6 +130,22 @@
 
 - (NSLayoutAttribute)equalityAxis {
   return self.stackView.axis == UILayoutConstraintAxisVertical ? NSLayoutAttributeHeight : NSLayoutAttributeWidth;
+}
+
+- (CGFloat)firstMargin {
+    if (self.stackView.axis == UILayoutConstraintAxisHorizontal) {
+        return self.stackView.layoutMarginsRelativeArrangement ? self.stackView.layoutMargins.left : 0.0f;
+    } else {
+        return self.stackView.layoutMarginsRelativeArrangement ? self.stackView.layoutMargins.top : 0.0f;
+    }
+}
+
+- (CGFloat)lastMargin {
+    if (self.stackView.axis == UILayoutConstraintAxisHorizontal) {
+        return self.stackView.layoutMarginsRelativeArrangement ? self.stackView.layoutMargins.right : 0.0f;
+    } else {
+        return self.stackView.layoutMarginsRelativeArrangement ? self.stackView.layoutMargins.bottom : 0.0f;
+    }
 }
 
 - (NSMutableArray *)constraints {

@@ -67,6 +67,22 @@
   return self.stackView.axis == UILayoutConstraintAxisHorizontal ? @"V" : @"H";
 }
 
+- (CGFloat)firstMargin {
+    if (self.stackView.axis == UILayoutConstraintAxisHorizontal) {
+        return self.stackView.layoutMarginsRelativeArrangement ? self.stackView.layoutMargins.top : 0.0f;
+    } else {
+        return self.stackView.layoutMarginsRelativeArrangement ? self.stackView.layoutMargins.left : 0.0f;
+    }
+}
+
+- (CGFloat)lastMargin {
+    if (self.stackView.axis == UILayoutConstraintAxisHorizontal) {
+        return self.stackView.layoutMarginsRelativeArrangement ? self.stackView.layoutMargins.bottom : 0.0f;
+    } else {
+        return self.stackView.layoutMarginsRelativeArrangement ? self.stackView.layoutMargins.right : 0.0f;
+    }
+}
+
 - (NSLayoutAttribute)centerAttribute {
   return self.stackView.axis == UILayoutConstraintAxisHorizontal ? NSLayoutAttributeCenterY : NSLayoutAttributeCenterX;
 }
@@ -91,62 +107,69 @@
   [self.constraints removeAllObjects];
 }
 
-- (NSArray*)constraintsalignViewOnOtherAxis:(UIView*)view { /* subclassing */ return nil; }
+- (NSArray*)constraintsalignViewOnOtherAxis:(UIView*)view {
+    id constraintString = [NSString stringWithFormat:@"%@:|-(%@firstMargin)-[view]-(%@lastMargin)-|", [self otherAxisString], [self firstMarginRelation], [self lastMarginRelation]];
+
+    NSNumber *firstMargin = @([self firstMargin]);
+    NSNumber *lastMargin = @([self lastMargin]);
+    return [NSLayoutConstraint constraintsWithVisualFormat:constraintString
+                                                   options:0
+                                                   metrics:NSDictionaryOfVariableBindings(firstMargin, lastMargin)
+                                                     views:NSDictionaryOfVariableBindings(view)];
+}
+
+- (NSString *)firstMarginRelation {
+    return @"==";
+}
+
+- (NSString *)lastMarginRelation {
+    return @"==";
+}
 
 @end
 
 @implementation OAStackViewAlignmentStrategyFill
-
-- (NSArray*)constraintsalignViewOnOtherAxis:(UIView*)view {
-  
-  id constraintString = [NSString stringWithFormat:@"%@:|-0-[view]-0-|", [self otherAxisString]];
-  
-  return [NSLayoutConstraint constraintsWithVisualFormat:constraintString
-                                                 options:0
-                                                 metrics:nil
-                                                   views:NSDictionaryOfVariableBindings(view)];
-}
-
 @end
 
 @implementation OAStackViewAlignmentStrategyLeading
-
-- (NSArray*)constraintsalignViewOnOtherAxis:(UIView*)view {
-  
-  id constraintString = [NSString stringWithFormat:@"%@:|-0-[view]->=0-|", [self otherAxisString]];
-  
-  return [NSLayoutConstraint constraintsWithVisualFormat:constraintString
-                                                 options:0
-                                                 metrics:nil
-                                                   views:NSDictionaryOfVariableBindings(view)];
+- (NSString *)firstMarginRelation {
+    return @"==";
 }
 
+- (NSString *)lastMarginRelation {
+    return @">=";
+}
 @end
 
 @implementation OAStackViewAlignmentStrategyTrailing
-
-- (NSArray*)constraintsalignViewOnOtherAxis:(UIView*)view {
-  
-  id constraintString = [NSString stringWithFormat:@"%@:|->=0-[view]-0-|", [self otherAxisString]];
-  
-  return [NSLayoutConstraint constraintsWithVisualFormat:constraintString
-                                                 options:0
-                                                 metrics:nil
-                                                   views:NSDictionaryOfVariableBindings(view)];
+- (NSString *)firstMarginRelation {
+    return @">=";
 }
 
+- (NSString *)lastMarginRelation {
+    return @"==";
+}
 @end
 
 @implementation OAStackViewAlignmentStrategyCenter
+- (NSString *)firstMarginRelation {
+    return @">=";
+}
+
+- (NSString *)lastMarginRelation {
+    return @">=";
+}
 
 - (NSArray*)constraintsalignViewOnOtherAxis:(UIView*)view {
-  
-  return @[[NSLayoutConstraint constraintWithItem:view
-                               attribute:[self centerAttribute]
-                               relatedBy:NSLayoutRelationEqual
-                                  toItem:view.superview
-                               attribute:[self centerAttribute]
-                                       multiplier:1 constant:0]];
+    NSArray *constraints = [super constraintsalignViewOnOtherAxis:view];
+    CGFloat centerAdjustment = ([self firstMargin] - [self lastMargin]) / 2;
+    return [constraints arrayByAddingObject:[NSLayoutConstraint constraintWithItem:view
+                                                                         attribute:[self centerAttribute]
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:view.superview
+                                                                         attribute:[self centerAttribute]
+                                                                        multiplier:1
+                                                                          constant:centerAdjustment]];
 }
 
 @end
