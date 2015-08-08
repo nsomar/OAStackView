@@ -20,3 +20,8 @@
 - (void)removeAddedConstraints;
 
 @end
+
+// Method for subclasses to use
+@interface OAStackViewAlignmentStrategy (Subclassing)
+- (NSString*)otherAxisString;
+@end

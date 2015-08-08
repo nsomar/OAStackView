@@ -1,6 +1,0 @@
-framework module Kiwi {
-  umbrella header "Pods-OAStackView_Tests-Kiwi-umbrella.h"
-
-  export *
-  module * { export * }
-}
