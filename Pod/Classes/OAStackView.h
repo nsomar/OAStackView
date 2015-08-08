@@ -99,6 +99,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic) OAStackViewDistribution distribution;
 @property(nonatomic) IBInspectable NSInteger distributionValue;
 
+//layoutMargins has been added to OAStackView since iOS 7 does not include a layout margin
+@property(nonatomic) UIEdgeInsets layoutMargins;
+
+@property(nonatomic, getter=isLayoutMarginsRelativeArrangement) BOOL layoutMarginsRelativeArrangement;
+
 - (instancetype)initWithArrangedSubviews:(NSArray*)views NS_DESIGNATED_INITIALIZER;
 - (instancetype)initWithCoder:(NSCoder *)coder NS_DESIGNATED_INITIALIZER;
 

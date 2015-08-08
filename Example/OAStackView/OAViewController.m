@@ -100,4 +100,21 @@
    self.stackView.distribution = OAStackViewDistributionEqualCentering;
 }
 
+- (IBAction)marginsTapped:(UIButton *)sender {
+  switch (sender.tag) {
+    case 100:
+      self.stackView.layoutMarginsRelativeArrangement = YES;
+      self.stackView.layoutMargins = UIEdgeInsetsMake(10, 0, 10, 0);
+      break;
+    case 200:
+      self.stackView.layoutMarginsRelativeArrangement = YES;
+      self.stackView.layoutMargins = UIEdgeInsetsMake(10, 20, 30, 40);
+      break;
+    default:
+      self.stackView.layoutMarginsRelativeArrangement = NO;
+      self.stackView.layoutMargins = UIEdgeInsetsMake(0, 0, 0, 0);
+      break;
+  }
+}
+
 @end
