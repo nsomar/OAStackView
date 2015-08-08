@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		16951A4DAC6553EE4D40D755 /* Pods_OAStackView_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A5A33E2C7E649B51D3BA787 /* Pods_OAStackView_Example.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		535F82651B7681B000841D0D /* OAStackViewAlignmentSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F82631B76819500841D0D /* OAStackViewAlignmentSpec.m */; };
+		535F82681B7681E200841D0D /* TestHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F82671B7681E200841D0D /* TestHelpers.m */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -41,6 +43,9 @@
 		36483642FFCC66CE85E4617C /* Pods-OAStackView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OAStackView_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OAStackView_Tests/Pods-OAStackView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		4A479030BF663DB64E709BCD /* Pods-OAStackView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OAStackView_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OAStackView_Example/Pods-OAStackView_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		4A5A33E2C7E649B51D3BA787 /* Pods_OAStackView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OAStackView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		535F82631B76819500841D0D /* OAStackViewAlignmentSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAStackViewAlignmentSpec.m; sourceTree = "<group>"; };
+		535F82661B7681E200841D0D /* TestHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHelpers.h; sourceTree = "<group>"; };
+		535F82671B7681E200841D0D /* TestHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestHelpers.m; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* OAStackView_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OAStackView_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -159,8 +164,11 @@
 		6003F5B5195388D20070C39A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				6003F5B6195388D20070C39A /* Supporting Files */,
+				535F82661B7681E200841D0D /* TestHelpers.h */,
+				535F82671B7681E200841D0D /* TestHelpers.m */,
 				A7CC22B11B2E0B46009C9911 /* OAStackViewSpec.m */,
+				535F82631B76819500841D0D /* OAStackViewAlignmentSpec.m */,
+				6003F5B6195388D20070C39A /* Supporting Files */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -397,6 +405,7 @@
 				6003F59E195388D20070C39A /* OAAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* OAViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				535F82681B7681E200841D0D /* TestHelpers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +413,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				535F82651B7681B000841D0D /* OAStackViewAlignmentSpec.m in Sources */,
 				A7CC22B31B2E0B8E009C9911 /* OAStackViewSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

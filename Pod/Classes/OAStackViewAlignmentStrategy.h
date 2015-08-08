@@ -15,6 +15,13 @@
 + (OAStackViewAlignmentStrategy*)strategyWithStackView:(OAStackView *)stackView;
 
 - (void)addConstraintsOnOtherAxis:(UIView*)view;
-- (void)removeAddedConstraints;;
+- (void)alignView:(UIView*)view withPreviousView:(UIView*)previousView;
 
+- (void)removeAddedConstraints;
+
+@end
+
+// Method for subclasses to use
+@interface OAStackViewAlignmentStrategy (Subclassing)
+- (NSString*)otherAxisString;
 @end
