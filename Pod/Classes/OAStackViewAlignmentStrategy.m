@@ -7,6 +7,8 @@
 //
 
 #import "OAStackViewAlignmentStrategy.h"
+#import "OAStackViewAlignmentStrategyBaseline.h"
+
 
 @interface OAStackViewAlignmentStrategyFill : OAStackViewAlignmentStrategy
 @end
@@ -18,16 +20,6 @@
 @end
 
 @interface OAStackViewAlignmentStrategyCenter: OAStackViewAlignmentStrategy
-@end
-
-@interface OAStackViewAlignmentStrategyBaseline: OAStackViewAlignmentStrategy
-- (NSLayoutAttribute)baselineAttribute;
-@end
-
-@interface OAStackViewAlignmentStrategyLastBaseline: OAStackViewAlignmentStrategyBaseline
-@end
-
-@interface OAStackViewAlignmentStrategyFirstBaseline: OAStackViewAlignmentStrategyBaseline
 @end
 
 @interface OAStackViewAlignmentStrategy ()
@@ -198,46 +190,5 @@
                                                                         multiplier:1
                                                                           constant:centerAdjustment]];
 }
-
-@end
-
-@implementation OAStackViewAlignmentStrategyBaseline
-
-- (NSArray*)constraintsalignViewOnOtherAxis:(UIView*)view {
-  id constraintString = [NSString stringWithFormat:@"%@:|-(>=0@750)-[view]-(>=0@750)-|", [self otherAxisString]];
-    
-  return [NSLayoutConstraint constraintsWithVisualFormat:constraintString
-                                                 options:0
-                                                 metrics:nil
-                                                   views:NSDictionaryOfVariableBindings(view)];
-}
-
-- (NSArray*)constraintsAlignView:(UIView *)view afterPreviousView:(UIView*)afterView {
-  if (!view  || !afterView) { return nil; }
-  
-  return @[[NSLayoutConstraint constraintWithItem:view
-                                        attribute:[self baselineAttribute]
-                                        relatedBy:NSLayoutRelationEqual toItem:afterView
-                                        attribute:[self baselineAttribute] multiplier:1.0f
-                                         constant:0.0f]];
-}
-
-- (NSLayoutAttribute)baselineAttribute
-{
-    return NSLayoutAttributeBaseline;
-}
-
-@end
-
-@implementation OAStackViewAlignmentStrategyFirstBaseline
-
-- (NSLayoutAttribute)baselineAttribute
-{
-    return NSLayoutAttributeFirstBaseline;
-}
-
-@end
-
-@implementation OAStackViewAlignmentStrategyLastBaseline
 
 @end
