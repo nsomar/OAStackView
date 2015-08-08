@@ -77,6 +77,9 @@
 		4B0F8F261B44C3850036F739 /* _OALayoutGuide.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B0F8F221B44C36F0036F739 /* _OALayoutGuide.m */; };
 		4B2AD8901B46F04900285D06 /* _OALayoutGuide.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B0F8F211B44C36F0036F739 /* _OALayoutGuide.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		4B2AD8911B46F05300285D06 /* _OALayoutGuide.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B0F8F211B44C36F0036F739 /* _OALayoutGuide.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C4D9CFA1B727B6B0031E5B0 /* OAStackViewProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C4D9CF81B727B6B0031E5B0 /* OAStackViewProxy.h */; };
+		4C4D9CFC1B727BE20031E5B0 /* OAStackViewProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4D9CF91B727B6B0031E5B0 /* OAStackViewProxy.m */; };
+		4C4D9CFE1B727BF00031E5B0 /* OAStackViewProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4D9CF91B727B6B0031E5B0 /* OAStackViewProxy.m */; };
 		4D581923EEB3544ED549CB5B /* KWPendingNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A52C7E63345A9BCDFEE5B3F6 /* KWPendingNode.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		4DEE1BB8F64C4763D6585683 /* OAStackView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 667360543B85E1CE0E6BD756 /* OAStackView.bundle */; };
 		4DFB3EBCDB8022C0B5768FD4 /* KWExistVerifier.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ED9899540CA916F53DBEC34 /* KWExistVerifier.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -343,6 +346,8 @@
 		497268F3953469FEF7923067 /* KWReceiveMatcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = KWReceiveMatcher.h; path = Classes/Matchers/KWReceiveMatcher.h; sourceTree = "<group>"; };
 		4B0F8F211B44C36F0036F739 /* _OALayoutGuide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _OALayoutGuide.h; sourceTree = "<group>"; };
 		4B0F8F221B44C36F0036F739 /* _OALayoutGuide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _OALayoutGuide.m; sourceTree = "<group>"; };
+		4C4D9CF81B727B6B0031E5B0 /* OAStackViewProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAStackViewProxy.h; sourceTree = "<group>"; };
+		4C4D9CF91B727B6B0031E5B0 /* OAStackViewProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAStackViewProxy.m; sourceTree = "<group>"; };
 		4DEBCBE61FFB94A608259909 /* Pods-OAStackView_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-OAStackView_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		5037740C0F7A842E1BED6BA7 /* Pods-OAStackView_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-OAStackView_Example.modulemap"; sourceTree = "<group>"; };
 		5250EF14BDA1D35A1871BA93 /* NSObject+KiwiMockAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+KiwiMockAdditions.h"; path = "Classes/Mocking/NSObject+KiwiMockAdditions.h"; sourceTree = "<group>"; };
@@ -598,6 +603,8 @@
 			children = (
 				8B90E6BD21591A4585962496 /* OAStackView.h */,
 				5D2F4F1397A17E203EA8112B /* OAStackView.m */,
+				4C4D9CF81B727B6B0031E5B0 /* OAStackViewProxy.h */,
+				4C4D9CF91B727B6B0031E5B0 /* OAStackViewProxy.m */,
 				C809B772AB6D8B7D66C7D8A2 /* OAStackView+Constraint.h */,
 				E822B703CD09D5556B8F8265 /* OAStackView+Constraint.m */,
 				E86334892F73798F2B097D5F /* OAStackView+Hiding.h */,
@@ -1100,6 +1107,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0092151033DD1E9F907BAF60 /* Pods-OAStackView_Example-umbrella.h in Headers */,
+				4C4D9CFA1B727B6B0031E5B0 /* OAStackViewProxy.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1329,6 +1337,7 @@
 				24D2763E1B56422F006FBE44 /* OATransformLayer.m in Sources */,
 				F27AC0C8EBEBA418A364A342 /* OAStackView+Hiding.m in Sources */,
 				176687AE221D864862460D2F /* OAStackView+Traversal.m in Sources */,
+				4C4D9CFE1B727BF00031E5B0 /* OAStackViewProxy.m in Sources */,
 				7CCD749F07E4C3F9C9E0C687 /* OAStackView.m in Sources */,
 				B3DA5C9CA52D5353ECF76E3A /* OAStackViewAlignmentStrategy.m in Sources */,
 				26DB8BFE41E064ECDB11D8C8 /* OAStackViewDistributionStrategy.m in Sources */,
@@ -1458,6 +1467,7 @@
 				24D2763D1B56422D006FBE44 /* OATransformLayer.m in Sources */,
 				A74399994CB4836F76ABCDA7 /* OAStackView+Hiding.m in Sources */,
 				39B7C35F9F84FAECEEF7423C /* OAStackView+Traversal.m in Sources */,
+				4C4D9CFC1B727BE20031E5B0 /* OAStackViewProxy.m in Sources */,
 				235C8C9E0E1BC9B6C63772E7 /* OAStackView.m in Sources */,
 				4F9890B79209225AF6EB2BE0 /* OAStackViewAlignmentStrategy.m in Sources */,
 				C621CDC255C81BF4E4586068 /* OAStackViewDistributionStrategy.m in Sources */,
