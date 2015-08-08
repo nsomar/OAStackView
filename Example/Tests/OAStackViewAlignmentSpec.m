@@ -1,6 +1,6 @@
 //
 //  OAStackViewAlignmentSpec.m
-//  
+//
 //
 //  Created by Omar Abdelhafith on 08/08/2015.
 //  Copyright 2015 __MyCompanyName__. All rights reserved.
@@ -96,14 +96,17 @@ describe(@"OAStackViewAlignment", ^{
     });
     
     it(@"Arrange the view based on the first baseline", ^{
-      stackView.alignment = OAStackViewAlignmentFirstBaseline;
-      label.text = @"hello world hello world hello world hello world ";
-      label.numberOfLines = 0;
       
-      layoutView(stackView);
-      
-      [[theValue(CGRectGetHeight(view.frame)) shouldNot] equal:theValue(CGRectGetHeight(label.frame))];
-      [[theValue(CGRectGetMinY(view.frame)) should] equal:theValue(0)];
+      if (OA_SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
+        stackView.alignment = OAStackViewAlignmentFirstBaseline;
+        label.text = @"hello world hello world hello world hello world ";
+        label.numberOfLines = 0;
+        
+        layoutView(stackView);
+        
+        [[theValue(CGRectGetHeight(view.frame)) shouldNot] equal:theValue(CGRectGetHeight(label.frame))];
+        [[theValue(CGRectGetMinY(view.frame)) should] equal:theValue(0)];
+      }
     });
     
     it(@"Arrange the view based on the last baseline", ^{
@@ -119,7 +122,7 @@ describe(@"OAStackViewAlignment", ^{
       BOOL isBigger = CGRectGetMaxY(view.frame) > CGRectGetMaxY(label.frame);
       [[theValue(isBigger) should] beYes];
     });
-
+    
     it(@"can arrange multiple views", ^{
       UIView *view2 = createViewP(100, 300, 30, 250);
       [stackView addArrangedSubview:view2];

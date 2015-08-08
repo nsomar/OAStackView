@@ -17,3 +17,5 @@ void addWidthToView(UIView *view, float width, float widthPriority);
 void layoutView(UIView* view);
 
 UILabel *createLabel(float width, float widthPriority);
+
+#define OA_SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
