@@ -21,6 +21,8 @@
 		3B1224631B4DF25200C02D3A /* OAStackViewAlignmentStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1224551B4DF25200C02D3A /* OAStackViewAlignmentStrategy.m */; };
 		3B1224641B4DF25200C02D3A /* OAStackViewDistributionStrategy.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B1224561B4DF25200C02D3A /* OAStackViewDistributionStrategy.h */; };
 		3B1224651B4DF25200C02D3A /* OAStackViewDistributionStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1224571B4DF25200C02D3A /* OAStackViewDistributionStrategy.m */; };
+		80BE14951B79041F00809203 /* OAStackViewAlignmentStrategyBaseline.h in Headers */ = {isa = PBXBuildFile; fileRef = 80BE14931B79041F00809203 /* OAStackViewAlignmentStrategyBaseline.h */; };
+		80BE14961B79041F00809203 /* OAStackViewAlignmentStrategyBaseline.m in Sources */ = {isa = PBXBuildFile; fileRef = 80BE14941B79041F00809203 /* OAStackViewAlignmentStrategyBaseline.m */; };
 		D871CEF71B685D8500FD5F11 /* OATransformLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = D871CEF51B685D8500FD5F11 /* OATransformLayer.h */; };
 		D871CEF81B685D8500FD5F11 /* OATransformLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D871CEF61B685D8500FD5F11 /* OATransformLayer.m */; };
 /* End PBXBuildFile section */
@@ -40,6 +42,8 @@
 		3B1224551B4DF25200C02D3A /* OAStackViewAlignmentStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OAStackViewAlignmentStrategy.m; path = Pod/Classes/OAStackViewAlignmentStrategy.m; sourceTree = SOURCE_ROOT; };
 		3B1224561B4DF25200C02D3A /* OAStackViewDistributionStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OAStackViewDistributionStrategy.h; path = Pod/Classes/OAStackViewDistributionStrategy.h; sourceTree = SOURCE_ROOT; };
 		3B1224571B4DF25200C02D3A /* OAStackViewDistributionStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OAStackViewDistributionStrategy.m; path = Pod/Classes/OAStackViewDistributionStrategy.m; sourceTree = SOURCE_ROOT; };
+		80BE14931B79041F00809203 /* OAStackViewAlignmentStrategyBaseline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OAStackViewAlignmentStrategyBaseline.h; path = Pod/Classes/OAStackViewAlignmentStrategyBaseline.h; sourceTree = SOURCE_ROOT; };
+		80BE14941B79041F00809203 /* OAStackViewAlignmentStrategyBaseline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OAStackViewAlignmentStrategyBaseline.m; path = Pod/Classes/OAStackViewAlignmentStrategyBaseline.m; sourceTree = SOURCE_ROOT; };
 		8298C9231B4188700006C53E /* OAStackView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OAStackView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8298C93F1B4188F50006C53E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		D871CEF51B685D8500FD5F11 /* OATransformLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OATransformLayer.h; path = Pod/Classes/OATransformLayer.h; sourceTree = SOURCE_ROOT; };
@@ -76,6 +80,8 @@
 		8298C9251B4188700006C53E /* OAStackView */ = {
 			isa = PBXGroup;
 			children = (
+				80BE14931B79041F00809203 /* OAStackViewAlignmentStrategyBaseline.h */,
+				80BE14941B79041F00809203 /* OAStackViewAlignmentStrategyBaseline.m */,
 				3B12244A1B4DF25200C02D3A /* _OALayoutGuide.h */,
 				3B12244B1B4DF25200C02D3A /* _OALayoutGuide.m */,
 				3B12244C1B4DF25200C02D3A /* OAStackView.h */,
@@ -105,6 +111,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B12245A1B4DF25200C02D3A /* OAStackView.h in Headers */,
+				80BE14951B79041F00809203 /* OAStackViewAlignmentStrategyBaseline.h in Headers */,
 				D871CEF71B685D8500FD5F11 /* OATransformLayer.h in Headers */,
 				3B1224621B4DF25200C02D3A /* OAStackViewAlignmentStrategy.h in Headers */,
 				3B12245E1B4DF25200C02D3A /* OAStackView+Hiding.h in Headers */,
@@ -184,6 +191,7 @@
 			files = (
 				3B1224651B4DF25200C02D3A /* OAStackViewDistributionStrategy.m in Sources */,
 				3B1224591B4DF25200C02D3A /* _OALayoutGuide.m in Sources */,
+				80BE14961B79041F00809203 /* OAStackViewAlignmentStrategyBaseline.m in Sources */,
 				3B12245B1B4DF25200C02D3A /* OAStackView.m in Sources */,
 				3B1224631B4DF25200C02D3A /* OAStackViewAlignmentStrategy.m in Sources */,
 				3B1224611B4DF25200C02D3A /* OAStackView+Traversal.m in Sources */,
