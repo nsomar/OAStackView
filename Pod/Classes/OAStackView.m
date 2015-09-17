@@ -167,35 +167,6 @@
     [self layoutArrangedViews];
 }
 
-#pragma mark Layouting
-
-- (void)layoutSubviews {
-  [super layoutSubviews];
-  [self invalidateIntrinsicContentSize];
-}
-
-- (CGSize)intrinsicContentSize {
-  CGSize size = [super intrinsicContentSize];
-  
-  __block float maxSize = 0;
-  
-  [self iterateVisibleViews:^(UIView *view, UIView *previousView) {
-    if (self.axis == UILayoutConstraintAxisVertical) {
-      maxSize = fmaxf(maxSize, CGRectGetWidth(view.frame));
-    } else {
-      maxSize = fmaxf(maxSize, CGRectGetHeight(view.frame));
-    }
-  }];
-  
-  if (self.axis == UILayoutConstraintAxisVertical) {
-    size.width = maxSize;
-  } else {
-    size.height = maxSize;
-  }
-  
-  return size;
-}
-
 #pragma mark - Adding and removing
 
 - (void)addArrangedSubview:(UIView *)view {
