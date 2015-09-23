@@ -11,9 +11,9 @@
 @interface OAStackView (Hiding)
 
 - (void)addObserverForView:(UIView*)view;
-- (void)addObserverForViews:(NSArray*)views;
+- (void)addObserverForViews:(NSArray<__kindof UIView *> *)views;
 
 - (void)removeObserverForView:(UIView*)view;
-- (void)removeObserverForViews:(NSArray *)views;
+- (void)removeObserverForViews:(NSArray<__kindof UIView *> *)views;
 
 @end

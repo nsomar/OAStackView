@@ -15,7 +15,7 @@
 #import "OATransformLayer.h"
 
 @interface OAStackView ()
-@property(nonatomic, copy) NSArray *arrangedSubviews;
+@property(nonatomic, copy) NSArray<__kindof UIView *> *arrangedSubviews;
 
 @property(nonatomic) OAStackViewAlignmentStrategy *alignmentStrategy;
 @property(nonatomic) OAStackViewDistributionStrategy *distributionStrategy;
@@ -39,7 +39,7 @@
   return self;
 }
 
-- (instancetype)initWithArrangedSubviews:(NSArray*)views {
+- (instancetype)initWithArrangedSubviews:(NSArray<__kindof UIView *> *)views {
   self = [super initWithFrame:CGRectZero];
   
   if (self) {
@@ -199,7 +199,7 @@
     previousView = [self lastVisibleItem];
     nextView = nil;
     
-    NSArray *constraints = [self lastConstraintAffectingView:self andView:previousView inAxis:self.axis];
+    NSArray<__kindof NSLayoutConstraint *> *constraints = [self lastConstraintAffectingView:self andView:previousView inAxis:self.axis];
     if (constraints) {
       [self removeConstraints:constraints];
     }
@@ -214,7 +214,7 @@
     previousView = [self visibleViewBeforeIndex:stackIndex];
     nextView = [self visibleViewAfterIndex:newItem ? stackIndex - 1: stackIndex];
     
-    NSArray *constraints;
+    NSArray<__kindof NSLayoutConstraint *> *constraints;
     BOOL isLastVisibleItem = [self isViewLastItem:previousView excludingItem:view];
     BOOL isFirstVisibleView = previousView == nil;
     BOOL isOnlyItem = previousView == nil && nextView == nil;
@@ -253,7 +253,7 @@
   if (permanently) {
     [view removeFromSuperview];
   } else {
-    NSArray *constraint = [self constraintsAffectingView:view];
+    NSArray <__kindof NSLayoutConstraint *> *constraint = [self constraintsAffectingView:view];
     [self removeConstraints:constraint];
   }
   
