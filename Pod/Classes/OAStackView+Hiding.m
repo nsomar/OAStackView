@@ -29,7 +29,7 @@
   }
 }
 
-- (void)removeObserverForViews:(NSArray *)views {
+- (void)removeObserverForViews:(NSArray<__kindof UIView *> *)views {
   for (UIView *view in views) {
     [self removeObserverForView:view];
   }
