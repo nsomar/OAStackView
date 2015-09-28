@@ -167,6 +167,12 @@
     [self layoutArrangedViews];
 }
 
+#pragma mark - Overriden methods
+
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+    [self layoutArrangedViews];
+}
+
 #pragma mark - Adding and removing
 
 - (void)addArrangedSubview:(UIView *)view {
