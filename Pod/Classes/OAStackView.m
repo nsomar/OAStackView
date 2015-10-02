@@ -184,6 +184,7 @@
 - (void)removeArrangedSubview:(UIView *)view {
   
   if (self.subviews.count == 1) {
+    [self.arrangedSubviews removeObject:view];
     [view removeFromSuperview];
     return;
   }
@@ -213,6 +214,7 @@
     }
     
     if (newItem) {
+      [self.arrangedSubviews addObject:view];
       [self addSubview:view];
     }
     
@@ -240,6 +242,7 @@
     [self removeConstraints:constraints];
     
     if (newItem) {
+      [self.arrangedSubviews insertObject:view atIndex:stackIndex];
       [self insertSubview:view atIndex:stackIndex];
     }
   }
@@ -259,6 +262,7 @@
   id nextView = [self visibleViewAfterView:view];
   
   if (permanently) {
+    [self.arrangedSubviews removeObject:view];
     [view removeFromSuperview];
   } else {
     NSArray *constraint = [self constraintsAffectingView:view];
