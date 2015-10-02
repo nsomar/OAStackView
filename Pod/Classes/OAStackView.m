@@ -15,8 +15,7 @@
 #import "OATransformLayer.h"
 
 @interface OAStackView ()
-@property(nonatomic, copy) NSArray<__kindof UIView *> *arrangedSubviews;
-
+@property(nonatomic, copy) NSMutableArray<__kindof UIView *> *arrangedSubviews;
 @property(nonatomic) OAStackViewAlignmentStrategy *alignmentStrategy;
 @property(nonatomic) OAStackViewDistributionStrategy *distributionStrategy;
 @end
@@ -33,7 +32,7 @@
   self = [super initWithCoder:coder];
   
   if (self) {
-    [self commonInit];
+    [self commonInitWithInitalSubviews:@[]];
   }
   
   return self;
@@ -43,8 +42,7 @@
   self = [super initWithFrame:CGRectZero];
   
   if (self) {
-    [self addViewsAsSubviews:views];
-    [self commonInit];
+    [self commonInitWithInitalSubviews:views];
   }
   
   return self;
@@ -54,7 +52,10 @@
     return [self initWithArrangedSubviews:@[]];
 }
 
-- (void)commonInit {
+- (void)commonInitWithInitalSubviews:(NSArray *)initialSubviews {
+  _arrangedSubviews = [initialSubviews mutableCopy];
+  [self addViewsAsSubviews:initialSubviews];
+
   _axis = UILayoutConstraintAxisVertical;
   _alignment = OAStackViewAlignmentFill;
   _distribution = OAStackViewDistributionFill;

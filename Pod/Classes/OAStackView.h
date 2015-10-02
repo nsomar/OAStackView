@@ -84,7 +84,7 @@ typedef NS_ENUM(NSInteger, OAStackViewAlignment) {
 NS_ASSUME_NONNULL_BEGIN
 @interface OAStackView : UIView
 
-@property(nonatomic,readonly,copy) NSArray<__kindof UIView *> *arrangedSubviews;
+@property(nonatomic,readonly,copy) NSMutableArray<__kindof UIView *> *arrangedSubviews;
 
 //Default is Vertical
 @property(nonatomic) UILayoutConstraintAxis axis;
