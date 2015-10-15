@@ -6,15 +6,15 @@
 //  Copyright (c) 2014 Omar Abdelhafith. All rights reserved.
 //
 
-#import "OAViewController.h"
+#import "OAStackViewViewController.h"
 #import "OAStackView.h"
 
-@interface OAViewController ()
+@interface OAStackViewViewController ()
 @property (weak, nonatomic) IBOutlet OAStackView *stackView;
 @property (weak, nonatomic) IBOutlet UIView *viewToRemove;
 @end
 
-@implementation OAViewController
+@implementation OAStackViewViewController
 
 - (void)viewDidLoad
 {

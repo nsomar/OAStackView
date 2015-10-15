@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		16951A4DAC6553EE4D40D755 /* Pods_OAStackView_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A5A33E2C7E649B51D3BA787 /* Pods_OAStackView_Example.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		16951A4DAC6553EE4D40D755 /* Pods_OAStackView_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A5A33E2C7E649B51D3BA787 /* Pods_OAStackView_Example.framework */; };
 		535F82651B7681B000841D0D /* OAStackViewAlignmentSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F82631B76819500841D0D /* OAStackViewAlignmentSpec.m */; };
 		535F82681B7681E200841D0D /* TestHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F82671B7681E200841D0D /* TestHelpers.m */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
@@ -16,16 +16,17 @@
 		6003F598195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F596195388D20070C39A /* InfoPlist.strings */; };
 		6003F59A195388D20070C39A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
 		6003F59E195388D20070C39A /* OAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* OAAppDelegate.m */; };
-		6003F5A7195388D20070C39A /* OAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* OAViewController.m */; };
+		6003F5A7195388D20070C39A /* OAStackViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* OAStackViewViewController.m */; };
 		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
 		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
-		6452D2A087CE79BE1277EAFD /* Pods_OAStackView_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 844890E0E3BFA4E88316456F /* Pods_OAStackView_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		6452D2A087CE79BE1277EAFD /* Pods_OAStackView_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 844890E0E3BFA4E88316456F /* Pods_OAStackView_Tests.framework */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		A7CC22B31B2E0B8E009C9911 /* OAStackViewSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = A7CC22B11B2E0B46009C9911 /* OAStackViewSpec.m */; };
 		A7CC22B51B2E0BC7009C9911 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7CC22B41B2E0BC7009C9911 /* Launch Screen.xib */; };
+		D21E827A1BCF97D400D8379B /* OAUIStackViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D21E82791BCF97D400D8379B /* OAUIStackViewViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,8 +57,8 @@
 		6003F59B195388D20070C39A /* OAStackView-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OAStackView-Prefix.pch"; sourceTree = "<group>"; };
 		6003F59C195388D20070C39A /* OAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OAAppDelegate.h; sourceTree = "<group>"; };
 		6003F59D195388D20070C39A /* OAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OAAppDelegate.m; sourceTree = "<group>"; };
-		6003F5A5195388D20070C39A /* OAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OAViewController.h; sourceTree = "<group>"; };
-		6003F5A6195388D20070C39A /* OAViewController.m */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = OAViewController.m; sourceTree = "<group>"; tabWidth = 2; };
+		6003F5A5195388D20070C39A /* OAStackViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OAStackViewViewController.h; sourceTree = "<group>"; };
+		6003F5A6195388D20070C39A /* OAStackViewViewController.m */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = OAStackViewViewController.m; sourceTree = "<group>"; tabWidth = 2; };
 		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6003F5AE195388D20070C39A /* OAStackView_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OAStackView_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -71,6 +72,8 @@
 		A7CC22B11B2E0B46009C9911 /* OAStackViewSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAStackViewSpec.m; sourceTree = "<group>"; };
 		A7CC22B41B2E0BC7009C9911 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		AE9C0956AC3290D64CFDB6CE /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		D21E82781BCF97D400D8379B /* OAUIStackViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAUIStackViewViewController.h; sourceTree = "<group>"; };
+		D21E82791BCF97D400D8379B /* OAUIStackViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAUIStackViewViewController.m; sourceTree = "<group>"; };
 		E84D2DC1C0119AB0E1D43BF1 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,8 +143,10 @@
 				6003F59C195388D20070C39A /* OAAppDelegate.h */,
 				6003F59D195388D20070C39A /* OAAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
-				6003F5A5195388D20070C39A /* OAViewController.h */,
-				6003F5A6195388D20070C39A /* OAViewController.m */,
+				D21E82781BCF97D400D8379B /* OAUIStackViewViewController.h */,
+				D21E82791BCF97D400D8379B /* OAUIStackViewViewController.m */,
+				6003F5A5195388D20070C39A /* OAStackViewViewController.h */,
+				6003F5A6195388D20070C39A /* OAStackViewViewController.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
 				A7CC22B41B2E0BC7009C9911 /* Launch Screen.xib */,
@@ -402,8 +407,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D21E827A1BCF97D400D8379B /* OAUIStackViewViewController.m in Sources */,
 				6003F59E195388D20070C39A /* OAAppDelegate.m in Sources */,
-				6003F5A7195388D20070C39A /* OAViewController.m in Sources */,
+				6003F5A7195388D20070C39A /* OAStackViewViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				535F82681B7681E200841D0D /* TestHelpers.m in Sources */,
 			);

@@ -8,6 +8,6 @@
 
 @import UIKit;
 
-@interface OAViewController : UIViewController
+@interface OAStackViewViewController : UIViewController
 
 @end
