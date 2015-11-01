@@ -15,7 +15,8 @@
 #import "OATransformLayer.h"
 
 @interface OAStackView ()
-@property(nonatomic, copy) NSMutableArray<__kindof UIView *> *arrangedSubviews;
+@property(nonatomic, copy) NSArray *arrangedSubviews;
+@property(nonatomic, copy) NSMutableArray *mutableArrangedSubviews;
 @property(nonatomic) OAStackViewAlignmentStrategy *alignmentStrategy;
 @property(nonatomic) OAStackViewDistributionStrategy *distributionStrategy;
 @end
@@ -53,7 +54,7 @@
 }
 
 - (void)commonInitWithInitalSubviews:(NSArray *)initialSubviews {
-  _arrangedSubviews = [initialSubviews mutableCopy];
+  _mutableArrangedSubviews = [initialSubviews mutableCopy];
   [self addViewsAsSubviews:initialSubviews];
 
   _axis = UILayoutConstraintAxisVertical;
@@ -70,6 +71,10 @@
 }
 
 #pragma mark - Properties
+
+- (NSArray *)arrangedSubviews {
+  return self.mutableArrangedSubviews.copy;
+}
 
 - (void)setBackgroundColor:(UIColor *)backgroundColor {
     // Does not have any effect because `CATransformLayer` is not rendered.
@@ -208,7 +213,7 @@
 - (void)removeArrangedSubview:(UIView *)view {
   
   if (self.subviews.count == 1) {
-    [self.arrangedSubviews removeObject:view];
+    [self.mutableArrangedSubviews removeObject:view];
     [view removeFromSuperview];
     return;
   }
@@ -238,7 +243,7 @@
     }
     
     if (newItem) {
-      [self.arrangedSubviews addObject:view];
+      [self.mutableArrangedSubviews addObject:view];
       [self addSubview:view];
     }
     
@@ -266,7 +271,7 @@
     [self removeConstraints:constraints];
     
     if (newItem) {
-      [self.arrangedSubviews insertObject:view atIndex:stackIndex];
+      [self.mutableArrangedSubviews insertObject:view atIndex:stackIndex];
       [self insertSubview:view atIndex:stackIndex];
     }
   }
@@ -286,7 +291,7 @@
   id nextView = [self visibleViewAfterView:view];
   
   if (permanently) {
-    [self.arrangedSubviews removeObject:view];
+    [self.mutableArrangedSubviews removeObject:view];
     [view removeFromSuperview];
   } else {
     NSArray <__kindof NSLayoutConstraint *> *constraint = [self constraintsAffectingView:view];
