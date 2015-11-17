@@ -32,7 +32,7 @@ Change the class to `OAStackView`
 
 <p align="center"><img src="http://i1348.photobucket.com/albums/p740/o_abdelhafith/step2_zpsfgwirklz.png" border="0" alt=" photo step2_zpsfgwirklz.png" height="220px" width="200px"/></p>
 
-(Optional) Change the stack Axis, Spacing, Alignment or distribution.
+(Optional) Change the stack Axis (set Axis Value to 0 for Horizontal or 1 for Vertical), Spacing, Alignment or distribution.
 
 <p align="center"><img src="http://i1348.photobucket.com/albums/p740/o_abdelhafith/step3_zpsmk8xw3hz.png" border="0" alt=" photo step3_zpsmk8xw3hz.png" height="233 the viewpx" width="200px"/></p>
 
