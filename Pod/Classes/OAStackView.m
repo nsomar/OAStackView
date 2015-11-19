@@ -16,6 +16,7 @@
 
 @interface OAStackView ()
 @property(nonatomic, copy) NSArray *arrangedSubviews;
+@property(nonatomic, copy) NSMutableArray *mutableArrangedSubviews;
 
 @property(nonatomic) OAStackViewAlignmentStrategy *alignmentStrategy;
 @property(nonatomic) OAStackViewDistributionStrategy *distributionStrategy;
@@ -33,18 +34,17 @@
   self = [super initWithCoder:coder];
   
   if (self) {
-    [self commonInit];
+    [self commonInitWithInitalSubviews:@[]];
   }
   
   return self;
 }
 
-- (instancetype)initWithArrangedSubviews:(NSArray*)views {
+- (instancetype)initWithArrangedSubviews:(NSArray *)views {
   self = [super initWithFrame:CGRectZero];
   
   if (self) {
-    [self addViewsAsSubviews:views];
-    [self commonInit];
+    [self commonInitWithInitalSubviews:views];
   }
   
   return self;
@@ -54,7 +54,10 @@
     return [self initWithArrangedSubviews:@[]];
 }
 
-- (void)commonInit {
+- (void)commonInitWithInitalSubviews:(NSArray *)initialSubviews {
+  _mutableArrangedSubviews = [initialSubviews mutableCopy];
+  [self addViewsAsSubviews:initialSubviews];
+
   _axis = UILayoutConstraintAxisVertical;
   _alignment = OAStackViewAlignmentFill;
   _distribution = OAStackViewDistributionFill;
@@ -69,6 +72,10 @@
 }
 
 #pragma mark - Properties
+
+- (NSArray *)arrangedSubviews {
+  return self.mutableArrangedSubviews.copy;
+}
 
 - (void)setBackgroundColor:(UIColor *)backgroundColor {
     // Does not have any effect because `CATransformLayer` is not rendered.
@@ -182,6 +189,7 @@
 - (void)removeArrangedSubview:(UIView *)view {
   
   if (self.subviews.count == 1) {
+    [self.mutableArrangedSubviews removeObject:view];
     [view removeFromSuperview];
     return;
   }
@@ -211,6 +219,7 @@
     }
     
     if (newItem) {
+      [self.mutableArrangedSubviews addObject:view];
       [self addSubview:view];
     }
     
@@ -238,6 +247,7 @@
     [self removeConstraints:constraints];
     
     if (newItem) {
+      [self.mutableArrangedSubviews insertObject:view atIndex:stackIndex];
       [self insertSubview:view atIndex:stackIndex];
     }
   }
@@ -257,6 +267,7 @@
   id nextView = [self visibleViewAfterView:view];
   
   if (permanently) {
+    [self.mutableArrangedSubviews removeObject:view];
     [view removeFromSuperview];
   } else {
     NSArray *constraint = [self constraintsAffectingView:view];
