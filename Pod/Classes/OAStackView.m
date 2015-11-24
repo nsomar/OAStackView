@@ -15,7 +15,7 @@
 #import "OATransformLayer.h"
 
 @interface OAStackView ()
-@property(nonatomic, copy) NSMutableArray *mutableArrangedSubviews;
+@property(nonatomic, strong) NSMutableArray *mutableArrangedSubviews;
 @property(nonatomic) OAStackViewAlignmentStrategy *alignmentStrategy;
 @property(nonatomic) OAStackViewDistributionStrategy *distributionStrategy;
 @end
