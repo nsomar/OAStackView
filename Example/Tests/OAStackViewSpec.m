@@ -939,6 +939,58 @@ describe(@"OAStackView", ^{
   });
 
 
+  context(@"Arranged Subviews", ^{
+
+    __block UIView *view1, *view2, *view3;
+
+    beforeEach(^{
+      view1 = createView(100, 100);
+      view2 = createView(100, 100);
+      view3 = createView(100, 100);
+
+      stackView = [[OAStackView alloc] init];
+      stackView.translatesAutoresizingMaskIntoConstraints = NO;
+    });
+
+    it(@"Initializes arrangedSubviews to an empty array", ^{
+      [[stackView.arrangedSubviews should] beEmpty];
+    });
+
+    it(@"Initalizes arrangedSubviews to the given views when initialized with arranged subviess", ^{
+      stackView = [[OAStackView alloc] initWithArrangedSubviews:@[view1, view2, view3]];
+      [[stackView.arrangedSubviews should] containObjectsInArray:@[view1, view2, view3]];
+    });
+
+    it(@"Maintains the correct array when adding views", ^{
+      [stackView addArrangedSubview:view1];
+      [[stackView.arrangedSubviews should] containObjectsInArray:@[view1]];
+
+      [stackView addArrangedSubview:view2];
+      [[stackView.arrangedSubviews should] containObjectsInArray:@[view2]];
+
+      [stackView addArrangedSubview:view3];
+      [[stackView.arrangedSubviews should] containObjectsInArray:@[view3]];
+    });
+
+    it(@"Maintains the correct array when removing views", ^{
+      [stackView addArrangedSubview:view1];
+      [stackView addArrangedSubview:view2];
+      [stackView addArrangedSubview:view3];
+
+      [[stackView.arrangedSubviews should] containObjectsInArray:@[view1, view2, view3]];
+
+      [stackView removeArrangedSubview:view2];
+      [[stackView.arrangedSubviews should] containObjectsInArray:@[view1, view3]];
+
+      [stackView removeArrangedSubview:view1];
+      [[stackView.arrangedSubviews should] containObjectsInArray:@[view3]];
+
+      [stackView removeArrangedSubview:view3];
+      [[stackView.arrangedSubviews should] containObjectsInArray:@[]];
+    });
+  });
+
+
   context(@"bug fixes", ^{
   
     __block UIView *view1, *view2, *view3;
