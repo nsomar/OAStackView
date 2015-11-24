@@ -825,7 +825,7 @@ describe(@"OAStackView", ^{
 
           [[theValue(CGRectGetMinX(view1.frame)) should] equal:theValue(0)];
 
-          [[theValue(CGRectGetMinX(view2.frame)) should] equal:theValue(240)];
+          [[theValue(CGRectGetMinX(view2.frame)) should] equal:240 withDelta:10];
 
           [[theValue(CGRectGetMinX(view3.frame)) should] equal:theValue(300)];
         });
