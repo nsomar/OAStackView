@@ -119,14 +119,37 @@
   if (_alignment == alignment) { return; }
   
   _alignment = alignment;
-  
+  [self setAlignmentConstraints];
+}
+
+- (void)setAlignmentConstraints {
   [self.alignmentStrategy removeAddedConstraints];
   self.alignmentStrategy = [OAStackViewAlignmentStrategy strategyWithStackView:self];
+  
+  [self.alignmentStrategy alignFirstView:self.subviews.firstObject];
   
   [self iterateVisibleViews:^(UIView *view, UIView *previousView) {
     [self.alignmentStrategy addConstraintsOnOtherAxis:view];
     [self.alignmentStrategy alignView:view withPreviousView:previousView];
   }];
+  
+  [self.alignmentStrategy alignLastView:self.subviews.lastObject];
+}
+
+- (void)removeConstraint:(NSLayoutConstraint *)constraint {
+  [super removeConstraint:constraint];
+}
+
+- (void)removeConstraints:(NSArray<__kindof NSLayoutConstraint *> *)constraints {
+  [super removeConstraints:constraints];
+}
+
+- (void)updateConstraints {
+  [super updateConstraints];
+}
+
+- (void)layoutSubviews {
+  [super layoutSubviews];
 }
 
 - (void)setAlignmentValue:(NSInteger)alignmentValue {
@@ -138,18 +161,20 @@
   if (_distribution == distribution) { return; }
   
   _distribution = distribution;
-  
-  [self.alignmentStrategy removeAddedConstraints];
+  [self setAlignmentConstraints];
+  [self setDistributionConstraints];
+}
+
+- (void)setDistributionConstraints {
   [self.distributionStrategy removeAddedConstraints];
   
-  self.alignmentStrategy = [OAStackViewAlignmentStrategy strategyWithStackView:self];
   self.distributionStrategy = [OAStackViewDistributionStrategy strategyWithStackView:self];
   
   [self iterateVisibleViews:^(UIView *view, UIView *previousView) {
-    [self.alignmentStrategy addConstraintsOnOtherAxis:view];
     [self.distributionStrategy alignView:view afterView:previousView];
-    [self.alignmentStrategy alignView:view withPreviousView:previousView];
   }];
+  
+  [self.distributionStrategy alignView:nil afterView:[self lastVisibleItem]];
 }
 
 - (void)setDistributionValue:(NSInteger)distributionValue {
@@ -285,13 +310,9 @@
 
 - (void)layoutArrangedViews {
   [self removeDecendentConstraints];
-  
-  [self iterateVisibleViews:^(UIView *view, UIView *previousView) {
-    [self.distributionStrategy alignView:view afterView:previousView];
-    [self.alignmentStrategy addConstraintsOnOtherAxis:view];
-  }];
-  
-  [self.distributionStrategy alignView:nil afterView:[self lastVisibleItem]];
+
+  [self setAlignmentConstraints];
+  [self setDistributionConstraints];
 }
 
 - (void)addViewsAsSubviews:(NSArray*)views {

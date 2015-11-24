@@ -145,6 +145,32 @@
     return @"==";
 }
 
+- (void)alignFirstView:(UIView*)view {
+  if(!view) { return; }
+  id arr = [self firstViewConstraints:view withParentView:self.stackView];
+  if(!arr) { return; }
+  
+  [self.constraints addObjectsFromArray:arr];
+  if (arr) { [self.stackView addConstraints:arr]; }
+}
+
+- (void)alignLastView:(UIView*)view {
+  if(!view) { return; }
+  id arr = [self lastViewConstraints:view withParentView:self.stackView];
+  if(!arr) { return; }
+  
+  [self.constraints addObjectsFromArray:arr];
+  if (arr) { [self.stackView addConstraints:arr]; }
+}
+
+- (NSArray*)firstViewConstraints:(UIView*)view withParentView:(UIView*)parentView {
+  return nil;
+}
+
+- (NSArray*)lastViewConstraints:(UIView*)view withParentView:(UIView*)parentView {
+  return nil;
+}
+
 @end
 
 @implementation OAStackViewAlignmentStrategyFill
