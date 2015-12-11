@@ -90,21 +90,25 @@
 - (void)alignLastView:(UIView*)view {
   NSString *constraintString = [NSString stringWithFormat:@"%@:[view]-(lastMargin)-|", [self currentAxisString]];
   NSNumber *lastMargin = @([self lastMargin]);
-  [self.stackView addConstraints:
-   [NSLayoutConstraint constraintsWithVisualFormat:constraintString
-                                           options:0
-                                           metrics:NSDictionaryOfVariableBindings(lastMargin)
-                                             views:NSDictionaryOfVariableBindings(view)]];
+  id arr = [NSLayoutConstraint constraintsWithVisualFormat:constraintString
+                                                   options:0
+                                                   metrics:NSDictionaryOfVariableBindings(lastMargin)
+                                                     views:NSDictionaryOfVariableBindings(view)];
+    
+  [self.constraints addObjectsFromArray:arr];
+  [self.stackView addConstraints:arr];
 }
 
 - (void)alignFirstView:(UIView*)view {
   NSString *str = [NSString stringWithFormat:@"%@:|-(firstMargin)-[view]", [self currentAxisString]];
   NSNumber *firstMargin = @([self firstMargin]);
-  [self.stackView addConstraints:
-   [NSLayoutConstraint constraintsWithVisualFormat:str
-                                           options:0
-                                           metrics:NSDictionaryOfVariableBindings(firstMargin)
-                                             views:NSDictionaryOfVariableBindings(view)]];
+  id arr = [NSLayoutConstraint constraintsWithVisualFormat:str
+                                                   options:0
+                                                   metrics:NSDictionaryOfVariableBindings(firstMargin)
+                                                     views:NSDictionaryOfVariableBindings(view)];
+    
+  [self.constraints addObjectsFromArray:arr];
+  [self.stackView addConstraints:arr];
 }
 
 

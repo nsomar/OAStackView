@@ -63,8 +63,8 @@
   _layoutMargins = UIEdgeInsetsMake(0, 8, 0, 8);
   _layoutMarginsRelativeArrangement = NO;
 
-  _alignmentStrategy = [OAStackViewAlignmentStrategy strategyWithStackView:self];
-  _distributionStrategy = [OAStackViewDistributionStrategy strategyWithStackView:self];
+  self.alignmentStrategy = [OAStackViewAlignmentStrategy strategyWithStackView:self];
+  self.distributionStrategy = [OAStackViewDistributionStrategy strategyWithStackView:self];
   
   [self layoutArrangedViews];
 }
@@ -110,7 +110,7 @@
   if (_axis == axis) { return; }
   
   _axis = axis;
-  _alignmentStrategy = [OAStackViewAlignmentStrategy strategyWithStackView:self];
+  self.alignmentStrategy = [OAStackViewAlignmentStrategy strategyWithStackView:self];
   
   [self layoutArrangedViews];
 }
@@ -139,6 +139,16 @@
   }];
   
   [self.alignmentStrategy alignLastView:self.subviews.lastObject];
+}
+
+- (void)setAlignmentStrategy:(OAStackViewAlignmentStrategy *)alignmentStrategy {
+  [_alignmentStrategy removeAddedConstraints];
+  _alignmentStrategy = alignmentStrategy;
+}
+
+- (void)setDistributionStrategy:(OAStackViewDistributionStrategy *)distributionStrategy {
+  [_distributionStrategy removeAddedConstraints];
+  _distributionStrategy = distributionStrategy;
 }
 
 - (void)removeConstraint:(NSLayoutConstraint *)constraint {
@@ -318,7 +328,8 @@
 #pragma mark - Align View
 
 - (void)layoutArrangedViews {
-  [self removeDecendentConstraints];
+  [self.distributionStrategy removeAddedConstraints];
+  [self.alignmentStrategy removeAddedConstraints];
 
   [self setAlignmentConstraints];
   [self setDistributionConstraints];

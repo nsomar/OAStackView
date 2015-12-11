@@ -17,8 +17,6 @@
 - (NSArray*)constraintsBetweenView:(UIView*)firstView andView:(UIView*)otherView
                             inAxis:(UILayoutConstraintAxis)axis includeReversed:(BOOL)includeReversed;
 
-- (void)removeDecendentConstraints;
-
 - (NSArray*)firstConstraintAffectingView:(UIView*)superView andView:(UIView*)childView inAxis:(UILayoutConstraintAxis)axis;
 - (NSArray*)lastConstraintAffectingView:(UIView*)superView andView:(UIView*)childView inAxis:(UILayoutConstraintAxis)axis;
 

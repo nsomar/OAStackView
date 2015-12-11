@@ -121,16 +121,6 @@
   return arr;
 }
 
-- (void)removeDecendentConstraints {
-  for (NSInteger i = self.constraints.count - 1; i >= 0 ; i--) {
-    NSLayoutConstraint *constraint = self.constraints[i];
-    if ([self.subviews containsObject:constraint.firstItem] ||
-        [self.subviews containsObject:constraint.secondItem]) {
-      [self removeConstraint:constraint];
-    }
-  }
-}
-
 - (BOOL)isConstraint:(NSLayoutConstraint*)constraint affectingAxis:(UILayoutConstraintAxis)axis {
   return [self isConstraintAttribute:constraint.firstAttribute affectingAxis:axis] ||
   [self isConstraintAttribute:constraint.secondAttribute affectingAxis:axis];
