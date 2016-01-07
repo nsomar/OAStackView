@@ -142,11 +142,19 @@
 }
 
 - (void)setAlignmentStrategy:(OAStackViewAlignmentStrategy *)alignmentStrategy {
+  if ([_alignmentStrategy isEqual:alignmentStrategy]) {
+    return;
+  }
+  
   [_alignmentStrategy removeAddedConstraints];
   _alignmentStrategy = alignmentStrategy;
 }
 
 - (void)setDistributionStrategy:(OAStackViewDistributionStrategy *)distributionStrategy {
+  if ([_distributionStrategy isEqual:distributionStrategy]) {
+    return;
+  }
+  
   [_distributionStrategy removeAddedConstraints];
   _distributionStrategy = distributionStrategy;
 }
