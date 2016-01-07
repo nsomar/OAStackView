@@ -90,7 +90,7 @@
 - (void)alignLastView:(UIView*)view {
   NSString *constraintString = [NSString stringWithFormat:@"%@:[view]-(lastMargin)-|", [self currentAxisString]];
   NSNumber *lastMargin = @([self lastMargin]);
-  id arr = [NSLayoutConstraint constraintsWithVisualFormat:constraintString
+  NSArray *arr = [NSLayoutConstraint constraintsWithVisualFormat:constraintString
                                                    options:0
                                                    metrics:NSDictionaryOfVariableBindings(lastMargin)
                                                      views:NSDictionaryOfVariableBindings(view)];
@@ -102,7 +102,7 @@
 - (void)alignFirstView:(UIView*)view {
   NSString *str = [NSString stringWithFormat:@"%@:|-(firstMargin)-[view]", [self currentAxisString]];
   NSNumber *firstMargin = @([self firstMargin]);
-  id arr = [NSLayoutConstraint constraintsWithVisualFormat:str
+  NSArray *arr = [NSLayoutConstraint constraintsWithVisualFormat:str
                                                    options:0
                                                    metrics:NSDictionaryOfVariableBindings(firstMargin)
                                                      views:NSDictionaryOfVariableBindings(view)];
@@ -118,7 +118,7 @@
                    [self symbolicSpacingRelation],
                    self.stackView.spacing];
   
-  id arr = [NSLayoutConstraint constraintsWithVisualFormat:str
+  NSArray *arr = [NSLayoutConstraint constraintsWithVisualFormat:str
                                                    options:0
                                                    metrics:nil
                                                      views:NSDictionaryOfVariableBindings(view, previousView)];

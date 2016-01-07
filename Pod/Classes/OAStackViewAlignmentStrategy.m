@@ -98,14 +98,14 @@
 }
 
 - (void)addConstraintsOnOtherAxis:(UIView*)view {
-  id arr = [self constraintsalignViewOnOtherAxis:view];
+  NSArray *arr = [self constraintsalignViewOnOtherAxis:view];
   [self.constraints addObjectsFromArray:arr];
   
   if (arr) { [self.stackView addConstraints:arr]; }
 }
 
 - (void)alignView:(UIView*)view withPreviousView:(UIView*)previousView {
-  id arr = [self constraintsAlignView:view afterPreviousView:previousView];
+  NSArray *arr = [self constraintsAlignView:view afterPreviousView:previousView];
   [self.constraints addObjectsFromArray:arr];
   
   if (arr) { [self.stackView addConstraints:arr]; }
@@ -147,7 +147,7 @@
 
 - (void)alignFirstView:(UIView*)view {
   if(!view) { return; }
-  id arr = [self firstViewConstraints:view withParentView:self.stackView];
+  NSArray *arr = [self firstViewConstraints:view withParentView:self.stackView];
   if(!arr) { return; }
   
   [self.constraints addObjectsFromArray:arr];
@@ -156,7 +156,7 @@
 
 - (void)alignLastView:(UIView*)view {
   if(!view) { return; }
-  id arr = [self lastViewConstraints:view withParentView:self.stackView];
+  NSArray *arr = [self lastViewConstraints:view withParentView:self.stackView];
   if(!arr) { return; }
   
   [self.constraints addObjectsFromArray:arr];
