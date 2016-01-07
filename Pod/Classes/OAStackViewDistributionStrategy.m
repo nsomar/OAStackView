@@ -67,6 +67,7 @@
   self = [super init];
   if (self) {
     _stackView = stackView;
+    _constraints = [NSMutableArray array];
   }
   return self;
 }
@@ -152,12 +153,8 @@
     }
 }
 
-- (NSMutableArray *)constraints {
-  if (!_constraints) {
-    _constraints = [@[] mutableCopy];
-  }
-  
-  return _constraints;
+- (NSArray *)addedConstraints {
+  return self.constraints;
 }
 
 - (void)removeAddedConstraints {
@@ -187,7 +184,7 @@
     return;
   }
   
-  id constraint = [NSLayoutConstraint constraintWithItem:view
+  NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:view
                                                attribute:[self equalityAxis]
                                                relatedBy:NSLayoutRelationEqual
                                                   toItem:otherView
@@ -220,7 +217,7 @@
     multiplier = view.intrinsicContentSize.height / otherView.intrinsicContentSize.height;
   }
 
-  id constraint = [NSLayoutConstraint constraintWithItem:view
+  NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:view
                                                attribute:[self equalityAxis]
                                                relatedBy:NSLayoutRelationEqual
                                                   toItem:otherView
@@ -326,8 +323,7 @@
 
 - (void)removeAddedConstraints
 {
-  [self.stackView removeConstraints:self.constraints];
-  [self.constraints removeAllObjects];
+  [super removeAddedConstraints];
 
   [self.equalSpacingLayoutGuides makeObjectsPerformSelector:@selector(removeFromSuperview)];
   [self.equalSpacingLayoutGuides removeAllObjects];

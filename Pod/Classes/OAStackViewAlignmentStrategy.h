@@ -12,6 +12,8 @@
 
 @interface OAStackViewAlignmentStrategy : NSObject
 
+@property(nonatomic, readonly) NSArray *addedConstraints;
+
 + (OAStackViewAlignmentStrategy*)strategyWithStackView:(OAStackView *)stackView;
 
 - (void)addConstraintsOnOtherAxis:(UIView*)view;

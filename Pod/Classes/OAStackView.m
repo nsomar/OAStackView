@@ -108,10 +108,7 @@
 
 - (void)setAxis:(UILayoutConstraintAxis)axis {
   if (_axis == axis) { return; }
-  
   _axis = axis;
-  self.alignmentStrategy = [OAStackViewAlignmentStrategy strategyWithStackView:self];
-  
   [self layoutArrangedViews];
 }
 
@@ -128,7 +125,6 @@
 }
 
 - (void)setAlignmentConstraints {
-  [self.alignmentStrategy removeAddedConstraints];
   self.alignmentStrategy = [OAStackViewAlignmentStrategy strategyWithStackView:self];
   
   [self.alignmentStrategy alignFirstView:self.subviews.firstObject];
@@ -184,13 +180,10 @@
   if (_distribution == distribution) { return; }
   
   _distribution = distribution;
-  [self setAlignmentConstraints];
-  [self setDistributionConstraints];
+  [self layoutArrangedViews];
 }
 
 - (void)setDistributionConstraints {
-  [self.distributionStrategy removeAddedConstraints];
-  
   self.distributionStrategy = [OAStackViewDistributionStrategy strategyWithStackView:self];
   
   [self iterateVisibleViews:^(UIView *view, UIView *previousView) {
@@ -336,9 +329,11 @@
 #pragma mark - Align View
 
 - (void)layoutArrangedViews {
-  [self.distributionStrategy removeAddedConstraints];
-  [self.alignmentStrategy removeAddedConstraints];
-
+  NSMutableArray *constraints = [NSMutableArray array];
+  [constraints addObjectsFromArray:self.alignmentStrategy.addedConstraints];
+  [constraints addObjectsFromArray:self.distributionStrategy.addedConstraints];
+  [self removeConstraints:constraints];
+  
   [self setAlignmentConstraints];
   [self setDistributionConstraints];
 }

@@ -68,7 +68,8 @@
 - (instancetype)initWithWithStackView:(OAStackView *)stackView {
   self = [super init];
   if (self) {
-    _stackView = stackView;;
+    _stackView = stackView;
+    _constraints = [NSMutableArray array];
   }
   return self;
 }
@@ -111,12 +112,8 @@
   if (arr) { [self.stackView addConstraints:arr]; }
 }
 
-- (NSMutableArray *)constraints {
-  if (!_constraints) {
-    _constraints = [@[] mutableCopy];
-  }
-  
-  return _constraints;
+- (NSMutableArray *)addedConstraints {
+  return self.constraints;
 }
 
 - (void)removeAddedConstraints {
@@ -151,7 +148,7 @@
   if(!arr) { return; }
   
   [self.constraints addObjectsFromArray:arr];
-  if (arr) { [self.stackView addConstraints:arr]; }
+  [self.stackView addConstraints:arr];
 }
 
 - (void)alignLastView:(UIView*)view {
@@ -160,7 +157,7 @@
   if(!arr) { return; }
   
   [self.constraints addObjectsFromArray:arr];
-  if (arr) { [self.stackView addConstraints:arr]; }
+  [self.stackView addConstraints:arr];
 }
 
 - (NSArray*)firstViewConstraints:(UIView*)view withParentView:(UIView*)parentView {

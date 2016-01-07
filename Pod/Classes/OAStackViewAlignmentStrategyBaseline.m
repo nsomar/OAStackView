@@ -12,7 +12,7 @@
 @implementation OAStackViewAlignmentStrategyBaseline
 
 - (NSArray*)constraintsalignViewOnOtherAxis:(UIView*)view {
-  id constraintString = [NSString stringWithFormat:@"%@:|-(>=0@750)-[view]-(>=0@750)-|", [self otherAxisString]];
+  NSString *constraintString = [NSString stringWithFormat:@"%@:|-(>=0@750)-[view]-(>=0@750)-|", [self otherAxisString]];
   
   return [NSLayoutConstraint constraintsWithVisualFormat:constraintString
                                                  options:0
