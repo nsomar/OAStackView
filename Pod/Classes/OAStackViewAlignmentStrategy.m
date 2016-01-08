@@ -112,8 +112,8 @@
   if (arr) { [self.stackView addConstraints:arr]; }
 }
 
-- (NSMutableArray *)addedConstraints {
-  return self.constraints;
+- (NSArray *)addedConstraints {
+  return [self.constraints copy];
 }
 
 - (void)removeAddedConstraints {

@@ -154,7 +154,7 @@
 }
 
 - (NSArray *)addedConstraints {
-  return self.constraints;
+  return [self.constraints copy];
 }
 
 - (void)removeAddedConstraints {
