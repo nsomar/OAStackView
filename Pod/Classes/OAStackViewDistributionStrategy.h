@@ -12,6 +12,8 @@
 
 @interface OAStackViewDistributionStrategy : NSObject
 
+@property(nonatomic, readonly) NSArray *addedConstraints;
+
 + (OAStackViewDistributionStrategy*)strategyWithStackView:(OAStackView *)stackView;
 
 - (void)alignView:(UIView*)view afterView:(UIView*)previousView;

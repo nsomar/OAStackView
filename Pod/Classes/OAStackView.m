@@ -63,8 +63,8 @@
   _layoutMargins = UIEdgeInsetsMake(0, 8, 0, 8);
   _layoutMarginsRelativeArrangement = NO;
 
-  _alignmentStrategy = [OAStackViewAlignmentStrategy strategyWithStackView:self];
-  _distributionStrategy = [OAStackViewDistributionStrategy strategyWithStackView:self];
+  self.alignmentStrategy = [OAStackViewAlignmentStrategy strategyWithStackView:self];
+  self.distributionStrategy = [OAStackViewDistributionStrategy strategyWithStackView:self];
   
   [self layoutArrangedViews];
 }
@@ -108,10 +108,7 @@
 
 - (void)setAxis:(UILayoutConstraintAxis)axis {
   if (_axis == axis) { return; }
-  
   _axis = axis;
-  _alignmentStrategy = [OAStackViewAlignmentStrategy strategyWithStackView:self];
-  
   [self layoutArrangedViews];
 }
 
@@ -128,7 +125,6 @@
 }
 
 - (void)setAlignmentConstraints {
-  [self.alignmentStrategy removeAddedConstraints];
   self.alignmentStrategy = [OAStackViewAlignmentStrategy strategyWithStackView:self];
   
   [self.alignmentStrategy alignFirstView:self.subviews.firstObject];
@@ -139,6 +135,24 @@
   }];
   
   [self.alignmentStrategy alignLastView:self.subviews.lastObject];
+}
+
+- (void)setAlignmentStrategy:(OAStackViewAlignmentStrategy *)alignmentStrategy {
+  if ([_alignmentStrategy isEqual:alignmentStrategy]) {
+    return;
+  }
+  
+  [_alignmentStrategy removeAddedConstraints];
+  _alignmentStrategy = alignmentStrategy;
+}
+
+- (void)setDistributionStrategy:(OAStackViewDistributionStrategy *)distributionStrategy {
+  if ([_distributionStrategy isEqual:distributionStrategy]) {
+    return;
+  }
+  
+  [_distributionStrategy removeAddedConstraints];
+  _distributionStrategy = distributionStrategy;
 }
 
 - (void)removeConstraint:(NSLayoutConstraint *)constraint {
@@ -166,13 +180,10 @@
   if (_distribution == distribution) { return; }
   
   _distribution = distribution;
-  [self setAlignmentConstraints];
-  [self setDistributionConstraints];
+  [self layoutArrangedViews];
 }
 
 - (void)setDistributionConstraints {
-  [self.distributionStrategy removeAddedConstraints];
-  
   self.distributionStrategy = [OAStackViewDistributionStrategy strategyWithStackView:self];
   
   [self iterateVisibleViews:^(UIView *view, UIView *previousView) {
@@ -318,8 +329,11 @@
 #pragma mark - Align View
 
 - (void)layoutArrangedViews {
-  [self removeDecendentConstraints];
-
+  NSMutableArray *constraints = [NSMutableArray array];
+  [constraints addObjectsFromArray:self.alignmentStrategy.addedConstraints];
+  [constraints addObjectsFromArray:self.distributionStrategy.addedConstraints];
+  [self removeConstraints:constraints];
+  
   [self setAlignmentConstraints];
   [self setDistributionConstraints];
 }

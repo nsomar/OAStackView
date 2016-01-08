@@ -67,6 +67,7 @@
   self = [super init];
   if (self) {
     _stackView = stackView;
+    _constraints = [NSMutableArray array];
   }
   return self;
 }
@@ -90,21 +91,25 @@
 - (void)alignLastView:(UIView*)view {
   NSString *constraintString = [NSString stringWithFormat:@"%@:[view]-(lastMargin)-|", [self currentAxisString]];
   NSNumber *lastMargin = @([self lastMargin]);
-  [self.stackView addConstraints:
-   [NSLayoutConstraint constraintsWithVisualFormat:constraintString
-                                           options:0
-                                           metrics:NSDictionaryOfVariableBindings(lastMargin)
-                                             views:NSDictionaryOfVariableBindings(view)]];
+  NSArray *arr = [NSLayoutConstraint constraintsWithVisualFormat:constraintString
+                                                   options:0
+                                                   metrics:NSDictionaryOfVariableBindings(lastMargin)
+                                                     views:NSDictionaryOfVariableBindings(view)];
+    
+  [self.constraints addObjectsFromArray:arr];
+  [self.stackView addConstraints:arr];
 }
 
 - (void)alignFirstView:(UIView*)view {
   NSString *str = [NSString stringWithFormat:@"%@:|-(firstMargin)-[view]", [self currentAxisString]];
   NSNumber *firstMargin = @([self firstMargin]);
-  [self.stackView addConstraints:
-   [NSLayoutConstraint constraintsWithVisualFormat:str
-                                           options:0
-                                           metrics:NSDictionaryOfVariableBindings(firstMargin)
-                                             views:NSDictionaryOfVariableBindings(view)]];
+  NSArray *arr = [NSLayoutConstraint constraintsWithVisualFormat:str
+                                                   options:0
+                                                   metrics:NSDictionaryOfVariableBindings(firstMargin)
+                                                     views:NSDictionaryOfVariableBindings(view)];
+    
+  [self.constraints addObjectsFromArray:arr];
+  [self.stackView addConstraints:arr];
 }
 
 
@@ -114,7 +119,7 @@
                    [self symbolicSpacingRelation],
                    self.stackView.spacing];
   
-  id arr = [NSLayoutConstraint constraintsWithVisualFormat:str
+  NSArray *arr = [NSLayoutConstraint constraintsWithVisualFormat:str
                                                    options:0
                                                    metrics:nil
                                                      views:NSDictionaryOfVariableBindings(view, previousView)];
@@ -148,12 +153,8 @@
     }
 }
 
-- (NSMutableArray *)constraints {
-  if (!_constraints) {
-    _constraints = [@[] mutableCopy];
-  }
-  
-  return _constraints;
+- (NSArray *)addedConstraints {
+  return [self.constraints copy];
 }
 
 - (void)removeAddedConstraints {
@@ -183,7 +184,7 @@
     return;
   }
   
-  id constraint = [NSLayoutConstraint constraintWithItem:view
+  NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:view
                                                attribute:[self equalityAxis]
                                                relatedBy:NSLayoutRelationEqual
                                                   toItem:otherView
@@ -216,7 +217,7 @@
     multiplier = view.intrinsicContentSize.height / otherView.intrinsicContentSize.height;
   }
 
-  id constraint = [NSLayoutConstraint constraintWithItem:view
+  NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:view
                                                attribute:[self equalityAxis]
                                                relatedBy:NSLayoutRelationEqual
                                                   toItem:otherView
@@ -322,8 +323,7 @@
 
 - (void)removeAddedConstraints
 {
-  [self.stackView removeConstraints:self.constraints];
-  [self.constraints removeAllObjects];
+  [super removeAddedConstraints];
 
   [self.equalSpacingLayoutGuides makeObjectsPerformSelector:@selector(removeFromSuperview)];
   [self.equalSpacingLayoutGuides removeAllObjects];
