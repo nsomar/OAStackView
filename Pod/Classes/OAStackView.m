@@ -27,51 +27,46 @@
 @implementation OAStackView
 
 + (Class)layerClass {
-    return [OATransformLayer class];
+  return [OATransformLayer class];
 }
 
 #pragma mark - Initialization
 
 - (instancetype)initWithCoder:(NSCoder *)decoder {
   self = [super initWithCoder:decoder];
-  
-  if (self) {
-      [self commonInitWithInitalSubviews:@[]];
 
-      // Not sure why, but [self isKindOfClass:@"UIStackView"] didn't work here
-      if ([NSStringFromClass([self class]) isEqualToString:@"UIStackView"]) {
-          [self addViewsAsSubviews:
-           [decoder decodeObjectForKey:@"UIStackViewArrangedSubviews"]];
-          self.axis = [decoder decodeIntegerForKey:@"UIStackViewAxis"];
-          self.distribution =
-          [decoder decodeIntegerForKey:@"UIStackViewDistribution"];
-          self.alignment = [decoder decodeIntegerForKey:@"UIStackViewAlignment"];
-          self.spacing = [decoder decodeDoubleForKey:@"UIStackViewSpacing"];
-          self.baselineRelativeArrangement =
-          [decoder decodeBoolForKey:@"UIStackViewBaselineRelative"];
-          self.layoutMarginsRelativeArrangement =
-          [decoder decodeBoolForKey:@"UIStackViewLayoutMarginsRelative"];
-      }
-      
-      [self layoutArrangedViews];
+  if (self) {
+    [self commonInitWithInitalSubviews:@[]];
+
+    if ([NSStringFromClass([self class]) isEqualToString:@"UIStackView"]) {
+      [self addViewsAsSubviews:[decoder decodeObjectForKey:@"UIStackViewArrangedSubviews"]];
+      self.axis = [decoder decodeIntegerForKey:@"UIStackViewAxis"];
+      self.distribution = [decoder decodeIntegerForKey:@"UIStackViewDistribution"];
+      self.alignment = [decoder decodeIntegerForKey:@"UIStackViewAlignment"];
+      self.spacing = [decoder decodeDoubleForKey:@"UIStackViewSpacing"];
+      self.baselineRelativeArrangement = [decoder decodeBoolForKey:@"UIStackViewBaselineRelative"];
+      self.layoutMarginsRelativeArrangement = [decoder decodeBoolForKey:@"UIStackViewLayoutMarginsRelative"];
+    }
+
+    [self layoutArrangedViews];
   }
-  
+
   return self;
 }
 
 - (instancetype)initWithArrangedSubviews:(NSArray<__kindof UIView *> *)views {
   self = [super initWithFrame:CGRectZero];
-  
+
   if (self) {
     [self commonInitWithInitalSubviews:views];
-	[self layoutArrangedViews];
+    [self layoutArrangedViews];
   }
-  
+
   return self;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
-    return [self initWithArrangedSubviews:@[]];
+  return [self initWithArrangedSubviews:@[]];
 }
 
 - (void)commonInitWithInitalSubviews:(NSArray *)initialSubviews {
@@ -96,7 +91,7 @@
 }
 
 - (void)setBackgroundColor:(UIColor *)backgroundColor {
-    // Does not have any effect because `CATransformLayer` is not rendered.
+  // Does not have any effect because `CATransformLayer` is not rendered.
 }
 
 - (void)setOpaque:(BOOL)opaque {
@@ -109,14 +104,14 @@
 
 - (void)setSpacing:(CGFloat)spacing {
   if (_spacing == spacing) { return; }
-  
+
   _spacing = spacing;
-  
+
   for (NSLayoutConstraint *constraint in self.constraints) {
     BOOL isWidthOrHeight =
     (constraint.firstAttribute == NSLayoutAttributeWidth) ||
     (constraint.firstAttribute == NSLayoutAttributeHeight);
-    
+
     if ([self.subviews containsObject:constraint.firstItem] &&
         [self.subviews containsObject:constraint.secondItem] &&
         !isWidthOrHeight) {
@@ -138,21 +133,21 @@
 
 - (void)setAlignment:(OAStackViewAlignment)alignment {
   if (_alignment == alignment) { return; }
-  
+
   _alignment = alignment;
   [self setAlignmentConstraints];
 }
 
 - (void)setAlignmentConstraints {
   self.alignmentStrategy = [OAStackViewAlignmentStrategy strategyWithStackView:self];
-  
+
   [self.alignmentStrategy alignFirstView:self.subviews.firstObject];
-  
+
   [self iterateVisibleViews:^(UIView *view, UIView *previousView) {
     [self.alignmentStrategy addConstraintsOnOtherAxis:view];
     [self.alignmentStrategy alignView:view withPreviousView:previousView];
   }];
-  
+
   [self.alignmentStrategy alignLastView:self.subviews.lastObject];
 }
 
@@ -160,7 +155,7 @@
   if ([_alignmentStrategy isEqual:alignmentStrategy]) {
     return;
   }
-  
+
   [_alignmentStrategy removeAddedConstraints];
   _alignmentStrategy = alignmentStrategy;
 }
@@ -169,7 +164,7 @@
   if ([_distributionStrategy isEqual:distributionStrategy]) {
     return;
   }
-  
+
   [_distributionStrategy removeAddedConstraints];
   _distributionStrategy = distributionStrategy;
 }
@@ -197,18 +192,18 @@
 
 - (void)setDistribution:(OAStackViewDistribution)distribution {
   if (_distribution == distribution) { return; }
-  
+
   _distribution = distribution;
   [self layoutArrangedViews];
 }
 
 - (void)setDistributionConstraints {
   self.distributionStrategy = [OAStackViewDistributionStrategy strategyWithStackView:self];
-  
+
   [self iterateVisibleViews:^(UIView *view, UIView *previousView) {
     [self.distributionStrategy alignView:view afterView:previousView];
   }];
-  
+
   [self.distributionStrategy alignView:nil afterView:[self lastVisibleItem]];
 }
 
@@ -218,19 +213,19 @@
 }
 
 - (void)setLayoutMargins:(UIEdgeInsets)layoutMargins {
-    _layoutMargins = layoutMargins;
-    [self layoutArrangedViews];
+  _layoutMargins = layoutMargins;
+  [self layoutArrangedViews];
 }
 
 - (void)setLayoutMarginsRelativeArrangement:(BOOL)layoutMarginsRelativeArrangement {
-    _layoutMarginsRelativeArrangement = layoutMarginsRelativeArrangement;
-    [self layoutArrangedViews];
+  _layoutMarginsRelativeArrangement = layoutMarginsRelativeArrangement;
+  [self layoutArrangedViews];
 }
 
 #pragma mark - Overriden methods
 
 - (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
-    [self layoutArrangedViews];
+  [self layoutArrangedViews];
 }
 
 #pragma mark - Adding and removing
@@ -240,13 +235,13 @@
 }
 
 - (void)removeArrangedSubview:(UIView *)view {
-  
+
   if (self.subviews.count == 1) {
     [self.mutableArrangedSubviews removeObject:view];
     [view removeFromSuperview];
     return;
   }
-  
+
   [self removeViewFromArrangedViews:view permanently:YES];
 }
 
@@ -255,38 +250,38 @@
 }
 
 - (void)insertArrangedSubview:(UIView *)view atIndex:(NSUInteger)stackIndex newItem:(BOOL)newItem {
-  
+
   id previousView, nextView;
   view.translatesAutoresizingMaskIntoConstraints = NO;
   BOOL isAppending = stackIndex == self.subviews.count;
-  
+
   if (isAppending) {
     //Appending a new item
-    
+
     previousView = [self lastVisibleItem];
     nextView = nil;
-    
+
     NSArray<__kindof NSLayoutConstraint *> *constraints = [self lastConstraintAffectingView:self andView:previousView inAxis:self.axis];
     if (constraints) {
       [self removeConstraints:constraints];
     }
-    
+
     if (newItem) {
       [self.mutableArrangedSubviews addObject:view];
       [self addSubview:view];
     }
-    
+
   } else {
     //Item insertion
-    
+
     previousView = [self visibleViewBeforeIndex:stackIndex];
     nextView = [self visibleViewAfterIndex:newItem ? stackIndex - 1: stackIndex];
-    
+
     NSArray<__kindof NSLayoutConstraint *> *constraints;
     BOOL isLastVisibleItem = [self isViewLastItem:previousView excludingItem:view];
     BOOL isFirstVisibleView = previousView == nil;
     BOOL isOnlyItem = previousView == nil && nextView == nil;
-    
+
     if (isLastVisibleItem) {
       constraints = @[[self lastViewConstraint]];
     } else if(isOnlyItem) {
@@ -296,15 +291,15 @@
     } else {
       constraints = [self constraintsBetweenView:previousView ?: self andView:nextView ?: self inAxis:self.axis];
     }
-    
+
     [self removeConstraints:constraints];
-    
+
     if (newItem) {
       [self.mutableArrangedSubviews insertObject:view atIndex:stackIndex];
       [self insertSubview:view atIndex:stackIndex];
     }
   }
-  
+
   [self.distributionStrategy alignView:view afterView:previousView];
   [self.alignmentStrategy alignView:view withPreviousView:previousView];
   [self.alignmentStrategy addConstraintsOnOtherAxis:view];
@@ -315,10 +310,10 @@
 - (void)removeViewFromArrangedViews:(UIView*)view permanently:(BOOL)permanently {
   NSInteger index = [self.subviews indexOfObject:view];
   if (index == NSNotFound) { return; }
-  
+
   id previousView = [self visibleViewBeforeView:view];
   id nextView = [self visibleViewAfterView:view];
-  
+
   if (permanently) {
     [self.mutableArrangedSubviews removeObject:view];
     [view removeFromSuperview];
@@ -326,7 +321,7 @@
     NSArray <__kindof NSLayoutConstraint *> *constraint = [self constraintsAffectingView:view];
     [self removeConstraints:constraint];
   }
-  
+
   if (nextView) {
     [self.distributionStrategy alignView:nextView afterView:previousView];
   } else if(previousView) {
@@ -352,7 +347,7 @@
   [constraints addObjectsFromArray:self.alignmentStrategy.addedConstraints];
   [constraints addObjectsFromArray:self.distributionStrategy.addedConstraints];
   [self removeConstraints:constraints];
-  
+
   [self setAlignmentConstraints];
   [self setDistributionConstraints];
 }
@@ -370,17 +365,17 @@
 
 // Constructors are called after all classes have been loaded.
 __attribute__((constructor)) static void OAStackViewPatchEntry(void) {
-    
-    if (objc_getClass("UIStackView")) {
-        return;
-    }
-    
-    if (objc_getClass("OAStackViewDisableForwardToUIStackViewSentinel")) {
-        return;
-    }
-    
-    Class class = objc_allocateClassPair(OAStackView.class, "UIStackView", 0);
-    if (class) {
-        objc_registerClassPair(class);
-    }
+
+  if (objc_getClass("UIStackView")) {
+    return;
+  }
+
+  if (objc_getClass("OAStackViewDisableForwardToUIStackViewSentinel")) {
+    return;
+  }
+
+  Class class = objc_allocateClassPair(OAStackView.class, "UIStackView", 0);
+  if (class) {
+    objc_registerClassPair(class);
+  }
 }
