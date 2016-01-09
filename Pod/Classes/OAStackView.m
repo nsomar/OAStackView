@@ -13,11 +13,15 @@
 #import "OAStackViewAlignmentStrategy.h"
 #import "OAStackViewDistributionStrategy.h"
 #import "OATransformLayer.h"
+#import <objc/runtime.h>
 
 @interface OAStackView ()
 @property(nonatomic, strong) NSMutableArray *mutableArrangedSubviews;
 @property(nonatomic) OAStackViewAlignmentStrategy *alignmentStrategy;
 @property(nonatomic) OAStackViewDistributionStrategy *distributionStrategy;
+
+// Not implemented but needed for backward compatibility with UIStackView
+@property(nonatomic,getter=isBaselineRelativeArrangement) BOOL baselineRelativeArrangement;
 @end
 
 @implementation OAStackView
@@ -28,11 +32,28 @@
 
 #pragma mark - Initialization
 
-- (instancetype)initWithCoder:(NSCoder *)coder {
-  self = [super initWithCoder:coder];
+- (instancetype)initWithCoder:(NSCoder *)decoder {
+  self = [super initWithCoder:decoder];
   
   if (self) {
-    [self commonInitWithInitalSubviews:@[]];
+      [self commonInitWithInitalSubviews:@[]];
+
+      // Not sure why, but [self isKindOfClass:@"UIStackView"] didn't work here
+      if ([NSStringFromClass([self class]) isEqualToString:@"UIStackView"]) {
+          [self addViewsAsSubviews:
+           [decoder decodeObjectForKey:@"UIStackViewArrangedSubviews"]];
+          self.axis = [decoder decodeIntegerForKey:@"UIStackViewAxis"];
+          self.distribution =
+          [decoder decodeIntegerForKey:@"UIStackViewDistribution"];
+          self.alignment = [decoder decodeIntegerForKey:@"UIStackViewAlignment"];
+          self.spacing = [decoder decodeDoubleForKey:@"UIStackViewSpacing"];
+          self.baselineRelativeArrangement =
+          [decoder decodeBoolForKey:@"UIStackViewBaselineRelative"];
+          self.layoutMarginsRelativeArrangement =
+          [decoder decodeBoolForKey:@"UIStackViewLayoutMarginsRelative"];
+      }
+      
+      [self layoutArrangedViews];
   }
   
   return self;
@@ -43,6 +64,7 @@
   
   if (self) {
     [self commonInitWithInitalSubviews:views];
+	[self layoutArrangedViews];
   }
   
   return self;
@@ -65,8 +87,6 @@
 
   self.alignmentStrategy = [OAStackViewAlignmentStrategy strategyWithStackView:self];
   self.distributionStrategy = [OAStackViewDistributionStrategy strategyWithStackView:self];
-  
-  [self layoutArrangedViews];
 }
 
 #pragma mark - Properties
@@ -83,8 +103,7 @@
   // Does not have any effect because `CATransformLayer` is not rendered.
 }
 
-- (void)setClipsToBounds:(BOOL)clipsToBounds
-{
+- (void)setClipsToBounds:(BOOL)clipsToBounds {
   // Does not have any effect because `CATransformLayer` is not rendered.
 }
 
@@ -346,3 +365,22 @@
 }
 
 @end
+
+#pragma mark - Runtime Injection
+
+// Constructors are called after all classes have been loaded.
+__attribute__((constructor)) static void OAStackViewPatchEntry(void) {
+    
+    if (objc_getClass("UIStackView")) {
+        return;
+    }
+    
+    if (objc_getClass("OAStackViewDisableForwardToUIStackViewSentinel")) {
+        return;
+    }
+    
+    Class class = objc_allocateClassPair(OAStackView.class, "UIStackView", 0);
+    if (class) {
+        objc_registerClassPair(class);
+    }
+}

@@ -8,6 +8,9 @@
 
 #import "OAAppDelegate.h"
 
+//@interface OAStackViewDisableForwardToUIStackViewSentinel : NSObject @end
+//@implementation OAStackViewDisableForwardToUIStackViewSentinel @end
+
 @implementation OAAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
