@@ -73,7 +73,7 @@
   _mutableArrangedSubviews = [initialSubviews mutableCopy];
   [self addViewsAsSubviews:initialSubviews];
 
-  _axis = UILayoutConstraintAxisVertical;
+  _axis = UILayoutConstraintAxisHorizontal;
   _alignment = OAStackViewAlignmentFill;
   _distribution = OAStackViewDistributionFill;
 
