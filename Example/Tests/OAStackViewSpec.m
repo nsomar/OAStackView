@@ -23,7 +23,7 @@ describe(@"OAStackView", ^{
       
       stackView = [[OAStackView alloc] initWithArrangedSubviews:views];
       stackView.translatesAutoresizingMaskIntoConstraints = NO;
-      
+      stackView.axis = UILayoutConstraintAxisVertical;
       CGSize size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
       [[theValue(size) should] equal:theValue(CGSizeMake(100, 60))];
     });
@@ -33,7 +33,7 @@ describe(@"OAStackView", ^{
       
       stackView = [[OAStackView alloc] initWithArrangedSubviews:views];
       stackView.translatesAutoresizingMaskIntoConstraints = NO;
-      
+      stackView.axis = UILayoutConstraintAxisVertical;
       CGSize size = [stackView systemLayoutSizeFittingSize:CGSizeZero];
       [[theValue(size) should] equal:theValue(CGSizeMake(100, 60))];
       
@@ -57,6 +57,7 @@ describe(@"OAStackView", ^{
         NSArray *views = @[view1, view2, view3];
         
         stackView = [[OAStackView alloc] initWithArrangedSubviews:views];
+        stackView.axis = UILayoutConstraintAxisVertical;
         stackView.translatesAutoresizingMaskIntoConstraints = NO;
       });
       
@@ -112,6 +113,7 @@ describe(@"OAStackView", ^{
         NSArray *views = @[view1, view2, view3];
         
         stackView = [[OAStackView alloc] initWithArrangedSubviews:views];
+        stackView.axis = UILayoutConstraintAxisVertical;
         stackView.translatesAutoresizingMaskIntoConstraints = NO;
       });
       
@@ -185,6 +187,7 @@ describe(@"OAStackView", ^{
         
         stackView = [[OAStackView alloc] initWithArrangedSubviews:views];
         stackView.translatesAutoresizingMaskIntoConstraints = NO;
+        stackView.axis = UILayoutConstraintAxisVertical;
       });
       
       it(@"Decreases the height when view is hidden", ^{
@@ -330,6 +333,7 @@ describe(@"OAStackView", ^{
         NSArray *views = @[view1, view2, view3];
         
         stackView = [[OAStackView alloc] initWithArrangedSubviews:views];
+        stackView.axis = UILayoutConstraintAxisVertical;
         stackView.translatesAutoresizingMaskIntoConstraints = NO;
       });
       
@@ -434,6 +438,7 @@ describe(@"OAStackView", ^{
         stackView = [[OAStackView alloc] initWithArrangedSubviews:views];
         stackView.translatesAutoresizingMaskIntoConstraints = NO;
         stackView.layoutMarginsRelativeArrangement = YES;
+        stackView.axis = UILayoutConstraintAxisVertical;
         stackView.layoutMargins = UIEdgeInsetsMake(10, 20, 30, 40);
       });
 

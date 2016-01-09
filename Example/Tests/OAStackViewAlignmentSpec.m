@@ -29,6 +29,7 @@ describe(@"OAStackViewAlignment", ^{
       NSArray *views = @[view1, view2, view3];
       
       stackView = [[OAStackView alloc] initWithArrangedSubviews:views];
+      stackView.axis = UILayoutConstraintAxisVertical;
       stackView.translatesAutoresizingMaskIntoConstraints = NO;
     });
     
