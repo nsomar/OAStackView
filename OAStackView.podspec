@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "OAStackView"
-  s.version          = "0.2.0"
+  s.version          = "0.3.0"
   s.summary          = "Porting UIStackView to iOS 7+."
   s.description      = <<-DESC
   iOS 9 introduced the very cool [UIStackView](https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIStackView_Class_Reference/), UIStackView can be used to easily create simple and complex layouts.
