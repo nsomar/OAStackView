@@ -39,7 +39,6 @@
     [self commonInitWithInitalSubviews:@[]];
 
     if ([NSStringFromClass([self class]) isEqualToString:@"UIStackView"]) {
-      [self addViewsAsSubviews:[decoder decodeObjectForKey:@"UIStackViewArrangedSubviews"]];
       self.axis = [decoder decodeIntegerForKey:@"UIStackViewAxis"];
       self.distribution = [decoder decodeIntegerForKey:@"UIStackViewDistribution"];
       self.alignment = [decoder decodeIntegerForKey:@"UIStackViewAlignment"];
