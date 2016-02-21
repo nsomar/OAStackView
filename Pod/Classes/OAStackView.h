@@ -9,32 +9,32 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSInteger, OAStackViewDistribution) {
-  
+
   /* When items do not fit (overflow) or fill (underflow) the space available
    adjustments occur according to compressionResistance or hugging
    priorities of items, or when that is ambiguous, according to arrangement
    order.
    */
   OAStackViewDistributionFill = 0,
-  
+
   /* Items are all the same size.
    When space allows, this will be the size of the item with the largest
    intrinsicContentSize (along the axis of the stack).
    Overflow or underflow adjustments are distributed equally among the items.
    */
   OAStackViewDistributionFillEqually,
-  
+
   /* Overflow or underflow adjustments are distributed among the items proportional
    to their intrinsicContentSizes.
    */
   OAStackViewDistributionFillProportionally,
-  
+
   /* Additional underflow spacing is divided equally in the spaces between the items.
    Overflow squeezing is controlled by compressionResistance priorities followed by
    arrangement order.
    */
   OAStackViewDistributionEqualSpacing,
-  
+
   /* Equal center-to-center spacing of the items is maintained as much
    as possible while still maintaining a minimum edge-to-edge spacing within the
    allowed area.
@@ -48,7 +48,7 @@ typedef NS_ENUM(NSInteger, OAStackViewDistribution) {
 
 typedef NS_ENUM(NSInteger, OAStackViewAlignment) {
   OAStackViewAlignmentFill,
-  
+
   /* Align the leading edges of vertically stacked items
    or the top edges of horizontally stacked items tightly to the relevant edge
    of the container
@@ -56,12 +56,12 @@ typedef NS_ENUM(NSInteger, OAStackViewAlignment) {
   OAStackViewAlignmentLeading,
   OAStackViewAlignmentTop = OAStackViewAlignmentLeading,
   OAStackViewAlignmentFirstBaseline NS_ENUM_AVAILABLE_IOS(8_0), // Valid for horizontal axis only
-  
+
   /* Center the items in a vertical stack horizontally
    or the items in a horizontal stack vertically
    */
   OAStackViewAlignmentCenter,
-  
+
   /* Align the trailing edges of vertically stacked items
    or the bottom edges of horizontally stacked items tightly to the relevant
    edge of the container
@@ -92,7 +92,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic,readonly,copy) NSArray<__kindof UIView *> *arrangedSubviews;
 
-//Default is Vertical
+/* A stack with a horizontal axis is a row of arrangedSubviews,
+and a stack with a vertical axis is a column of arrangedSubviews.
+Default value is `UILayoutConstraintAxisHorizontal`.
+*/
 @property(nonatomic) UILayoutConstraintAxis axis;
 @property(nonatomic) IBInspectable NSInteger axisValue;
 
