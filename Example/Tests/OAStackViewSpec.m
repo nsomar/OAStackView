@@ -1018,6 +1018,10 @@ describe(@"OAStackView", ^{
       [[theValue(CGRectGetWidth(stackView.frame)) should] equal:theValue(50)];
     });
     
+    it(@"should default to vertical axis", ^{
+        OAStackView *stackView = [[OAStackView alloc] init];
+        [[theValue(stackView.axis) should] equal:theValue(UILayoutConstraintAxisVertical)];
+    });
   });
 });
 
