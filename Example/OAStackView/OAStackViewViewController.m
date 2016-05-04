@@ -7,10 +7,11 @@
 //
 
 #import "OAStackViewViewController.h"
-#import "OAStackView.h"
+#import <OAStackView/OAStackView-Swift.h>
+#import <OAStackView/OAStackView.h>
 
 @interface OAStackViewViewController ()
-@property (weak, nonatomic) IBOutlet OAStackView *stackView;
+@property (weak, nonatomic) OAStackViewProxy *stackView;
 @property (weak, nonatomic) IBOutlet UIView *viewToRemove;
 @end
 
