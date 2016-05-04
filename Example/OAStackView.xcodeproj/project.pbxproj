@@ -26,7 +26,7 @@
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		A7CC22B31B2E0B8E009C9911 /* OAStackViewSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = A7CC22B11B2E0B46009C9911 /* OAStackViewSpec.m */; };
 		A7CC22B51B2E0BC7009C9911 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7CC22B41B2E0BC7009C9911 /* Launch Screen.xib */; };
-		D21E827A1BCF97D400D8379B /* OAUIStackViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D21E82791BCF97D400D8379B /* OAUIStackViewViewController.m */; settings = {ASSET_TAGS = (); }; };
+		D21E827A1BCF97D400D8379B /* OAUIStackViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D21E82791BCF97D400D8379B /* OAUIStackViewViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
