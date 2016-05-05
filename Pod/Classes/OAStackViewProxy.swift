@@ -31,14 +31,6 @@ import UIKit
 
     public required init?(coder aDecoder: NSCoder) { fatalError("Unimplemented.") }
 
-    override public var subviews: [UIView] {
-        if #available(iOS 9, *) {
-            return nativeStackView.subviews
-        } else {
-            return backwardsCompatibleStackView.subviews
-        }
-    }
-
     public var arrangedSubviews: [UIView] {
         if #available(iOS 9, *) {
             return nativeStackView.arrangedSubviews
