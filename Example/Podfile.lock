@@ -1,6 +1,6 @@
 PODS:
   - Kiwi (2.4.0)
-  - OAStackView (0.2.0)
+  - OAStackView (1.0.1)
   - Reveal-iOS-SDK (1.5.1)
 
 DEPENDENCIES:
@@ -10,11 +10,11 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   OAStackView:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
   Kiwi: f49c9d54b28917df5928fe44968a39ed198cb8a8
-  OAStackView: a05adfec3669a5187b968a8c0a2690ae517271b6
+  OAStackView: 95e7cb79cbea25c2342f496a44bdbe8bd4c8d510
   Reveal-iOS-SDK: c9c55cad2729c85f6ced415f1b21857c9a2d8ef9
 
 COCOAPODS: 0.39.0

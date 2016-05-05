@@ -26,7 +26,7 @@
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		A7CC22B31B2E0B8E009C9911 /* OAStackViewSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = A7CC22B11B2E0B46009C9911 /* OAStackViewSpec.m */; };
 		A7CC22B51B2E0BC7009C9911 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7CC22B41B2E0BC7009C9911 /* Launch Screen.xib */; };
-		D21E827A1BCF97D400D8379B /* OAUIStackViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D21E82791BCF97D400D8379B /* OAUIStackViewViewController.m */; settings = {ASSET_TAGS = (); }; };
+		D21E827A1BCF97D400D8379B /* OAUIStackViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D21E82791BCF97D400D8379B /* OAUIStackViewViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -531,6 +531,7 @@
 			baseConfigurationReference = 4A479030BF663DB64E709BCD /* Pods-OAStackView_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OAStackView/OAStackView-Prefix.pch";
 				INFOPLIST_FILE = "OAStackView/OAStackView-Info.plist";
@@ -545,6 +546,7 @@
 			baseConfigurationReference = 6CB38A1284EC102F864DB60A /* Pods-OAStackView_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OAStackView/OAStackView-Prefix.pch";
 				INFOPLIST_FILE = "OAStackView/OAStackView-Info.plist";
