@@ -119,16 +119,6 @@ import UIKit
         }
     }
 
-    public override var layoutMargins: UIEdgeInsets {
-        didSet {
-            if #available(iOS 9, *) {
-                nativeStackView.layoutMargins = layoutMargins
-            } else {
-                backwardsCompatibleStackView.layoutMargins = layoutMargins
-            }
-        }
-    }
-
     @available(iOS 9.0, *)
     private lazy var nativeStackView: UIStackView = {
         let stackView = UIStackView()
@@ -141,6 +131,19 @@ import UIKit
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
+}
+
+@available(iOS 8, *)
+public extension OAStackViewProxy {
+    public override var layoutMargins: UIEdgeInsets {
+        didSet {
+            if #available(iOS 9, *) {
+                nativeStackView.layoutMargins = layoutMargins
+            } else {
+                backwardsCompatibleStackView.layoutMargins = layoutMargins
+            }
+        }
+    }
 }
 
 @available(iOS 9, *)
