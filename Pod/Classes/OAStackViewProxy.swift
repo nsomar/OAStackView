@@ -125,6 +125,19 @@ import UIKit
     }()
 }
 
+@available(iOS 8, *)
+public extension OAStackViewProxy {
+    public override var layoutMargins: UIEdgeInsets {
+        didSet {
+            if #available(iOS 9, *) {
+                nativeStackView.layoutMargins = layoutMargins
+            } else {
+                backwardsCompatibleStackView.layoutMargins = layoutMargins
+            }
+        }
+    }
+}
+
 @available(iOS 9, *)
 private extension UIStackViewAlignment {
     init(alignment: OAStackViewAlignment) {
