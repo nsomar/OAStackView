@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		16951A4DAC6553EE4D40D755 /* Pods_OAStackView_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A5A33E2C7E649B51D3BA787 /* Pods_OAStackView_Example.framework */; };
+		2226C44410BBCE37FE3005BF /* Pods_OAStackView_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C8036C9679BDFD5C2D334F2 /* Pods_OAStackView_Example.framework */; };
 		535F82651B7681B000841D0D /* OAStackViewAlignmentSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F82631B76819500841D0D /* OAStackViewAlignmentSpec.m */; };
 		535F82681B7681E200841D0D /* TestHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F82671B7681E200841D0D /* TestHelpers.m */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
@@ -22,11 +22,11 @@
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
-		6452D2A087CE79BE1277EAFD /* Pods_OAStackView_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 844890E0E3BFA4E88316456F /* Pods_OAStackView_Tests.framework */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		A7CC22B31B2E0B8E009C9911 /* OAStackViewSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = A7CC22B11B2E0B46009C9911 /* OAStackViewSpec.m */; };
 		A7CC22B51B2E0BC7009C9911 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7CC22B41B2E0BC7009C9911 /* Launch Screen.xib */; };
 		D21E827A1BCF97D400D8379B /* OAUIStackViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D21E82791BCF97D400D8379B /* OAUIStackViewViewController.m */; };
+		E0BF7FFAF7FAD00AD08058BD /* Pods_OAStackView_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70ADA1A26FB75088EF354F1D /* Pods_OAStackView_Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,12 +41,11 @@
 
 /* Begin PBXFileReference section */
 		2E337E5258F10C742E4A5C11 /* OAStackView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = OAStackView.podspec; path = ../OAStackView.podspec; sourceTree = "<group>"; };
-		36483642FFCC66CE85E4617C /* Pods-OAStackView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OAStackView_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OAStackView_Tests/Pods-OAStackView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		4A479030BF663DB64E709BCD /* Pods-OAStackView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OAStackView_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OAStackView_Example/Pods-OAStackView_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		4A5A33E2C7E649B51D3BA787 /* Pods_OAStackView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OAStackView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		317D80D715D45DBE5FF06007 /* Pods-OAStackView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OAStackView_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OAStackView_Example/Pods-OAStackView_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		535F82631B76819500841D0D /* OAStackViewAlignmentSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAStackViewAlignmentSpec.m; sourceTree = "<group>"; };
 		535F82661B7681E200841D0D /* TestHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHelpers.h; sourceTree = "<group>"; };
 		535F82671B7681E200841D0D /* TestHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestHelpers.m; sourceTree = "<group>"; };
+		5EB1D13FCC2F307EBA41CE00 /* Pods-OAStackView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OAStackView_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OAStackView_Tests/Pods-OAStackView_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* OAStackView_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OAStackView_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -65,13 +64,14 @@
 		6003F5B7195388D20070C39A /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		6CB38A1284EC102F864DB60A /* Pods-OAStackView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OAStackView_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-OAStackView_Example/Pods-OAStackView_Example.release.xcconfig"; sourceTree = "<group>"; };
-		844890E0E3BFA4E88316456F /* Pods_OAStackView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OAStackView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		70ADA1A26FB75088EF354F1D /* Pods_OAStackView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OAStackView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		79754B7429578C082AA6B662 /* Pods-OAStackView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OAStackView_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-OAStackView_Example/Pods-OAStackView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		906135A254C8127F0F1FC500 /* Pods-OAStackView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OAStackView_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OAStackView_Tests/Pods-OAStackView_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		8C8036C9679BDFD5C2D334F2 /* Pods_OAStackView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OAStackView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7CC22B11B2E0B46009C9911 /* OAStackViewSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAStackViewSpec.m; sourceTree = "<group>"; };
 		A7CC22B41B2E0BC7009C9911 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		AE9C0956AC3290D64CFDB6CE /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		C583B3EE309ADAB8181DEA28 /* Pods-OAStackView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OAStackView_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OAStackView_Tests/Pods-OAStackView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		D21E82781BCF97D400D8379B /* OAUIStackViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAUIStackViewViewController.h; sourceTree = "<group>"; };
 		D21E82791BCF97D400D8379B /* OAUIStackViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAUIStackViewViewController.m; sourceTree = "<group>"; };
 		E84D2DC1C0119AB0E1D43BF1 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
@@ -85,7 +85,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				16951A4DAC6553EE4D40D755 /* Pods_OAStackView_Example.framework in Frameworks */,
+				2226C44410BBCE37FE3005BF /* Pods_OAStackView_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,13 +96,24 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				6452D2A087CE79BE1277EAFD /* Pods_OAStackView_Tests.framework in Frameworks */,
+				E0BF7FFAF7FAD00AD08058BD /* Pods_OAStackView_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C7BBA48E2B086190BEB147E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				317D80D715D45DBE5FF06007 /* Pods-OAStackView_Example.debug.xcconfig */,
+				79754B7429578C082AA6B662 /* Pods-OAStackView_Example.release.xcconfig */,
+				C583B3EE309ADAB8181DEA28 /* Pods-OAStackView_Tests.debug.xcconfig */,
+				5EB1D13FCC2F307EBA41CE00 /* Pods-OAStackView_Tests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
@@ -111,7 +122,7 @@
 				6003F5B5195388D20070C39A /* Tests */,
 				6003F58C195388D20070C39A /* Frameworks */,
 				6003F58B195388D20070C39A /* Products */,
-				DB67025DBD2CE2FC04265077 /* Pods */,
+				2C7BBA48E2B086190BEB147E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -131,8 +142,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				4A5A33E2C7E649B51D3BA787 /* Pods_OAStackView_Example.framework */,
-				844890E0E3BFA4E88316456F /* Pods_OAStackView_Tests.framework */,
+				8C8036C9679BDFD5C2D334F2 /* Pods_OAStackView_Example.framework */,
+				70ADA1A26FB75088EF354F1D /* Pods_OAStackView_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -198,17 +209,6 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
-		DB67025DBD2CE2FC04265077 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				4A479030BF663DB64E709BCD /* Pods-OAStackView_Example.debug.xcconfig */,
-				6CB38A1284EC102F864DB60A /* Pods-OAStackView_Example.release.xcconfig */,
-				36483642FFCC66CE85E4617C /* Pods-OAStackView_Tests.debug.xcconfig */,
-				906135A254C8127F0F1FC500 /* Pods-OAStackView_Tests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -216,12 +216,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "OAStackView_Example" */;
 			buildPhases = (
-				65F72974B37DA09757C9F31F /* Check Pods Manifest.lock */,
+				F0D056238CAC9FFD1A5357A9 /* [CP] Check Pods Manifest.lock */,
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
-				5F3D964DCDAA758516E99EBA /* Embed Pods Frameworks */,
-				1F3F41CD0C4EEC98223A367D /* Copy Pods Resources */,
+				FB12E9DD5F5A20597F9FFA8E /* [CP] Embed Pods Frameworks */,
+				D8CA61B1CD58F89FD32A8D95 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -236,12 +236,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5C2195388D20070C39A /* Build configuration list for PBXNativeTarget "OAStackView_Tests" */;
 			buildPhases = (
-				5ABDFE31BA09E71D05C98E4D /* Check Pods Manifest.lock */,
+				9924532C4EE96CF45A93ED07 /* [CP] Check Pods Manifest.lock */,
 				6003F5AA195388D20070C39A /* Sources */,
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
-				A00C4BA245B67A13DB64BB41 /* Embed Pods Frameworks */,
-				853E75E1D1E39264CAA15EEF /* Copy Pods Resources */,
+				EB7C3C34672A93EA2CFD015C /* [CP] Embed Pods Frameworks */,
+				CE8E2A7D466DE0968E379096 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -310,74 +310,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1F3F41CD0C4EEC98223A367D /* Copy Pods Resources */ = {
+		9924532C4EE96CF45A93ED07 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OAStackView_Example/Pods-OAStackView_Example-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		5ABDFE31BA09E71D05C98E4D /* Check Pods Manifest.lock */ = {
+		CE8E2A7D466DE0968E379096 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		5F3D964DCDAA758516E99EBA /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OAStackView_Example/Pods-OAStackView_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		65F72974B37DA09757C9F31F /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		853E75E1D1E39264CAA15EEF /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -385,19 +340,64 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OAStackView_Tests/Pods-OAStackView_Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A00C4BA245B67A13DB64BB41 /* Embed Pods Frameworks */ = {
+		D8CA61B1CD58F89FD32A8D95 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OAStackView_Example/Pods-OAStackView_Example-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EB7C3C34672A93EA2CFD015C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OAStackView_Tests/Pods-OAStackView_Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F0D056238CAC9FFD1A5357A9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FB12E9DD5F5A20597F9FFA8E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OAStackView_Example/Pods-OAStackView_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -528,7 +528,7 @@
 		};
 		6003F5C0195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4A479030BF663DB64E709BCD /* Pods-OAStackView_Example.debug.xcconfig */;
+			baseConfigurationReference = 317D80D715D45DBE5FF06007 /* Pods-OAStackView_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
@@ -543,7 +543,7 @@
 		};
 		6003F5C1195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6CB38A1284EC102F864DB60A /* Pods-OAStackView_Example.release.xcconfig */;
+			baseConfigurationReference = 79754B7429578C082AA6B662 /* Pods-OAStackView_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
@@ -558,7 +558,7 @@
 		};
 		6003F5C3195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 36483642FFCC66CE85E4617C /* Pods-OAStackView_Tests.debug.xcconfig */;
+			baseConfigurationReference = C583B3EE309ADAB8181DEA28 /* Pods-OAStackView_Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -581,7 +581,7 @@
 		};
 		6003F5C4195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 906135A254C8127F0F1FC500 /* Pods-OAStackView_Tests.release.xcconfig */;
+			baseConfigurationReference = 5EB1D13FCC2F307EBA41CE00 /* Pods-OAStackView_Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (

@@ -1,12 +1,12 @@
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
-target 'OAStackView_Example', :exclusive => true do
+target 'OAStackView_Example' do
   pod "OAStackView", :path => "../"
-  pod 'Reveal-iOS-SDK', '~> 1.5.1'
+  pod 'Reveal-iOS-SDK', '~> 1.6.2'
 end
 
-target 'OAStackView_Tests', :exclusive => true do
+target 'OAStackView_Tests' do
   pod "OAStackView", :path => "../"
   pod 'Kiwi'
 end
