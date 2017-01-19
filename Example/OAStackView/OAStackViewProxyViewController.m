@@ -1,20 +1,20 @@
 //
-//  OAViewController.m
+//  OAStackViewProxyViewController.m
 //  OAStackView
 //
 //  Created by Omar Abdelhafith on 06/14/2015.
 //  Copyright (c) 2014 Omar Abdelhafith. All rights reserved.
 //
 
-#import "OAStackViewViewController.h"
+#import "OAStackViewProxyViewController.h"
 #import <OAStackView/OAStackView.h>
 
-@interface OAStackViewViewController ()
-@property (weak, nonatomic) OAStackView *stackView;
+@interface OAStackViewProxyViewController ()
+@property (weak, nonatomic) OAStackViewProxy *stackView;
 @property (weak, nonatomic) IBOutlet UIView *viewToRemove;
 @end
 
-@implementation OAStackViewViewController
+@implementation OAStackViewProxyViewController
 
 - (void)viewDidLoad
 {

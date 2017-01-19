@@ -360,6 +360,9 @@
 
 @end
 
+@implementation OAStackViewProxy
+@end
+
 #pragma mark - Runtime Injection
 
 // Constructors are called after all classes have been loaded.

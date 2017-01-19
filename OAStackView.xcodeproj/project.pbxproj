@@ -23,7 +23,6 @@
 		3B1224651B4DF25200C02D3A /* OAStackViewDistributionStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1224571B4DF25200C02D3A /* OAStackViewDistributionStrategy.m */; };
 		80BE14951B79041F00809203 /* OAStackViewAlignmentStrategyBaseline.h in Headers */ = {isa = PBXBuildFile; fileRef = 80BE14931B79041F00809203 /* OAStackViewAlignmentStrategyBaseline.h */; };
 		80BE14961B79041F00809203 /* OAStackViewAlignmentStrategyBaseline.m in Sources */ = {isa = PBXBuildFile; fileRef = 80BE14941B79041F00809203 /* OAStackViewAlignmentStrategyBaseline.m */; };
-		8416A2DB1CDA836F00D6C25B /* OAStackViewProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8416A2DA1CDA836F00D6C25B /* OAStackViewProxy.swift */; };
 		D871CEF71B685D8500FD5F11 /* OATransformLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = D871CEF51B685D8500FD5F11 /* OATransformLayer.h */; };
 		D871CEF81B685D8500FD5F11 /* OATransformLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D871CEF61B685D8500FD5F11 /* OATransformLayer.m */; };
 /* End PBXBuildFile section */
@@ -47,7 +46,6 @@
 		80BE14941B79041F00809203 /* OAStackViewAlignmentStrategyBaseline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OAStackViewAlignmentStrategyBaseline.m; path = Pod/Classes/OAStackViewAlignmentStrategyBaseline.m; sourceTree = SOURCE_ROOT; };
 		8298C9231B4188700006C53E /* OAStackView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OAStackView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8298C93F1B4188F50006C53E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
-		8416A2DA1CDA836F00D6C25B /* OAStackViewProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OAStackViewProxy.swift; path = Pod/Classes/OAStackViewProxy.swift; sourceTree = SOURCE_ROOT; };
 		D871CEF51B685D8500FD5F11 /* OATransformLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OATransformLayer.h; path = Pod/Classes/OATransformLayer.h; sourceTree = SOURCE_ROOT; };
 		D871CEF61B685D8500FD5F11 /* OATransformLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OATransformLayer.m; path = Pod/Classes/OATransformLayer.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -101,7 +99,6 @@
 				D871CEF51B685D8500FD5F11 /* OATransformLayer.h */,
 				D871CEF61B685D8500FD5F11 /* OATransformLayer.m */,
 				8298C93F1B4188F50006C53E /* Info.plist */,
-				8416A2DA1CDA836F00D6C25B /* OAStackViewProxy.swift */,
 			);
 			path = OAStackView;
 			sourceTree = "<group>";
@@ -202,7 +199,6 @@
 				3B12245F1B4DF25200C02D3A /* OAStackView+Hiding.m in Sources */,
 				D871CEF81B685D8500FD5F11 /* OATransformLayer.m in Sources */,
 				3B12245D1B4DF25200C02D3A /* OAStackView+Constraint.m in Sources */,
-				8416A2DB1CDA836F00D6C25B /* OAStackViewProxy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

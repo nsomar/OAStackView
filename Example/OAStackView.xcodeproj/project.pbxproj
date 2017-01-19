@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2226C44410BBCE37FE3005BF /* Pods_OAStackView_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C8036C9679BDFD5C2D334F2 /* Pods_OAStackView_Example.framework */; };
+		3C21E5C515971A65F7787C3E /* libPods-OAStackView_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D5C5103D9BEF8145B70ECED /* libPods-OAStackView_Tests.a */; };
 		535F82651B7681B000841D0D /* OAStackViewAlignmentSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F82631B76819500841D0D /* OAStackViewAlignmentSpec.m */; };
 		535F82681B7681E200841D0D /* TestHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 535F82671B7681E200841D0D /* TestHelpers.m */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
@@ -22,11 +22,12 @@
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
+		6B5FCDD21E3139890010BCDB /* OAStackViewProxyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B5FCDD11E3139890010BCDB /* OAStackViewProxyViewController.m */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		A7CC22B31B2E0B8E009C9911 /* OAStackViewSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = A7CC22B11B2E0B46009C9911 /* OAStackViewSpec.m */; };
 		A7CC22B51B2E0BC7009C9911 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7CC22B41B2E0BC7009C9911 /* Launch Screen.xib */; };
 		D21E827A1BCF97D400D8379B /* OAUIStackViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D21E82791BCF97D400D8379B /* OAUIStackViewViewController.m */; };
-		E0BF7FFAF7FAD00AD08058BD /* Pods_OAStackView_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70ADA1A26FB75088EF354F1D /* Pods_OAStackView_Tests.framework */; };
+		E71CDC0CCF5EBB7F9D8090AE /* libPods-OAStackView_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A034F8EDA2F096ABF11855AA /* libPods-OAStackView_Example.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,10 +65,12 @@
 		6003F5B7195388D20070C39A /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		70ADA1A26FB75088EF354F1D /* Pods_OAStackView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OAStackView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B5FCDD01E3139890010BCDB /* OAStackViewProxyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAStackViewProxyViewController.h; sourceTree = "<group>"; };
+		6B5FCDD11E3139890010BCDB /* OAStackViewProxyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAStackViewProxyViewController.m; sourceTree = "<group>"; };
 		79754B7429578C082AA6B662 /* Pods-OAStackView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OAStackView_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-OAStackView_Example/Pods-OAStackView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		8C8036C9679BDFD5C2D334F2 /* Pods_OAStackView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OAStackView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D5C5103D9BEF8145B70ECED /* libPods-OAStackView_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OAStackView_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A034F8EDA2F096ABF11855AA /* libPods-OAStackView_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OAStackView_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7CC22B11B2E0B46009C9911 /* OAStackViewSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAStackViewSpec.m; sourceTree = "<group>"; };
 		A7CC22B41B2E0BC7009C9911 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		AE9C0956AC3290D64CFDB6CE /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -85,7 +88,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				2226C44410BBCE37FE3005BF /* Pods_OAStackView_Example.framework in Frameworks */,
+				E71CDC0CCF5EBB7F9D8090AE /* libPods-OAStackView_Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,7 +99,7 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				E0BF7FFAF7FAD00AD08058BD /* Pods_OAStackView_Tests.framework in Frameworks */,
+				3C21E5C515971A65F7787C3E /* libPods-OAStackView_Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,8 +145,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				8C8036C9679BDFD5C2D334F2 /* Pods_OAStackView_Example.framework */,
-				70ADA1A26FB75088EF354F1D /* Pods_OAStackView_Tests.framework */,
+				A034F8EDA2F096ABF11855AA /* libPods-OAStackView_Example.a */,
+				8D5C5103D9BEF8145B70ECED /* libPods-OAStackView_Tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -158,6 +161,8 @@
 				D21E82791BCF97D400D8379B /* OAUIStackViewViewController.m */,
 				6003F5A5195388D20070C39A /* OAStackViewViewController.h */,
 				6003F5A6195388D20070C39A /* OAStackViewViewController.m */,
+				6B5FCDD01E3139890010BCDB /* OAStackViewProxyViewController.h */,
+				6B5FCDD11E3139890010BCDB /* OAStackViewProxyViewController.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
 				A7CC22B41B2E0BC7009C9911 /* Launch Screen.xib */,
@@ -407,6 +412,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B5FCDD21E3139890010BCDB /* OAStackViewProxyViewController.m in Sources */,
 				D21E827A1BCF97D400D8379B /* OAUIStackViewViewController.m in Sources */,
 				6003F59E195388D20070C39A /* OAAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* OAStackViewViewController.m in Sources */,
@@ -532,6 +538,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OAStackView/OAStackView-Prefix.pch";
 				INFOPLIST_FILE = "OAStackView/OAStackView-Info.plist";
@@ -547,6 +554,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OAStackView/OAStackView-Prefix.pch";
 				INFOPLIST_FILE = "OAStackView/OAStackView-Info.plist";
