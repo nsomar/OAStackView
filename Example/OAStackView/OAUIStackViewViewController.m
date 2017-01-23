@@ -18,6 +18,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    NSLog(@"%@: stackView implemented by %@ (%@)",
+          NSStringFromClass([self class]),
+          NSStringFromClass([self.stackView class]),
+          NSStringFromClass([self.stackView superclass]));
 }
 
 - (void)didReceiveMemoryWarning

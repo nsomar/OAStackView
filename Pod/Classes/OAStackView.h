@@ -122,4 +122,8 @@ Default value is `UILayoutConstraintAxisHorizontal`.
 - (void)insertArrangedSubview:(UIView *)view atIndex:(NSUInteger)stackIndex;
 
 @end
+
+@interface OAStackViewProxy : UIStackView
+@end
+
 NS_ASSUME_NONNULL_END
