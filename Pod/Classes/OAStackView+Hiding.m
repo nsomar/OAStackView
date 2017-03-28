@@ -20,7 +20,11 @@
 }
 
 - (void)removeObserverForView:(UIView*)view {
-  [view removeObserver:self forKeyPath:@"hidden"];
+    @try {
+        [view removeObserver:self forKeyPath:@"hidden"];
+    } @catch (NSException * e) {
+        NSLog(@"OAStackView: Unable to remove observer for view %@: %@", view, e);
+    }
 }
 
 - (void)addObserverForViews:(NSArray*)views {
@@ -61,6 +65,12 @@
 - (void)willRemoveSubview:(UIView *)subview {
   [super willRemoveSubview:subview];
   [self removeObserverForView:subview];
+}
+
+#pragma mark clean up
+
+- (void)dealloc {
+    [self removeObserverForViews:self.subviews];
 }
 
 @end
