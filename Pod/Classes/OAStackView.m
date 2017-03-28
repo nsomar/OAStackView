@@ -22,6 +22,9 @@
 
 // Not implemented but needed for backward compatibility with UIStackView
 @property(nonatomic,getter=isBaselineRelativeArrangement) BOOL baselineRelativeArrangement;
+
+@property(nonatomic, getter=areNativeLayoutMarginsSupported, readonly) BOOL nativeLayoutMarginsSupported;
+
 @end
 
 @implementation OAStackView
@@ -69,6 +72,8 @@
 }
 
 - (void)commonInitWithInitalSubviews:(NSArray *)initialSubviews {
+  _nativeLayoutMarginsSupported = [UIView instancesRespondToSelector:@selector(layoutMargins)];
+
   _mutableArrangedSubviews = [initialSubviews mutableCopy];
   [self addViewsAsSubviews:initialSubviews];
 
@@ -76,7 +81,7 @@
   _alignment = OAStackViewAlignmentFill;
   _distribution = OAStackViewDistributionFill;
 
-  _layoutMargins = UIEdgeInsetsMake(0, 8, 0, 8);
+  _compatibilityLayoutMargins = UIEdgeInsetsMake(0, 8, 0, 8);
   _layoutMarginsRelativeArrangement = NO;
 
   self.alignmentStrategy = [OAStackViewAlignmentStrategy strategyWithStackView:self];
@@ -211,9 +216,23 @@
   self.distribution = distributionValue;
 }
 
+@synthesize layoutMargins = _compatibilityLayoutMargins;
+
+- (UIEdgeInsets)layoutMargins {
+  if (self.nativeLayoutMarginsSupported) {
+    return super.layoutMargins;
+  }
+
+  return _compatibilityLayoutMargins;
+}
+
 - (void)setLayoutMargins:(UIEdgeInsets)layoutMargins {
-  _layoutMargins = layoutMargins;
-  [self layoutArrangedViews];
+  if (self.nativeLayoutMarginsSupported) {
+    [super setLayoutMargins:layoutMargins];
+  } else {
+    _compatibilityLayoutMargins = layoutMargins;
+    [self layoutArrangedViews];
+  }
 }
 
 - (void)setLayoutMarginsRelativeArrangement:(BOOL)layoutMarginsRelativeArrangement {
@@ -224,6 +243,11 @@
 #pragma mark - Overriden methods
 
 - (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+  [self layoutArrangedViews];
+}
+
+- (void)layoutMarginsDidChange {
+  [super layoutMarginsDidChange];
   [self layoutArrangedViews];
 }
 
